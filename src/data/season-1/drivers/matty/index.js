@@ -1,8 +1,8 @@
 import Race from "./race";
-import Qualiyfing from "./qualifying";
+import Qualifying from "./qualifying";
 
 export default {
   driverId: 3,
   Race,
-  Qualiyfing
+  Qualifying
 };
