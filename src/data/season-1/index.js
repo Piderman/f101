@@ -25,9 +25,9 @@ const getSessionResults = sessionType => {
   });
 };
 
-export const Qualifying = getSessionResults('Qualifying');
+export const Qualifying = getSessionResults("Qualifying");
 
-export const Race = getSessionResults('Race');
+export const Race = getSessionResults("Race");
 
 export const standings = {
   Qualifying,
