@@ -1,4 +1,4 @@
-import Qualifying from "Qualifying";
+import Qualifying from "./qualifying";
 
 export default {
   driverId: 1,
