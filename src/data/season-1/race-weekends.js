@@ -1,23 +1,43 @@
 export default [
   {
     id: 1,
-    name: "Melb"
+    name: "Melb",
+    weather: {
+      qualifying: ['dry'],
+      race: ['dry']
+    }
   },
   {
     id: 2,
-    name: "Malaysia"
+    name: "Malaysia",
+    weather: {
+      qualifying: ['dry'],
+      race: ['dry', 'wet']
+    }
   },
   {
     id: 3,
-    name: "Bahrain"
+    name: "Bahrain",
+    weather: {
+      qualifying: ['dry'],
+      race: ['dry']
+    }
   },
   {
     id: 4,
-    name: "China"
+    name: "China",
+    weather: {
+      qualifying: ['wet'],
+      race: ['dry', 'wet']
+    }
   },
   {
     id: 5,
-    name: "Spain"
+    name: "Spain",
+    weather: {
+      qualifying: ['wet'],
+      race: ['dry']
+    }
   },
   {
     id: 6,
@@ -25,6 +45,62 @@ export default [
   },
   {
     id: 7,
-    name: "Canada"
+    name: "Canada",
+    weather: {
+      qualifying: ['wet'],
+      race: ['dry']
+    }
+  },
+  {
+    id: 8,
+    name: "Austria",
+    weather: {
+      qualifying: ['dry'],
+      race: ['dry']
+    }
+  },
+  {
+    id: 9,
+    name: "British"
+  },
+  {
+    id: 10,
+    name: "German"
+  },
+  {
+    id: 11,
+    name: "Hungary"
+  },
+  {
+    id: 12,
+    name: "Belgian"
+  },
+  {
+    id: 13,
+    name: "Italian"
+  },
+  {
+    id: 14,
+    name: "Singapore"
+  },
+  {
+    id: 15,
+    name: "Japanese"
+  },
+  {
+    id: 16,
+    name: "Russian"
+  },
+  {
+    id: 17,
+    name: "United States"
+  },
+  {
+    id: 18,
+    name: "Brazilian"
+  },
+  {
+    id: 19,
+    name: "Abu Dhabi"
   }
 ];
