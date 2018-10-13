@@ -3,7 +3,7 @@ export default [
     position: 15,
     grid: 2,
     raceId: 1,
-    teamId: 3,
+    teamId: 2,
     fastestLap: "1:33.152",
     penalties: [
       {
