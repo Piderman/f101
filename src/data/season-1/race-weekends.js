@@ -3,40 +3,40 @@ export default [
     id: 1,
     name: "Melb",
     weather: {
-      qualifying: ['dry'],
-      race: ['dry']
+      qualifying: ["dry"],
+      race: ["dry"]
     }
   },
   {
     id: 2,
     name: "Malaysia",
     weather: {
-      qualifying: ['dry'],
-      race: ['dry', 'wet']
+      qualifying: ["dry"],
+      race: ["dry", "wet"]
     }
   },
   {
     id: 3,
     name: "Bahrain",
     weather: {
-      qualifying: ['dry'],
-      race: ['dry']
+      qualifying: ["dry"],
+      race: ["dry"]
     }
   },
   {
     id: 4,
     name: "China",
     weather: {
-      qualifying: ['wet'],
-      race: ['dry', 'wet']
+      qualifying: ["wet"],
+      race: ["dry", "wet"]
     }
   },
   {
     id: 5,
     name: "Spain",
     weather: {
-      qualifying: ['wet'],
-      race: ['dry']
+      qualifying: ["wet"],
+      race: ["dry"]
     }
   },
   {
@@ -47,16 +47,16 @@ export default [
     id: 7,
     name: "Canada",
     weather: {
-      qualifying: ['wet'],
-      race: ['dry']
+      qualifying: ["wet"],
+      race: ["dry"]
     }
   },
   {
     id: 8,
     name: "Austria",
     weather: {
-      qualifying: ['dry'],
-      race: ['dry']
+      qualifying: ["dry"],
+      race: ["dry"]
     }
   },
   {
