@@ -3,6 +3,12 @@ import drivers from "./drivers";
 
 import { find } from "lodash";
 
+/**
+ * summaries the sessions from all drivers
+ *
+ * @param {string} sessionType
+ * @returns {Object} drivers position for each race
+ */
 const getSessionResults = sessionType => {
   return weekends.map(event => {
     const results = drivers.map(driver => {
@@ -29,7 +35,7 @@ export const Qualifying = getSessionResults("Qualifying");
 
 export const Race = getSessionResults("Race");
 
-export const standings = {
+export default {
   Qualifying,
   Race
 };
