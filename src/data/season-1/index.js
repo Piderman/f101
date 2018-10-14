@@ -31,11 +31,11 @@ const getSessionResults = sessionType => {
   });
 };
 
-export const Qualifying = getSessionResults("Qualifying");
+export const qualifying = getSessionResults("qualifying");
 
-export const Race = getSessionResults("Race");
+export const races = getSessionResults("races");
 
 export default {
-  Qualifying,
-  Race
+  qualifying,
+  races
 };

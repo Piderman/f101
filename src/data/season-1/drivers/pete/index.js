@@ -1,10 +1,10 @@
-import Race from "./race";
-import Qualifying from "./qualifying";
+import races from "./races";
+import qualifying from "./qualifying";
 
 export default {
   driverId: 4,
   driverName: "Peter",
-  driverType: "player", 
-  Race,
-  Qualifying
+  driverType: "player",
+  races,
+  qualifying
 };
