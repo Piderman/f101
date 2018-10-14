@@ -23,10 +23,10 @@ export default new Router({
         import(/* webpackChunkName: "about" */ "./views/About.vue")
     },
     {
-      path: "/standings",
-      name: "standings",
+      path: "/leaderboard",
+      name: "leaderboard",
       component: () =>
-        import(/* webpackChunkName: "standings" */ "./views/CurrentSeasonStandings.vue")
+        import(/* webpackChunkName: "leaderboard" */ "./views/Leaderboard.vue")
     }
   ]
 });
