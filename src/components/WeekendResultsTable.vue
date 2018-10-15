@@ -2,16 +2,17 @@
 <div>
   <table>
     <tr>
-      <th>Position</th>
+      <th @click="sortByHeader('position')">Position</th>
       <th>Driver</th>
       <th>Team</th>
 
       <th v-for="value in fields"
         :key="`heading_${value}`"
+        @click="sortByHeader(value)"
       >{{value}}</th>
 
     </tr>
-    <tr v-for="driver in results"
+    <tr v-for="driver in orderedResults"
       :key="driver.id"
     >
       <td>{{driver.position}}</td>
@@ -35,11 +36,21 @@ export default {
   props: ["values", "fields"],
   data() {
     return {
-      selectedColumn: "",
-      order: "desc"
+      selectedColumn: "position",
+      isAscending: true,
     };
   },
+  methods: {
+    sortByHeader(field) {
+      if (this.selectedColumn == field) {
+        this.isAscending = !this.isAscending;
 
+      } else {
+        this.selectedColumn = field
+        this.isAscending = true;
+      }      
+    }
+  },
   computed: {
     weekend() {
       return this.$parent.weekend;
@@ -58,7 +69,12 @@ export default {
         }
       });
 
-      return orderBy(compact(driverStatsForWeekend), 'position');
+      return compact(driverStatsForWeekend);
+    },
+    orderedResults() {
+      const order = this.isAscending ? 'asc' : 'desc';
+
+      return orderBy(this.results, this.selectedColumn, order);
     }
   }
 };
