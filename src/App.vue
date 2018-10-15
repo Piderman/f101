@@ -3,7 +3,8 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
-      <router-link :to="{name: 'leaderboard'}">Leaderboard</router-link>
+      <router-link :to="{name: 'leaderboard'}">Leaderboard</router-link> |
+      <router-link :to="{name: 'overview', params: { weekend: 'australia' }}">Standings</router-link>
     </div>
     <router-view/>
   </div>

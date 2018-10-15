@@ -27,6 +27,31 @@ export default new Router({
       name: "leaderboard",
       component: () =>
         import(/* webpackChunkName: "leaderboard" */ "./views/Leaderboard.vue")
+    },
+    {
+      path: "/results/:weekend",
+      component: () =>
+      import(/* webpackChunkName: "results" */ "./views/results/index.vue"),
+      children: [
+        {
+          path: '',
+          name: "overview",
+          component: () =>
+            import(/* webpackChunkName: "results" */ "./views/results/overview.vue")
+        },
+        {
+          path: "race",
+          name: "race-results",
+          component: () =>
+            import(/* webpackChunkName: "results" */ "./views/results/race.vue")
+        },
+        {
+          path: "qualifying",
+          name: "qualifying-results",
+          component: () =>
+            import(/* webpackChunkName: "results" */ "./views/results/qualifying.vue")
+        }
+      ]
     }
   ]
 });
