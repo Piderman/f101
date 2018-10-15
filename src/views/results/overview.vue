@@ -2,6 +2,7 @@
 <div>
   <h1>{{weekend.name}}</h1>
   <p>Conditions: {{conditions}}</p>  
+
 </div>
 </template>
 

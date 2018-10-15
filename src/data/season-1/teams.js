@@ -1,57 +1,57 @@
 export default [
   {
     teamId: 1,
-    teamName: "Mercedes",
+    name: "Mercedes",
     tier: 1
   },
   {
     teamId: 2,
-    teamName: "Red Bull",
+    name: "Red Bull",
     tier: 1
   },
   {
     teamId: 3,
-    teamName: "Ferrari",
+    name: "Ferrari",
     tier: 1
   },
   {
     teamId: 4,
-    teamName: "Williams",
+    name: "Williams",
     tier: 2
   },
   {
     teamId: 5,
-    teamName: "McLaren",
+    name: "McLaren",
     tier: 2
   },
   {
     teamId: 6,
-    teamName: "Force India",
+    name: "Force India",
     tier: 2
   },
   {
     teamId: 7,
-    teamName: "Toro Rosso",
+    name: "Toro Rosso",
     tier: 3
   },
   {
     teamId: 8,
-    teamName: "Lotus",
+    name: "Lotus",
     tier: 3
   },
   {
     teamId: 9,
-    teamName: "Sauber",
+    name: "Sauber",
     tier: 3
   },
   {
     teamId: 10,
-    teamName: "Marussia",
+    name: "Marussia",
     tier: 4
   },
   {
     teamId: 11,
-    teamName: "Caterham",
+    name: "Caterham",
     tier: 4
   }
 ];

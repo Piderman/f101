@@ -17,7 +17,7 @@ import WeekendNav from "@/components/WeekendNav.vue";
 import ResultsTable from "@/components/WeekendResultsTable.vue";
 import weekends from "@/data/season-1/race-weekends";
 
-import {find} from 'lodash'
+import { find } from "lodash";
 
 export default {
   components: { WeekendNav, ResultsTable },

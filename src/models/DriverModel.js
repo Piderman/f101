@@ -21,6 +21,9 @@ class Driver {
     this.name = data.driverName;
     this.type = data.driverType;
 
+    this.raceResults = data.races;
+    this.qualifyingResults = data.qualifying;
+
     this.points = data.races.map(race => {
       return pointsLUT[race.position] || 0;
     });

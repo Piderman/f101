@@ -31,10 +31,10 @@ export default new Router({
     {
       path: "/results/:weekend",
       component: () =>
-      import(/* webpackChunkName: "results" */ "./views/results/index.vue"),
+        import(/* webpackChunkName: "results" */ "./views/results/index.vue"),
       children: [
         {
-          path: '',
+          path: "",
           name: "overview",
           component: () =>
             import(/* webpackChunkName: "results" */ "./views/results/overview.vue")
