@@ -76,8 +76,14 @@ export default [
   },
   {
     id: 9,
-    status: "upcomming",
-    name: "British"
+    status: "complete",
+    name: "British",
+    url: "british",
+    weather: {
+      qualifying: ["dry"],
+      race: ["dry"]
+    },
+    saftercarLaps: [3],
   },
   {
     id: 10,

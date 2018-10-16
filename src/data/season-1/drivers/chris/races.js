@@ -50,5 +50,12 @@ export default [
     teamId: 11,
     // missing fastest lap time
     status: "retired" // DNF
+  },
+  {
+    position: 2,
+    grid: 4,
+    raceId: 9,
+    teamId: 7,
+    fastestLap: "1:42.737"
   }
 ];
