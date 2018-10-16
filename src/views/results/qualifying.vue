@@ -2,6 +2,8 @@
   <div>
     <h1>Qual - {{weekend.name}}</h1>
 
+    <p>Conditions: {{conditions}}</p>  
+
     <ResultsTable values="qualifyingResults" :fields="['time']"/>
 
   </div>
@@ -14,6 +16,9 @@ export default {
   computed: {
     weekend() {
       return this.$parent.weekend;
+    },
+    conditions() {
+      return this.weekend.weather.qualifying.join(" then ");
     }
   },
   components: {

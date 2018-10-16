@@ -23,14 +23,14 @@ export default {
 </script>
 
 <style>
-ul,
-li,
-a {
+nav ul,
+nav li,
+nav a {
   margin: 0;
   display: inline-block;
 }
 
-li + li {
+nav li + li {
   margin-left: 1em;
 }
 </style>

@@ -2,14 +2,11 @@
   <div>
     <WeekendNav/>
 
-    <router-link :to="{name: 'race-results'}">race details</router-link> | 
-    <router-link :to="{name: 'qualifying-results'}">qualifying details</router-link>
-
     <router-view></router-view>
 
-    <!-- <ResultsTable/> -->
+    <router-link :to="{name: 'race-results'}">race details</router-link> | 
+    <router-link :to="{name: 'qualifying-results'}">qualifying details</router-link>
   </div>
-
 </template>
 
 <script>
