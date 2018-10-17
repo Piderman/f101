@@ -21,18 +21,26 @@ class Driver {
     this.name = data.driverName;
     this.type = data.driverType;
 
-    this.raceResults = data.races;
+    this.raceResults = parseRaceData(data.races);
     this.qualifyingResults = data.qualifying;
 
-    this.points = data.races.map(race => {
-      return pointsLUT[race.position] || 0;
-    });
-
-    this.seasonTotal = sum(this.points);
-
-    this.gapToLeader =
-      DriverStore.getters.leader.seasonTotal - this.seasonTotal;
+    this.seasonTotal = sum(this.raceResults.map(race => race.points));
   }
+}
+
+/**
+ * Calculated values not captured in data
+ * 
+ * @param {Array} races
+ * @returns Array 
+ */
+const parseRaceData = races => {
+  return races.map(race => {
+    return Object.assign(race, {
+      positionsGained: race.grid - race.position,
+      points: pointsLUT[race.position] || 0
+    });
+  });
 }
 
 export default Driver;
