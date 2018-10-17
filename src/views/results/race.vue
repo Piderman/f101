@@ -5,7 +5,7 @@
 
     <p v-if="weekend.safteycarLaps">Safety car deployed</p> 
 
-    <ResultsTable values="raceResults" :fields="['fastestLap', 'grid', 'positionsGained', 'points']"/>
+    <ResultsTable values="raceResults" :fields="['fastestLap', 'grid', 'positionsGained', 'points', 'progressiveSeasonTotal']"/>
 
   </div>
 </template>

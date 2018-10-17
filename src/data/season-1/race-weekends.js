@@ -63,7 +63,7 @@ export default [
       qualifying: ["wet"],
       race: ["dry"]
     },
-    safteycarLaps: [5],
+    safteycarLaps: [5]
   },
   {
     id: 8,
@@ -84,7 +84,7 @@ export default [
       qualifying: ["dry"],
       race: ["dry"]
     },
-    safteycarLaps: [3],
+    safteycarLaps: [3]
   },
   {
     id: 10,

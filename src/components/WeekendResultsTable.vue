@@ -37,18 +37,17 @@ export default {
   data() {
     return {
       selectedColumn: "position",
-      isAscending: true,
+      isAscending: true
     };
   },
   methods: {
     sortByHeader(field) {
       if (this.selectedColumn == field) {
         this.isAscending = !this.isAscending;
-
       } else {
-        this.selectedColumn = field
+        this.selectedColumn = field;
         this.isAscending = true;
-      }      
+      }
     }
   },
   computed: {
@@ -56,23 +55,27 @@ export default {
       return this.$parent.weekend;
     },
     results() {
-      const driverStatsForWeekend = this.$store.state.Drivers.allDrivers.map(driver => {
-        const results = find(driver[this.values], { raceId: this.weekend.id });
-        
-        if (results) {
-          const valuesToDisplay = pick(results, this.fields, ['position']);
-  
-          return Object.assign(valuesToDisplay, {
-            name: driver.name,
-            team: find(teams, {teamId: results.teamId}).name
-          })
+      const driverStatsForWeekend = this.$store.state.Drivers.allDrivers.map(
+        driver => {
+          const results = find(driver[this.values], {
+            raceId: this.weekend.id
+          });
+
+          if (results) {
+            const valuesToDisplay = pick(results, this.fields, ["position"]);
+
+            return Object.assign(valuesToDisplay, {
+              name: driver.name,
+              team: find(teams, { teamId: results.teamId }).name
+            });
+          }
         }
-      });
+      );
 
       return compact(driverStatsForWeekend);
     },
     orderedResults() {
-      const order = this.isAscending ? 'asc' : 'desc';
+      const order = this.isAscending ? "asc" : "desc";
 
       return orderBy(this.results, this.selectedColumn, order);
     }
@@ -81,15 +84,16 @@ export default {
 </script>
 
 <style>
-  table {
-    border-collapse: collapse;
-  }
-  th, td {
-    text-align: right;
-    padding: 1em;
-  }
+table {
+  border-collapse: collapse;
+}
+th,
+td {
+  text-align: right;
+  padding: 1em;
+}
 
-  td{ 
-    border-top: 1px solid #b3b3b5;
-  }
+td {
+  border-top: 1px solid #b3b3b5;
+}
 </style>

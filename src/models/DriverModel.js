@@ -1,5 +1,3 @@
-import DriverStore from "@/store/drivers";
-
 import { sum } from "lodash";
 
 const pointsLUT = {
@@ -30,17 +28,25 @@ class Driver {
 
 /**
  * Calculated values not captured in data
- * 
+ *
  * @param {Array} races
- * @returns Array 
+ * @returns Array
  */
 const parseRaceData = races => {
+  let progressiveSeasonTotal = 0;
+
   return races.map(race => {
+    const positionsGained = race.grid - race.position;
+    const points = pointsLUT[race.position] || 0;
+
+    progressiveSeasonTotal += points;
+
     return Object.assign(race, {
-      positionsGained: race.grid - race.position,
-      points: pointsLUT[race.position] || 0
+      positionsGained,
+      points,
+      progressiveSeasonTotal
     });
   });
-}
+};
 
 export default Driver;
