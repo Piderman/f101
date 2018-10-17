@@ -3,4 +3,8 @@ import Matty from "./matty";
 import Pete from "./pete";
 import Simon from "./simon";
 
-export default [Chris, Matty, Pete, Simon];
+import ai from './ai';
+
+const players =[Chris, Matty, Pete, Simon];
+
+export default [].concat(ai, players); 
