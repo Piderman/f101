@@ -5,6 +5,7 @@ export default {
   driverId: 2,
   driverName: "Simon",
   driverType: "player",
+  primaryTeamId: 2,
   races,
   qualifying
 };

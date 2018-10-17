@@ -16,11 +16,24 @@
       <td class="number">{{gapToLeader(driver)}}</td>
     </tr>
   </table>
+
+  <highcharts :options="chartOptions"/>
+
 </div>  
 </template>
 
 <script>
+import Vue from 'vue';
 import { mapGetters } from "vuex";
+
+import HighchartsVue from 'highcharts-vue'
+import {Chart} from 'highcharts-vue'
+
+import {get, find} from 'lodash'
+
+import teams from '@/data/season-1/teams'
+
+Vue.use(HighchartsVue)
 
 export default {
   name: "current-season-standings",
@@ -32,7 +45,39 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({ leaderboard: "Drivers/leaderboard" })
+    ...mapGetters({ leaderboard: "Drivers/leaderboard" }),
+    driverStandings() {
+      return this.$store.state.Drivers.allDrivers.map(driver => {
+        return {
+          name: driver.name,
+          color: get(find(teams, {teamId: driver.primaryTeamId}), 'hex'),
+          data: driver.raceResults.map(race => race.progressiveSeasonTotal),
+        }
+      });
+    },
+    chartOptions() {
+      return {
+        title: {
+          text: 'Driver Standings'
+        },
+        yAxis: {
+          title: {
+            text: 'Season Points'
+          }
+        },
+        xAxis: {
+          title: {
+            text: 'Race'
+          }
+        },
+        series: this.driverStandings
+      }
+    }
+  },
+  components: {
+    components: {
+      highcharts: Chart 
+    }
   }
 };
 </script>
@@ -41,6 +86,7 @@ export default {
 <style>
 table {
   border-collapse: collapse;
+  margin-bottom: 2em;
 }
 
 th,

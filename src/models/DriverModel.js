@@ -18,6 +18,8 @@ class Driver {
     this.id = data.driverId;
     this.name = data.driverName;
     this.type = data.driverType;
+    this.primaryTeamId = data.primaryTeamId;
+    this.isSecondaryDriver = data.isSecondaryDriver;
 
     this.raceResults = parseRaceData(data.races);
     this.qualifyingResults = data.qualifying;

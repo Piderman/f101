@@ -1,5 +1,12 @@
 export default [
   {
+    position: null,
+    grid: null,
+    raceId: 1,
+    teamId: 1,
+    result: 'Did not attend'
+  },
+  {
     position: 19,
     grid: 13,
     raceId: 2,

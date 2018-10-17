@@ -2,17 +2,20 @@ export default [
   {
     teamId: 1,
     name: "Mercedes",
-    tier: 1
+    tier: 1,
+    hex: "#00d2be"
   },
   {
     teamId: 2,
     name: "Red Bull",
-    tier: 1
+    tier: 1,
+    hex: '#1e41ff',
   },
   {
     teamId: 3,
     name: "Ferrari",
-    tier: 1
+    tier: 1,
+    hex: "#dc0000"
   },
   {
     teamId: 4,
