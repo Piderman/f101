@@ -4,7 +4,7 @@ export default [
     grid: null,
     raceId: 1,
     teamId: 1,
-    result: 'Did not attend'
+    result: "Did not attend"
   },
   {
     position: 19,

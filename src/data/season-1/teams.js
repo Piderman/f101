@@ -9,7 +9,7 @@ export default [
     teamId: 2,
     name: "Red Bull",
     tier: 1,
-    hex: '#1e41ff',
+    hex: "#1e41ff"
   },
   {
     teamId: 3,
@@ -20,7 +20,8 @@ export default [
   {
     teamId: 4,
     name: "Williams",
-    tier: 2
+    tier: 2,
+    hex: "#ffffff"
   },
   {
     teamId: 5,

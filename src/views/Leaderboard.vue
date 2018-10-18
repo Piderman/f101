@@ -17,23 +17,23 @@
     </tr>
   </table>
 
-  <highcharts :options="chartOptions"/>
+  <highcharts :options="championshipStandings"/>
+
+  <highcharts :options="constructorStanding"/>
 
 </div>  
 </template>
 
 <script>
-import Vue from 'vue';
+import Vue from "vue";
 import { mapGetters } from "vuex";
+import HighchartsVue from "highcharts-vue";
 
-import HighchartsVue from 'highcharts-vue'
-import {Chart} from 'highcharts-vue'
+import { get, find, sortBy, sum } from "lodash";
 
-import {get, find} from 'lodash'
+import teams from "@/data/season-1/teams";
 
-import teams from '@/data/season-1/teams'
-
-Vue.use(HighchartsVue)
+Vue.use(HighchartsVue);
 
 export default {
   name: "current-season-standings",
@@ -46,37 +46,80 @@ export default {
   },
   computed: {
     ...mapGetters({ leaderboard: "Drivers/leaderboard" }),
-    driverStandings() {
+    driverStandingsData() {
       return this.$store.state.Drivers.allDrivers.map(driver => {
         return {
           name: driver.name,
-          color: get(find(teams, {teamId: driver.primaryTeamId}), 'hex'),
-          data: driver.raceResults.map(race => race.progressiveSeasonTotal),
-        }
+          color: get(find(teams, { teamId: driver.primaryTeamId }), "hex"),
+          data: driver.raceResults.map(race => race.progressiveSeasonTotal)
+        };
       });
     },
-    chartOptions() {
+
+    constructorTeamData() {
+      return {
+        name: "team",
+        borderColor: "#2c3e50",
+        dataLabels: {
+          enabled: false
+        },
+        data: teams.map(team => {
+          return {
+            name: team.name,
+            color: team.hex,
+            y: sum(
+              this.$store.state.Drivers.allDrivers.map(driver => {
+                if (driver.primaryTeamId == team.teamId) {
+                  return driver.seasonTotal;
+                }
+              })
+            )
+          };
+        })
+      };
+    },
+    constructorTeamDriverData() {
+      return {
+        name: "drivers",
+        size: "80%",
+        borderColor: "#2c3e50",
+        data: sortBy(this.$store.state.Drivers.allDrivers, "primaryTeamId").map(
+          driver => {
+            return {
+              name: driver.name,
+              color: get(find(teams, { teamId: driver.primaryTeamId }), "hex"),
+              y: driver.seasonTotal
+            };
+          }
+        )
+      };
+    },
+    championshipStandings() {
       return {
         title: {
-          text: 'Driver Standings'
+          text: "Driver Standings"
         },
         yAxis: {
           title: {
-            text: 'Season Points'
+            text: "Season Points"
           }
         },
         xAxis: {
           title: {
-            text: 'Race'
+            text: "Race"
           }
         },
-        series: this.driverStandings
-      }
-    }
-  },
-  components: {
-    components: {
-      highcharts: Chart 
+        series: this.driverStandingsData
+      };
+    },
+    constructorStanding() {
+      return {
+        chart: {
+          type: "pie"
+        },
+        title: { text: "Constructor Standings" },
+        series: [this.constructorTeamData, this.constructorTeamDriverData]
+      };
     }
   }
 };
