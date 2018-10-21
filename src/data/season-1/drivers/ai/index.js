@@ -7,4 +7,7 @@ import Massa from "./massa";
 import Ricciardo from "./ricciardo";
 import Vettel from "./vettel";
 
-export default [Bottas, Massa, Raikokonen, Alonso, Ricciardo, Vettel];
+import Hamilton from "./hamilton";
+import Rosberg from "./rosberg";
+
+export default [Bottas, Massa, Raikokonen, Alonso, Ricciardo, Vettel, Hamilton, Rosberg];
