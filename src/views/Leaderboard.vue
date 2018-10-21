@@ -96,6 +96,12 @@ export default {
     },
     championshipStandings() {
       return {
+        credits: {
+          enabled: false
+        },
+        chart: {
+          // backgroundColor: '#8acef4',
+        },
         title: {
           text: "Driver Standings"
         },
@@ -109,13 +115,24 @@ export default {
             text: "Race"
           }
         },
-        series: this.driverStandingsData
+        series: this.driverStandingsData,
+        plotOptions: {
+          series: {
+            marker: {
+              enabled: false
+            }
+          }
+        }
       };
     },
     constructorStanding() {
       return {
+        credits: {
+          enabled: false
+        },
         chart: {
           type: "pie"
+          // backgroundColor: '#8acef4',
         },
         title: { text: "Constructor Standings" },
         series: [this.constructorTeamData, this.constructorTeamDriverData]

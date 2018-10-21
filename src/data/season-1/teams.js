@@ -21,7 +21,8 @@ export default [
     teamId: 4,
     name: "Williams",
     tier: 2,
-    hex: "#ffffff"
+    // #ffffff clashes with charts, this is the light blue
+    hex: "#8acef4"
   },
   {
     teamId: 5,
