@@ -18,6 +18,8 @@ import Hulkenburg from "./hulkenburg";
 
 import Grosjean from "./grosjean";
 
+import Kvyat from './kvyat'
+
 export default [
   Alonso,
   Bottas,
@@ -25,6 +27,7 @@ export default [
   Grosjean,
   Hamilton,
   Hulkenburg,
+  Kvyat,
   Magnussen,
   Massa,
   Perez,
