@@ -14,6 +14,7 @@
     </tr>
     <tr v-for="driver in orderedResults"
       :key="driver.id"
+      :class="{'podium' : isPodium(driver.position)}"
     >
       <td>{{driver.position}}</td>
       <td class="text">{{driver.name}}</td>
@@ -48,6 +49,9 @@ export default {
         this.selectedColumn = field;
         this.isAscending = true;
       }
+    },
+    isPodium(position) {
+      return position <= 3;
     }
   },
   computed: {
@@ -97,5 +101,13 @@ td {
 
 td {
   border-top: 1px solid #b3b3b5;
+}
+
+tr:nth-child(2n) td {
+  background-color: #f9f9f9;
+}
+
+.podium td {
+  background-color: #e6e5e5 !important;
 }
 </style>
