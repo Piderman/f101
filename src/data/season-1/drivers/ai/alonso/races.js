@@ -28,8 +28,8 @@ export default [
     fastestLap: "1:21.231"
   },
   {
-    position: 3,
-    grid: 2,
+    position: 2,
+    grid: 3,
     raceId: 8,
     teamId: 3,
     fastestLap: "1:15.325"
