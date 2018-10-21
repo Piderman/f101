@@ -61,7 +61,9 @@ export default {
             raceId: this.weekend.id
           });
 
-          if (results) {
+          // DNF will always have a finish. no position means you didnt race
+          // we need the result though so the leaderboard graph shows you didn't move
+          if (results && results.position) {
             const valuesToDisplay = pick(results, this.fields, ["position"]);
 
             return Object.assign(valuesToDisplay, {

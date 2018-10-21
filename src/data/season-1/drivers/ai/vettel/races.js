@@ -1,9 +1,11 @@
 export default [
   {
-    raceId: 1
+    raceId: 1,
+    teamId: 2,
   },
   {
-    raceId: 2
+    raceId: 2,
+    teamId: 2,
   },
   {
     position: 5,
