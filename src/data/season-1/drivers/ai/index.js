@@ -10,4 +10,26 @@ import Vettel from "./vettel";
 import Hamilton from "./hamilton";
 import Rosberg from "./rosberg";
 
-export default [Bottas, Massa, Raikokonen, Alonso, Ricciardo, Vettel, Hamilton, Rosberg];
+import Button from "./button";
+import Magnussen from "./magnussen";
+
+import Perez from "./perez";
+import Hulkenburg from "./hulkenburg";
+
+import Grosjean from "./grosjean";
+
+export default [
+  Alonso,
+  Bottas,
+  Button,
+  Grosjean,
+  Hamilton,
+  Hulkenburg,
+  Magnussen,
+  Massa,
+  Perez,
+  Raikokonen,
+  Ricciardo,
+  Rosberg,
+  Vettel
+];
