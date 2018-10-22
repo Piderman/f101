@@ -108,6 +108,6 @@ tr:nth-child(2n) td {
 }
 
 .podium td {
-  background-color: #e6e5e5 !important;
+  background-color: #e8e8ed !important;
 }
 </style>

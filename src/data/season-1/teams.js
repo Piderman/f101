@@ -27,27 +27,32 @@ export default [
   {
     teamId: 5,
     name: "McLaren",
-    tier: 2
+    tier: 2,
+    hex: "#ff8700"
   },
   {
     teamId: 6,
     name: "Force India",
-    tier: 2
+    tier: 2,
+    hex: "#f596c8"
   },
   {
     teamId: 7,
     name: "Toro Rosso",
-    tier: 3
+    tier: 3,
+    hex: "#469bff"
   },
   {
     teamId: 8,
     name: "Lotus",
-    tier: 3
+    tier: 3,
+    hex: "#fff500"
   },
   {
     teamId: 9,
     name: "Sauber",
-    tier: 3
+    tier: 3,
+    hex: "#9b0000"
   },
   {
     teamId: 10,
