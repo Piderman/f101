@@ -18,21 +18,30 @@ import Hulkenburg from "./hulkenburg";
 
 import Grosjean from "./grosjean";
 
-import Kvyat from './kvyat'
+import Kvyat from "./kvyat";
+
+import Sutil from "./sutil";
+
+import Chilton from "./chilton";
+
+import Maldonado from "./maldonado";
 
 export default [
   Alonso,
   Bottas,
   Button,
+  Chilton,
   Grosjean,
   Hamilton,
   Hulkenburg,
   Kvyat,
   Magnussen,
+  Maldonado,
   Massa,
   Perez,
   Raikokonen,
   Ricciardo,
   Rosberg,
+  Sutil,
   Vettel
 ];

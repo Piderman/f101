@@ -1,7 +1,7 @@
 export default [
   {
     raceId: 1,
-    teamId: 7,
+    teamId: 7
   },
   {
     position: 7,
@@ -9,6 +9,5 @@ export default [
     raceId: 2,
     teamId: 7,
     fastestLap: "1:53.318"
-  },
-
-]
+  }
+];
