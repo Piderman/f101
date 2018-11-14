@@ -31,21 +31,21 @@ export default [
     position: 7,
     grid: 9,
     raceId: 8,
-    teamId: 6,
+    teamId: 5,
     fastestLap: "1:26.708"
   },
   {
     position: 8,
     grid: 12,
     raceId: 9,
-    teamId: 6,
+    teamId: 5,
     fastestLap: "1:43.147"
   },
   {
     position: 3,
     grid: 2,
     raceId: 10,
-    teamId: 6,
+    teamId: 5,
     fastestLap: "1:22.844"
   }
 ];
