@@ -94,7 +94,7 @@ export default [
     weather: {
       qualifying: ["wet"],
       race: ["dry"]
-    },
+    }
   },
   {
     id: 11,
