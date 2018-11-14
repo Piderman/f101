@@ -4,28 +4,24 @@ export default [
     position: 2,
     grid: 1,
     raceId: 1,
-    teamId: 1,
     fastestLap: "1:32.194"
   },
   {
     position: 1,
     grid: 1,
     raceId: 2,
-    teamId: 1,
     fastestLap: "1:49.049"
   },
   {
     position: 2,
     grid: 1,
     raceId: 3,
-    teamId: 1,
     fastestLap: "1:37.213"
   },
   {
     position: 1,
     grid: 2,
     raceId: 4,
-    teamId: 1,
     fastestLap: "1:43.444",
     time: "25.46.836"
   },

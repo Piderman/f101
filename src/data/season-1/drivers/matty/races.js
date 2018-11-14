@@ -3,21 +3,18 @@ export default [
     position: 1,
     grid: 3,
     raceId: 1,
-    teamId: 3,
     fastestLap: "1:32.239"
   },
   {
     position: 3,
     grid: 9,
     raceId: 2,
-    teamId: 3,
     fastestLap: "1:51.294"
   },
   {
     position: 1,
     grid: 2,
     raceId: 3,
-    teamId: 3,
     fastestLap: "1:37.503"
   },
   {

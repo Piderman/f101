@@ -3,7 +3,6 @@ export default [
     position: 15,
     grid: 2,
     raceId: 1,
-    teamId: 2,
     fastestLap: "1:33.152",
     penalties: [
       {
@@ -17,21 +16,18 @@ export default [
     position: 2,
     grid: 2,
     raceId: 2,
-    teamId: 2,
     fastestLap: "1:49.281"
   },
   {
     position: 3,
     grid: 3,
     raceId: 3,
-    teamId: 2,
     fastestLap: "1:38.835"
   },
   {
     position: 3,
     grid: 1,
     raceId: 4,
-    teamId: 2,
     fastestLap: "1:42.834"
   },
   {

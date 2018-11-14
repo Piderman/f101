@@ -3,25 +3,21 @@ export default [
   {
     position: 1,
     raceId: 1,
-    teamId: 1,
     time: "1:31.435"
   },
   {
     position: 1,
     raceId: 2,
-    teamId: 1,
     time: "1:42.167"
   },
   {
     position: 1,
     raceId: 3,
-    teamId: 1,
     time: "1:36.882"
   },
   {
     position: 2,
     raceId: 4,
-    teamId: 1,
     time: "1:43.366"
   },
   {
