@@ -88,8 +88,13 @@ export default [
   },
   {
     id: 10,
-    status: "upcomming",
-    name: "German"
+    status: "complete",
+    name: "German",
+    url: "german",
+    weather: {
+      qualifying: ["wet"],
+      race: ["dry"]
+    },
   },
   {
     id: 11,

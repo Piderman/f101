@@ -46,5 +46,12 @@ export default [
         impact: "+10s"
       }
     ]
+  },
+  {
+    position: 9,
+    grid: 22,
+    raceId: 10,
+    teamId: 3,
+    fastestLap: "1:22.477"
   }
 ];
