@@ -1,6 +1,6 @@
 export default [
   {
-    raceId: 1,
+    raceId: 1
   },
   {
     position: 7,
