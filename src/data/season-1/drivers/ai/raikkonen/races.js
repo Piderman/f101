@@ -32,7 +32,7 @@ export default [
   {
     position: 16,
     grid: 6,
-    raceId: 8,
+    raceId: 8
     // missing fastest lap time
   },
   {

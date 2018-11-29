@@ -45,7 +45,7 @@ const parseRaceData = (races, primaryTeamId) => {
 
     // as AI doesn't have this data nor would a player when on main team
     if (!race.teamId) {
-      race.teamId = primaryTeamId
+      race.teamId = primaryTeamId;
     }
 
     progressiveSeasonTotal += points;
