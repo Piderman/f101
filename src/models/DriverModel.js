@@ -21,6 +21,8 @@ class Driver {
     this.primaryTeamId = data.primaryTeamId;
     this.isSecondaryDriver = data.isSecondaryDriver;
 
+    this.numberPrefs = data.numberPrefs;
+
     this.raceResults = parseRaceData(data.races, data.primaryTeamId);
     this.qualifyingResults = data.qualifying;
 

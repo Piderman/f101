@@ -7,5 +7,6 @@ export default {
   driverType: "player",
   primaryTeamId: 2,
   races,
-  qualifying
+  qualifying,
+  numberPrefs: [21, 42, 7]
 };

@@ -8,5 +8,6 @@ export default {
   primaryTeamId: 1,
   isSecondaryDriver: true,
   races,
-  qualifying
+  qualifying,
+  numberPrefs: [9, 14, 56]
 };
