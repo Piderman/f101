@@ -59,5 +59,12 @@ export default [
     teamId: 11,
     fastestLap: "1:23.977",
     status: "retired" // DNF : mechanical
+  },
+  {
+    position: 5,
+    grid: 22,
+    raceId: 11,
+    teamId: 9,
+    fastestLap: "1:30.187"
   }
 ];

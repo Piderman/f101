@@ -98,8 +98,13 @@ export default [
   },
   {
     id: 11,
-    status: "upcomming",
-    name: "Hungary"
+    status: "complete",
+    name: "Hungary",
+    url: "hungary",
+    weather: {
+      qualifying: ["wet"],
+      race: ["dry"]
+    }
   },
   {
     id: 12,

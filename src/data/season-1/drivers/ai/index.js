@@ -19,6 +19,7 @@ import Hulkenburg from "./hulkenburg";
 import Grosjean from "./grosjean";
 
 import Kvyat from "./kvyat";
+import Vergne from "./vergne";
 
 import Sutil from "./sutil";
 
@@ -43,5 +44,6 @@ export default [
   Ricciardo,
   Rosberg,
   Sutil,
+  Vergne,
   Vettel
 ];

@@ -26,6 +26,9 @@ export default {
     }
   },
   getters: {
+    players(state) {
+      return state.allDrivers.filter(driver => driver.type === "player");
+    },
     leaderboard(state) {
       return orderBy(state.allDrivers, "seasonTotal", "desc");
     },
