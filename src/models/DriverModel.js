@@ -22,7 +22,7 @@ class Driver {
     this.isSecondaryDriver = data.isSecondaryDriver;
 
     this.raceResults = parseRaceData(data.races, data.primaryTeamId);
-    this.qualifyingResults = data.qualifying;
+    this.qualifyingResults = parseQualifyingData(data.qualifying, data.primaryTeamId);
 
     this.seasonTotal = sum(this.raceResults.map(race => race.points));
   }
@@ -53,6 +53,16 @@ const parseRaceData = (races, primaryTeamId) => {
       points,
       progressiveSeasonTotal
     });
+  });
+};
+
+const parseQualifyingData = (qualifying, primaryTeamId) => {
+  return qualifying && qualifying.map(session => {
+    if(!session.teamId) {
+      session.teamId = primaryTeamId
+    }
+
+    return session;
   });
 };
 

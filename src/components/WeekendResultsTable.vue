@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import teams from "@/data/season-1/teams.js";
+import teams from "@/data/season-1/teams";
 
 import { compact, find, pick, orderBy } from "lodash";
 
