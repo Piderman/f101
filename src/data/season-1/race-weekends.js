@@ -108,8 +108,13 @@ export default [
   },
   {
     id: 12,
-    status: "upcomming",
-    name: "Belgian"
+    status: "complete",
+    name: "Belgian",
+    url: "belgian",
+    weather: {
+      qualifying: ["dry"],
+      race: ["dry"]
+    }
   },
   {
     id: 13,
