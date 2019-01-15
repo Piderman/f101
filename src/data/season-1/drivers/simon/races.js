@@ -76,5 +76,13 @@ export default [
     grid: 1,
     raceId: 12,
     fastestLap: "1:56.596"
+  },
+  {
+    position: 21,
+    grid: 11,
+    raceId: 13,
+    teamId: 7,
+    fastestLap: "1:34.192",
+    status: "retired" // crashed out?
   }
 ];

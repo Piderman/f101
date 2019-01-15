@@ -44,5 +44,11 @@ export default [
     raceId: 9,
     teamId: 9,
     time: "1:40.362"
+  },
+  {
+    position: 3,
+    raceId: 13,
+    teamId: 9,
+    time: "1:31.242"
   }
 ];

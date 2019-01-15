@@ -118,8 +118,18 @@ export default [
   },
   {
     id: 13,
-    status: "upcomming",
-    name: "Italian"
+    status: "complete",
+    name: "Italian",
+    url: "italian",
+    weather: {
+      qualifying: ["dry"],
+      race: ["dry"]
+    },
+    notes: [
+      "race started wet",
+      "race restart due to red flag at T1",
+      "ignore grid position from race results screenshots, see qualiying table"
+    ]
   },
   {
     id: 14,

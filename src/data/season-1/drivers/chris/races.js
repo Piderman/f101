@@ -74,5 +74,19 @@ export default [
     raceId: 12,
     teamId: 7,
     fastestLap: "1:58.432"
+  },
+  {
+    position: 12,
+    grid: 1,
+    raceId: 13,
+    teamId: 7,
+    fastestLap: "1:30.490",
+    penalties: [
+      {
+        incident: "major collision",
+        impact: "+10s",
+        driverId: 4
+      }
+    ]
   }
 ];
