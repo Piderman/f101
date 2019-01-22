@@ -26,12 +26,14 @@ import Sutil from "./sutil";
 import Chilton from "./chilton";
 
 import Maldonado from "./maldonado";
+import Ericsson from "./ericsson";
 
 export default [
   Alonso,
   Bottas,
   Button,
   Chilton,
+  Ericsson,
   Grosjean,
   Hamilton,
   Hulkenburg,

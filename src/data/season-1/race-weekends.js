@@ -133,8 +133,14 @@ export default [
   },
   {
     id: 14,
-    status: "upcomming",
-    name: "Singapore"
+    status: "complete",
+    name: "Singapore",
+    url: "singapore",
+    weather: {
+      qualifying: ["dry", "wet"],
+      race: ["dry"]
+    },
+    safteycarLaps: [3]
   },
   {
     id: 15,

@@ -88,5 +88,12 @@ export default [
         driverId: 4
       }
     ]
+  },
+  {
+    position: 4,
+    grid: 21,
+    raceId: 14,
+    teamId: 7,
+    fastestLap: "1:55.978"
   }
 ];

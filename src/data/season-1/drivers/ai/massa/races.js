@@ -56,6 +56,6 @@ export default [
   {
     position: null,
     grid: 7,
-    raceId: 13,
+    raceId: 13
   }
 ];

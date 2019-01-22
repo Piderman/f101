@@ -84,5 +84,12 @@ export default [
     teamId: 7,
     fastestLap: "1:34.192",
     status: "retired" // crashed out?
+  },
+  {
+    position: 2,
+    grid: 3,
+    raceId: 14,
+    teamId: 6,
+    fastestLap: "1:49.645"
   }
 ];
