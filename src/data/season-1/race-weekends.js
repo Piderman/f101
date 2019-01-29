@@ -144,8 +144,13 @@ export default [
   },
   {
     id: 15,
-    status: "upcomming",
-    name: "Japanese"
+    status: "complete",
+    name: "Japanese",
+    url: "japanese",
+    weather: {
+      qualifying: ["wet"],
+      race: ["dry"]
+    }
   },
   {
     id: 16,
