@@ -14,6 +14,19 @@ export default new Router({
       component: Home
     },
     {
+      path: "/season/:year",
+      component: () =>
+        import(/* webpackChunkName: "season" */ "./views/season/index.vue"),
+      children: [
+        {
+          path: "",
+          name: "seasonLanding",
+          component: () =>
+            import(/* webpackChunkName: "season" */ "./views/SeasonLandingPage.vue")
+        }
+      ]
+    },
+    {
       path: "/about",
       name: "about",
       // route level code-splitting
