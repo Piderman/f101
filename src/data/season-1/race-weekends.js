@@ -154,8 +154,13 @@ export default [
   },
   {
     id: 16,
-    status: "upcomming",
-    name: "Russian"
+    status: "complete",
+    name: "Russian",
+    url: "russia",
+    weather: {
+      qualifying: ["dry"],
+      race: ["dry", "light rain"]
+    }
   },
   {
     id: 17,
