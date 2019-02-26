@@ -81,5 +81,11 @@ export default [
     grid: 2,
     raceId: 15,
     fastestLap: "1:46.262"
+  },
+  {
+    position: 4,
+    grid: 7,
+    raceId: 17,
+    fastestLap: "1:49.328"
   }
 ];

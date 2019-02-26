@@ -164,8 +164,13 @@ export default [
   },
   {
     id: 17,
-    status: "upcomming",
-    name: "United States"
+    status: "complete",
+    name: "United States",
+    url: "united-states",
+    weather: {
+      qualifying: ["dry"],
+      race: ["dry"]
+    }
   },
   {
     id: 18,
