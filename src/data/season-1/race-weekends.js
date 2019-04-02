@@ -179,8 +179,13 @@ export default [
   },
   {
     id: 18,
-    status: "upcomming",
-    name: "Brazilian"
+    status: "complete",
+    name: "Brazil",
+    url: "brazil",
+    weather: {
+      qualifying: ["dry"],
+      race: ["dry"]
+    }
   },
   {
     id: 19,
