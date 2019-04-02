@@ -27,16 +27,17 @@ class Points {
   }
   /**
    * applies points to each driver for a raceweekend
-   *  
+   * order is important as awardPositionPointsToDriver should be last
+   * 
    * @param {DriverModel[]} drivers
    */
   static awardPointsForWeekend(drivers) {
+    this.awardPolePositionPoints(drivers);
+    this.awardFastestLapPoints(drivers);
+
     drivers.forEach(Driver => {
       this.awardPositionPointsToDriver(Driver);
     });
-
-    this.awardPolePositionPoints(drivers);
-    this.awardFastestLapPoints(drivers);
   };
   
   /**
@@ -44,7 +45,9 @@ class Points {
    * @param {DriverModel} driver
    */
   static awardPositionPointsToDriver(driver) {
-    driver.givePoints(this.getPoints(driver.position))
+    driver.incrementPointsForWeekend(this.getPoints(driver.position));
+
+    driver.updateWeekendTotal();
   };
   
   
@@ -55,7 +58,7 @@ class Points {
   static awardPolePositionPoints(drivers) {
     const poleDriver = find(drivers, {grid: 1});
 
-    poleDriver.givePoints(this.getPoints('pole'));
+    poleDriver.incrementPointsForWeekend(this.getPoints('pole'));
   };
   
   /**
@@ -65,7 +68,7 @@ class Points {
   static awardFastestLapPoints(drivers) {
     const fastestDriver = orderBy(drivers, ['fastestLap', 'position'])[0];
 
-    fastestDriver.givePoints(this.getPoints('fastest'));
+    fastestDriver.incrementPointsForWeekend(this.getPoints('fastest'));
   };
 
   /**
