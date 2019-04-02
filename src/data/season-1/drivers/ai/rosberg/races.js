@@ -6,6 +6,12 @@ export default [
     fastestLap: "1:30.158"
   },
   {
+    position: 1,
+    grid: 2,
+    raceId: 6,
+    fastestLap: "1:27.094"
+  },
+  {
     position: 4,
     grid: 5,
     raceId: 7,

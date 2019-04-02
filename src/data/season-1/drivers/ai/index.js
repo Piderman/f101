@@ -16,8 +16,6 @@ import Magnussen from "./magnussen";
 import Perez from "./perez";
 import Hulkenburg from "./hulkenburg";
 
-import Grosjean from "./grosjean";
-
 import Kvyat from "./kvyat";
 import Vergne from "./vergne";
 
@@ -25,8 +23,11 @@ import Sutil from "./sutil";
 
 import Chilton from "./chilton";
 
+import Grosjean from "./grosjean";
 import Maldonado from "./maldonado";
+
 import Ericsson from "./ericsson";
+import Kobayashi from "./kobayashi";
 
 export default [
   Alonso,
@@ -38,6 +39,7 @@ export default [
   Hamilton,
   Hulkenburg,
   Kvyat,
+  Kobayashi,
   Magnussen,
   Maldonado,
   Massa,

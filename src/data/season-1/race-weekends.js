@@ -51,8 +51,13 @@ export default [
   },
   {
     id: 6,
-    status: "upcomming",
-    name: "Monaco"
+    status: "complete",
+    name: "Monaco",
+    url: "monaco",
+    weather: {
+      qualifying: ["dry"],
+      race: ["heavy wet", "wet"]
+    }
   },
   {
     id: 7,
@@ -128,7 +133,7 @@ export default [
     notes: [
       "race started wet",
       "race restart due to red flag at T1",
-      "ignore grid position from race results screenshots, see qualiying table"
+      "ignore grid position from race results screenshots, see qualifying table"
     ]
   },
   {
