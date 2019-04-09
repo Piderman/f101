@@ -196,5 +196,6 @@ export default [
       qualifying: ["dry"],
       race: ["dry"]
     },
+    pointsMultiplier: 2
   }
 ];

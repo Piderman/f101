@@ -1,4 +1,5 @@
-import { sum } from "lodash";
+import { find, get, sum } from "lodash";
+import RaceWeekends from "@/data/season-1/race-weekends"
 
 const pointsLUT = {
   1: 25,
@@ -38,11 +39,14 @@ class Driver {
  * @returns Array
  */
 const parseRaceData = (races, primaryTeamId) => {
+  
   let progressiveSeasonTotal = 0;
 
   return races.map(race => {
+    const multiplier = get(find(RaceWeekends, {id: race.raceId}), 'pointsMultiplier', 1);
     const positionsGained = race.grid - race.position;
-    const points = pointsLUT[race.position] || 0;
+    
+    const points = pointsLUT[race.position] * multiplier || 0;
 
     // as AI doesn't have this data nor would a player when on main team
     if (!race.teamId) {
