@@ -189,7 +189,12 @@ export default [
   },
   {
     id: 19,
-    status: "upcomming",
-    name: "Abu Dhabi"
+    status: "complete",
+    name: "Abu Dhabi",
+    url: "abu-dhabi",
+    weather: {
+      qualifying: ["dry"],
+      race: ["dry"]
+    },
   }
 ];

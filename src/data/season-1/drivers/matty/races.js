@@ -122,5 +122,12 @@ export default [
     raceId: 18,
     teamId: 9,
     fastestLap: "1:18.738"
+  },
+  {
+    position: 2,
+    grid: 3,
+    raceId: 19,
+    teamId: 9,
+    fastestLap: "1:SS.sss"
   }
 ];
