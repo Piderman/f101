@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
+import POC from './views/POC.vue'
 
 Vue.use(Router);
 
@@ -52,6 +53,11 @@ export default new Router({
             import(/* webpackChunkName: "results" */ "./views/results/qualifying.vue")
         }
       ]
+    },
+    {
+      path: "/poc",
+      name: "poc",
+      component: POC
     }
   ]
 });
