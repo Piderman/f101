@@ -1,13 +1,13 @@
-import Chris from './chris'
-import Matty from './matty'
-import Simon from './simon'
-import Peter from './peter'
+import Chris from "./chris";
+import Matty from "./matty";
+import Simon from "./simon";
+import Peter from "./peter";
+
+import AiDrivers from './ai';
+
+import teams from "./teams";
 
 export default {
-  drivers: [
-    Chris,
-    Matty,
-    Simon,
-    Peter
-  ]
-}
+  teams,
+  drivers: AiDrivers.concat([Chris, Matty, Simon, Peter])
+};
