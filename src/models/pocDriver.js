@@ -1,33 +1,86 @@
-import {sum} from 'lodash';
+import { find, sum, sumBy, } from "lodash";
 
-import points from '@/data/season-2/points.js'
+import points from "@/data/season-2/points.js";
+import teams from "@/data/season-2/teams.js";
 
 // goal: series standings
-class pocDriver {
+class pocDriver {
   // raw data, doesn't need context of other drivers
-  constructor (data) {
+  constructor(data) {
     this.id = data.id;
     this.name = data.name;
+    this.isPlayer = data.isPlayer;
     this.raceNumber = data.number;
+    this.teamId = data.teamId;
+    this.teamName = find(teams, { id: data.teamId }).name;
 
-    this.standings = this.parseStandings(data.raceData, data.sprintData);
-    this.total = sum(this.standings.map(round => round.total));
+    this.sprintResults = this.parseSprintResults(data.sprintData);
+    this.sprintTotal = sumBy(this.sprintResults, 'totalPoints');
+    
+    this.featureResults = this.parseFeatureResults(data.raceData);
+    this.featureTotal = sumBy(this.featureResults, 'totalPoints');
+
+    this.seriesTotal = this.isPlayer && this.sprintTotal + this.featureTotal;
+    
+    // stats!!!
+    // highest qual
+    // highest position
+    // podiums
+    // fastest laps
+    // win streak?
+    //
+    // best pole margin (need other drivers)
+    // season margin (need other drivers)
   }
 
-  parseStandings(races, sprints) {
-    return races.map((race, index) => {
-      let points = pocDriver.buildPointsForRound(race, sprints[index]);
+  parseSprintResults(data=[]) {
+    return data.map(event => {
       return {
-        raceId: race.id,
-        total: sum(points)
+        raceId: event.id,
+        position: event.finishPosition,
+        positionPoints: pocDriver.getPointsForSprintPosition(
+          event.finishPosition
+        ),
+        get totalPoints() {
+          return this.positionPoints || 0;
+        }
+      };
+    });
+  }
+
+  parseFeatureResults(data=[]) {
+    return data.map(event => {
+      const result = {
+        raceId: event.id,
+        position: event.finishPosition,
+        positionPoints: pocDriver.getPointsForFeaturePosition(
+          event.finishPosition
+        ),
+        get totalPoints() {
+          return sum([
+            this.positionPoints,
+            this.poleBonusPoints,
+            this.lapBonusPoints
+          ]);
+        }
+      };
+
+      if (event.starPosition === 1) {
+        result.poleBonusPoints = pocDriver.getPolePoints();
       }
+
+      if (event.isFastestLap) {
+        result.lapBonusPoints = pocDriver.getLapPoints();
+      }
+
+      return result;
     });
   }
 
   static buildPointsForRound(race, sprint) {
     let points = [
-      pocDriver.getPointsForRacePosition(race.finishPosition),
-      pocDriver.getPointsForSprintPosition(sprint.finishPosition),
+      pocDriver.getPointsForFeaturePosition(race.finishPosition),
+      pocDriver.getPointsForSprintPosition(sprint.finishPosition)
     ];
 
     if (race.starPosition === 1) {
@@ -42,7 +95,7 @@ class pocDriver {
   }
 
   //#region static point methods
-  static getPointsForRacePosition(place) {
+  static getPointsForFeaturePosition(place) {
     return points.racePosition[place];
   }
 
@@ -51,17 +104,17 @@ class pocDriver {
   }
 
   static getPolePoints() {
-    return pocDriver.getPointsForBonus('pole');
+    return pocDriver.getPointsForBonus("pole");
   }
 
   static getLapPoints() {
-    return pocDriver.getPointsForBonus('fastestLap');
+    return pocDriver.getPointsForBonus("fastestLap");
   }
 
   static getPointsForBonus(type) {
-    return points[type]
+    return points[type];
   }
-  //#endregion 
-};
+  //#endregion
+}
 
 export default pocDriver;
