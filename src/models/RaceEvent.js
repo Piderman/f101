@@ -36,8 +36,10 @@ class RaceEvent {
         driverName: Driver.name,
         position: round.position,
         isFastestLap: !!round.lapBonusPoints,
+        isPlayer: Driver.isPlayer,
         isPole: !!round.poleBonusPoints,
         points: round.totalPoints,
+        teamId: Driver.teamId,
         teamName: Driver.teamName
       };
     });

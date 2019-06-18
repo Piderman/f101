@@ -22,7 +22,7 @@ export default [
     name: "Angry Wombat Racing",
     tier: 2,
     // #ffffff clashes with charts, this is the light blue
-    hex: "#8acef4"
+    hex: "#FFA300"
   },
   {
     id: 5,
@@ -40,7 +40,7 @@ export default [
     id: 7,
     name: "Eastern Rhinos Racing Team",
     tier: 3,
-    hex: "#469bff"
+    hex: "#29ADFF"
   },
   {
     id: 8,

@@ -36,13 +36,16 @@
         </tr>
       </table>
     </div>
+
     <div class="w-1/2">
       <h2 class="text-3xl">Constructor Standings</h2>
       <table>
         <tr v-for="team in constructorStandings"
           :key="team.id"
         >
-          <td v-text="team.name" />
+          <td v-text="team.name" class="border-l-8"
+            :class="`border-team-${team.id}`"
+          />
           <td v-text="team.points" />
         </tr>
       </table>
@@ -81,8 +84,10 @@
       >
         <td v-text="index+1" />
         <td v-text="entry.driverName" />
-        <td v-text="entry.teamName" />
-        <td v-text="entry.points" />
+        <td v-text="entry.teamName" class="border-l-8"
+          :class="`border-team-${entry.teamId}`"
+        />
+        <td class="text-right" v-text="entry.points" />
       </tr>
     </table>
   </div>
