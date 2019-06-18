@@ -8,5 +8,10 @@ export default [
     id: 2,
     finishPosition: 4,
     starPosition: null
+  },
+  {
+    id: 3,
+    finishPosition: 4, // DNF?
+    starPosition: 1
   }
 ];
