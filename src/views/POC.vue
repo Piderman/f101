@@ -110,11 +110,16 @@ export default {
   created() {
     this.drivers = season2.drivers.map(data => new Driver(data));
 
-    this.sprints = [new Sprint(1, this.drivers), new Sprint(2, this.drivers)];
+    this.sprints = [
+      new Sprint(1, this.drivers),
+      new Sprint(2, this.drivers),
+      new Sprint(3, this.drivers),
+    ];
 
     this.features = [
       new Feature(1, this.drivers),
-      new Feature(2, this.drivers)
+      new Feature(2, this.drivers),
+      new Feature(3, this.drivers),
     ];
   },
   data() {
