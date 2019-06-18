@@ -11,10 +11,10 @@
         <tr v-for="driver in featureStandings"
           :key="driver.id"
         >
-          <td v-text="driver.points" />
           <td>
             <span class="team-idicator--small" :class="`bg-team-${driver.teamId}`"></span>{{driver.name}}
           </td>
+          <td v-text="driver.points" class="text-right"/>
         </tr>
       </table>
 
@@ -24,7 +24,7 @@
           :key="driver.id"
         >
           <td v-text="driver.name" />
-          <td v-text="driver.points" />
+          <td v-text="driver.points" class="text-right"/>
         </tr>
       </table>
 
@@ -34,7 +34,7 @@
           :key="driver.id"
         >
           <td v-text="driver.name" />
-          <td v-text="driver.seriesTotal" />
+          <td v-text="driver.seriesTotal" class="text-right"/>
         </tr>
       </table>
     </div>
@@ -48,7 +48,7 @@
           <td v-text="team.name" class="border-l-8"
             :class="`border-team-${team.id}`"
           />
-          <td v-text="team.points" />
+          <td v-text="team.points" class="text-right"/>
         </tr>
       </table>
     </div>
@@ -66,7 +66,7 @@
         <td v-text="entry.positionText" />
         <td v-text="entry.driverName" />
         <td v-text="entry.teamName" />
-        <td v-text="entry.points" />
+        <td v-text="entry.points" class="text-right"/>
       </tr>
     </table>
   </div>
