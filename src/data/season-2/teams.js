@@ -46,6 +46,6 @@ export default [
     id: 8,
     name: "Lotus",
     tier: 3,
-    hex: "#fff500"
+    hex: "#aa8e51"
   }
 ];

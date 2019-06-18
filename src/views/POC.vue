@@ -11,8 +11,10 @@
         <tr v-for="driver in featureStandings"
           :key="driver.id"
         >
-          <td v-text="driver.name" />
           <td v-text="driver.points" />
+          <td>
+            <span class="team-idicator--small" :class="`bg-team-${driver.teamId}`"></span>{{driver.name}}
+          </td>
         </tr>
       </table>
 
@@ -138,6 +140,7 @@ export default {
       const features = this.drivers.map(driver => {
         return {
           name: driver.name,
+          teamId: driver.teamId,
           points: sum(driver.featureResults.map(feature => feature.totalPoints))
         };
       });
@@ -185,28 +188,37 @@ table {
 
 th,
 td {
-  padding: 0.2em 1em;
-  text-align: right;
-}
-
-.text {
-  text-align: left;
-}
-
-th {
-  font-weight: bold;
-}
-
-td {
-  border-top: 1px solid #b3b3b5;
-  text-align: left;
-}
-
-td + td {
-  text-align: right;
+  padding: 0.5em 1em;
+  font-variant-numeric: tabular-nums;
 }
 
 tr:nth-child(2n) td {
   background-color: #f9f9f9;
 }
+
+.border-team-1 { border-color: #00d2be }
+.border-team-2 { border-color: #1e41ff }
+.border-team-3 { border-color: #dc0000 }
+.border-team-4 { border-color: #FFA300 }
+.border-team-5 { border-color: #ff8700 }
+.border-team-6 { border-color: #f596c8 }
+.border-team-7 { border-color: #29ADFF }
+.border-team-8 { border-color: #aa8e51 }
+
+.bg-team-1 { background-color: #00d2be }
+.bg-team-2 { background-color: #1e41ff }
+.bg-team-3 { background-color: #dc0000 }
+.bg-team-4 { background-color: #FFA300 }
+.bg-team-5 { background-color: #ff8700 }
+.bg-team-6 { background-color: #f596c8 }
+.bg-team-7 { background-color: #29ADFF }
+.bg-team-8 { background-color: #aa8e51 }
+
+.team-idicator--small {
+  display: inline-block;
+  width: 4px;
+  height: 0.75em;
+  margin-right: 0.5em;
+}
+
 </style>
