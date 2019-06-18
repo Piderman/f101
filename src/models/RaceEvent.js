@@ -35,6 +35,7 @@ class RaceEvent {
       return {
         driverName: Driver.name,
         position: round.position,
+        positionText: round.positionText,
         isFastestLap: !!round.lapBonusPoints,
         isPlayer: Driver.isPlayer,
         isPole: !!round.poleBonusPoints,
@@ -44,7 +45,7 @@ class RaceEvent {
       };
     });
 
-    return orderBy(event, "points", "desc");
+    return orderBy(event, "position");
   }
 }
 

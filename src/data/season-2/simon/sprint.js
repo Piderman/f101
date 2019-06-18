@@ -11,7 +11,7 @@ export default [
   },
   {
     id: 3,
-    finishPosition: 4, // DNF?
+    retiredPosition: 4, // confirm DNF?
     starPosition: 1
   }
 ];

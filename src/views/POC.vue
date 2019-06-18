@@ -61,7 +61,7 @@
       <tr v-for="(entry, index) in Sprint.standings"
         :key="index"
       >
-        <td v-text="index+1" />
+        <td v-text="entry.positionText" />
         <td v-text="entry.driverName" />
         <td v-text="entry.teamName" />
         <td v-text="entry.points" />
@@ -82,7 +82,7 @@
           'text-red-700' : entry.isPole
         }"
       >
-        <td v-text="index+1" />
+        <td v-text="entry.positionText" />
         <td v-text="entry.driverName" />
         <td v-text="entry.teamName" class="border-l-8"
           :class="`border-team-${entry.teamId}`"

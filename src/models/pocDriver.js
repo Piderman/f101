@@ -37,10 +37,13 @@ class pocDriver {
     return data.map(event => {
       return {
         raceId: event.id,
-        position: event.finishPosition,
+        position: event.retiredPosition || event.finishPosition,
         positionPoints: pocDriver.getPointsForSprintPosition(
           event.finishPosition
         ),
+        get positionText() {
+          return event.retiredPosition ? 'DNF' : this.position;
+        },
         get totalPoints() {
           return this.positionPoints || 0;
         }
@@ -52,10 +55,13 @@ class pocDriver {
     return data.map(event => {
       const result = {
         raceId: event.id,
-        position: event.finishPosition,
+        position: event.retiredPosition || event.finishPosition,
         positionPoints: pocDriver.getPointsForFeaturePosition(
           event.finishPosition
         ),
+        get positionText() {
+          return event.retiredPosition ? 'DNF' : this.position;
+        },
         get totalPoints() {
           return sum([
             this.positionPoints,
@@ -96,7 +102,7 @@ class pocDriver {
 
   //#region static point methods
   static getPointsForFeaturePosition(place) {
-    return points.racePosition[place];
+    return points.racePosition[place] || 0;
   }
 
   static getPointsForSprintPosition(place) {
