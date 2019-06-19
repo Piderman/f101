@@ -12,6 +12,11 @@
           :key="driver.id"
         >
           <td>
+            <icon :name="getDriverIcon(driver)" v-if="driver.isPlayer"
+              :class="{'stroke-current fill-transparent': !driver.isMain}"
+            />
+          </td>
+          <td>
             <span class="team-idicator--small" :class="`bg-team-${driver.teamId}`"></span>{{driver.name}}
           </td>
           <td v-text="driver.points" class="text-right"/>
@@ -79,17 +84,24 @@
     <table>
       <tr v-for="(entry, index) in Feature.standings"
         :key="index"
-        :class="{
-          'font-bold' : entry.isFastestLap,
-          'text-red-700' : entry.isPole
-        }"
       >
         <td v-text="entry.positionText" />
         <td v-text="entry.driverName" />
+        <td>
+          <icon :name="getDriverIcon(entry)" v-if="entry.isPlayer"
+            :class="{'stroke-current fill-transparent': !entry.isMain}"
+          />
+        </td>
         <td v-text="entry.teamName" class="border-l-8"
           :class="`border-team-${entry.teamId}`"
         />
         <td class="text-right" v-text="entry.points" />
+        <td>
+          <div class="flex flex-row">
+            <icon name="award" v-if="entry.isPole" class="fill-transparent" />
+            <icon name="watch" v-if="entry.isFastestLap" class="fill-transparent" />
+          </div>
+        </td>
       </tr>
     </table>
   </div>
@@ -104,6 +116,8 @@ import season2 from "@/data/season-2";
 import Driver from "@/models/pocDriver";
 import Sprint from "@/models/SprintRace";
 import Feature from "@/models/FeatureRace";
+
+import Icon from '@/components/Icon.vue'
 
 export default {
   name: "POC",
@@ -132,6 +146,9 @@ export default {
     };
   },
   methods: {
+    getDriverIcon(entry) {
+      return entry.isMain ? 'user' : 'multi-user';
+    },
   },
   computed: {
     standings() {
@@ -181,6 +198,9 @@ export default {
 
       return orderBy(constructors, "points", "desc");
     }
+  },
+  components: {
+    Icon
   }
 };
 </script>
@@ -218,6 +238,10 @@ tr:nth-child(2n) td {
 .bg-team-6 { background-color: #f596c8 }
 .bg-team-7 { background-color: #29ADFF }
 .bg-team-8 { background-color: #aa8e51 }
+
+.fill-transparent {
+  fill: transparent;
+}
 
 .team-idicator--small {
   display: inline-block;
