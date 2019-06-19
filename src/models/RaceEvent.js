@@ -33,15 +33,13 @@ class RaceEvent {
       const round = find(Driver[eventKey], { raceId: this.id });
 
       return {
-        driverName: Driver.name,
+        ...Driver.meta,
+        
         position: round.position,
         positionText: round.positionText,
         isFastestLap: !!round.lapBonusPoints,
-        isPlayer: Driver.isPlayer,
         isPole: !!round.poleBonusPoints,
         points: round.totalPoints,
-        teamId: Driver.teamId,
-        teamName: Driver.teamName
       };
     });
 

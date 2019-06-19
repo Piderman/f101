@@ -13,6 +13,7 @@ class pocDriver {
     this.raceNumber = data.number;
     this.teamId = data.teamId;
     this.teamName = find(teams, { id: data.teamId }).name;
+    this.isMain = data.isMain;
 
     this.sprintResults = this.parseSprintResults(data.sprintData);
     this.sprintTotal = sumBy(this.sprintResults, 'totalPoints');
@@ -25,12 +26,25 @@ class pocDriver {
     // stats!!!
     // highest qual
     // highest position
+    // highest points a round
     // podiums
     // fastest laps
     // win streak?
     //
     // best pole margin (need other drivers)
     // season margin (need other drivers)
+  }
+
+  get meta() {
+    return {
+      name: this.name,
+      id: this.id,
+      isPlayer: this.isPlayer,
+      isMain: this.isMain,
+      raceNumber: this.raceNumber,
+      teamId: this.teamId,
+      teamName: this.teamName,
+    }
   }
 
   parseSprintResults(data=[]) {

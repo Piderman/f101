@@ -69,7 +69,7 @@
         :key="index"
       >
         <td v-text="entry.positionText" />
-        <td v-text="entry.driverName" />
+        <td v-text="entry.name" />
         <td v-text="entry.teamName" />
         <td v-text="entry.points" class="text-right"/>
       </tr>
@@ -77,6 +77,7 @@
   </div>
 
   <hr>
+
   <div v-for="Feature in features"
     :key="`features_${Feature.id}`"
   >
@@ -86,16 +87,16 @@
         :key="index"
       >
         <td v-text="entry.positionText" />
-        <td v-text="entry.driverName" />
         <td>
           <icon :name="getDriverIcon(entry)" v-if="entry.isPlayer"
             :class="{'stroke-current fill-transparent': !entry.isMain}"
           />
         </td>
+        <td v-text="entry.name" />
         <td v-text="entry.teamName" class="border-l-8"
           :class="`border-team-${entry.teamId}`"
         />
-        <td class="text-right" v-text="entry.points" />
+        <td class="text-right" v-text="entry.points"/>
         <td>
           <div class="flex flex-row">
             <icon name="award" v-if="entry.isPole" class="fill-transparent" />
@@ -161,8 +162,8 @@ export default {
     featureStandings() {
       const features = this.drivers.map(driver => {
         return {
-          name: driver.name,
-          teamId: driver.teamId,
+          ...driver.meta,
+          
           points: sum(driver.featureResults.map(feature => feature.totalPoints))
         };
       });
