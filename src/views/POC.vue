@@ -106,6 +106,15 @@
       </tr>
     </table>
   </div>
+
+
+  <div class="flex flex-row  justify-around">
+    <driver-stats v-for="Driver in players"
+      :key="Driver.id"
+      :driver="getDriverById(Driver.id)"
+      class="w-1/5  px-4"
+    />
+  </div>
   
 </div>
 </template>
@@ -118,6 +127,7 @@ import Driver from "@/models/pocDriver";
 import Sprint from "@/models/SprintRace";
 import Feature from "@/models/FeatureRace";
 
+import DriverStats from '@/components/DriverStats.vue'
 import Icon from '@/components/Icon.vue'
 
 export default {
@@ -150,13 +160,17 @@ export default {
     getDriverIcon(entry) {
       return entry.isMain ? 'user' : 'multi-user';
     },
+    getDriverById(id) {
+      return this.drivers.find(driver => driver.id === id);
+    }
   },
   computed: {
+    players() {
+      return this.drivers.filter(driver => driver.isPlayer);
+    },
+    
     standings() {
-      const players = this.drivers
-        .filter(driver => driver.isPlayer);
-
-      return orderBy(players, "seriesTotal", "desc");
+      return orderBy(this.players, "seriesTotal", "desc");
     },
 
     featureStandings() {
@@ -201,12 +215,13 @@ export default {
     }
   },
   components: {
-    Icon
+    DriverStats,
+    Icon,
   }
 };
 </script>
 
-<style scoped>
+<style>
 table {
   border-collapse: collapse;
   margin-bottom: 2em;

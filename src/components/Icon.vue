@@ -17,6 +17,7 @@ import IconAward from './icons/IconAward.vue'
 import IconUser from './icons/IconUser.vue'
 import IconMultiUser from './icons/IconMultiUser.vue'
 import IconWatch from './icons/IconWatch.vue'
+import IconPodium from './icons/IconPodium.vue'
 
 export default {
   name: 'icon',
@@ -41,7 +42,8 @@ export default {
     IconAward,
     IconUser,
     IconMultiUser,
-    IconWatch
+    IconWatch,
+    IconPodium,
   }
 }
 </script>

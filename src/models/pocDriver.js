@@ -1,4 +1,4 @@
-import { find, sum, sumBy, } from "lodash";
+import { find, max, min, sum, sumBy, } from "lodash";
 
 import points from "@/data/season-2/points.js";
 import teams from "@/data/season-2/teams.js";
@@ -25,10 +25,6 @@ class pocDriver {
     
     // stats!!!
     // highest qual
-    // highest position
-    // highest points a round
-    // podiums
-    // fastest laps
     // win streak?
     //
     // best pole margin (need other drivers)
@@ -45,6 +41,18 @@ class pocDriver {
       teamId: this.teamId,
       teamName: this.teamName,
     }
+  }
+
+  get stats() {
+    return {
+      poles: this.featureResults.filter(race => race.grid === 1).length,
+      wins: this.featureResults.filter(race => race.position === 1).length,
+      podiums: this.featureResults.filter(race => race.position < 4).length,
+      fastestLaps: this.featureResults.filter(race => race.isFastestLap).length,
+      sprintWins: this.sprintResults.filter(race => race.position === 1).length,
+      highestPosition: min(this.featureResults.map(race => race.position)),
+      bestScore: max(this.featureResults.map(race => race.totalPoints)),
+    };
   }
 
   parseSprintResults(data=[]) {
@@ -69,6 +77,7 @@ class pocDriver {
     return data.map(event => {
       const result = {
         raceId: event.id,
+        grid: event.starPosition,
         position: event.retiredPosition || event.finishPosition,
         positionPoints: pocDriver.getPointsForFeaturePosition(
           event.finishPosition
@@ -91,6 +100,7 @@ class pocDriver {
 
       if (event.isFastestLap) {
         result.lapBonusPoints = pocDriver.getLapPoints();
+        result.isFastestLap = true;
       }
 
       return result;
