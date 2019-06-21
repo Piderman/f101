@@ -34,6 +34,8 @@ class pocDriver {
   get meta() {
     return {
       name: this.name,
+      firstName: this.name.match(/^\w+/)[0],
+      secondName: this.name.match(/\w+$/)[0],
       id: this.id,
       isPlayer: this.isPlayer,
       isMain: this.isMain,
@@ -46,12 +48,14 @@ class pocDriver {
   get stats() {
     return {
       poles: this.featureResults.filter(race => race.grid === 1).length,
-      wins: this.featureResults.filter(race => race.position === 1).length,
-      podiums: this.featureResults.filter(race => race.position < 4).length,
+      featureWins: this.featureResults.filter(race => race.position === 1).length,
+      featurePodiums: this.featureResults.filter(race => race.position < 4).length,
       fastestLaps: this.featureResults.filter(race => race.isFastestLap).length,
       sprintWins: this.sprintResults.filter(race => race.position === 1).length,
       highestPosition: min(this.featureResults.map(race => race.position)),
-      bestScore: max(this.featureResults.map(race => race.totalPoints)),
+      bestScore: max(this.featureResults.map((race, index) => {
+        return race.totalPoints + this.sprintResults[index].totalPoints;
+      })),
     };
   }
 
@@ -105,23 +109,6 @@ class pocDriver {
 
       return result;
     });
-  }
-
-  static buildPointsForRound(race, sprint) {
-    let points = [
-      pocDriver.getPointsForFeaturePosition(race.finishPosition),
-      pocDriver.getPointsForSprintPosition(sprint.finishPosition)
-    ];
-
-    if (race.starPosition === 1) {
-      points.push(pocDriver.getPolePoints());
-    }
-
-    if (race.isFastestLap) {
-      points.push(pocDriver.getLapPoints());
-    }
-
-    return points;
   }
 
   //#region static point methods

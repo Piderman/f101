@@ -108,11 +108,11 @@
   </div>
 
 
-  <div class="flex flex-row  justify-around">
+  <div class="flex flex-row  flex-wrap  justify-around">
     <driver-stats v-for="Driver in players"
       :key="Driver.id"
       :driver="getDriverById(Driver.id)"
-      class="w-1/5  px-4"
+      class="w-1/2  lg:w-full  px-4"
     />
   </div>
   
@@ -166,7 +166,8 @@ export default {
   },
   computed: {
     players() {
-      return this.drivers.filter(driver => driver.isPlayer);
+      const players = this.drivers.filter(driver => driver.isPlayer);
+      return orderBy(players, "raceNumber");
     },
     
     standings() {
