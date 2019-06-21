@@ -1,7 +1,14 @@
 <template>
-<div class="my-6">
-  <h3 v-text="driver.name" class="text-xl font-bold"/>
+<div class="my-8">
+  <div class="flex flex-row  mb-4">
+    <img v-bind="lid" class="w-20  h-full  mr-4">
 
+    <div>
+      <p v-text="`#${driver.raceNumber}`" class="text-xl  font-bold"/>
+      <h3 class="text-xl" v-text="driver.name" />
+      <p v-text="driver.teamName" class="mb-4  text-sm  font-light" />
+    </div>
+  </div>
   <ul>
     <li class="flex flex-row"
       v-for="(stat, index) in stats"
@@ -94,6 +101,15 @@ export default {
           value: driver.stats.fastestLaps
         },
       ]
+    }
+  },
+  computed: {
+    lid() {
+      return {
+        src: require(`@/assets/${this.driver.meta.firstName.toLowerCase()}-helmet.png`),
+        // src: '@/assets/simon-helmet.png',
+        alt: `${this.driver.name}'s racing hemlet`
+      }
     }
   },
   components: {
