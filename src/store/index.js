@@ -1,7 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import Drivers from "./drivers";
+import Drivers from "./modules/drivers";
+import Standings from "./modules/standings";
 
 Vue.use(Vuex);
 
@@ -10,6 +11,11 @@ export default new Vuex.Store({
   mutations: {},
   actions: {},
   modules: {
-    Drivers
+    Drivers,
+    Standings,
+
+    // per race results
+    // FeatureResults,
+    // SprintsResults,
   }
 });

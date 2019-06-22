@@ -120,6 +120,8 @@
 </template>
 
 <script>
+import { mapGetters, mapState } from 'vuex';
+
 import { findIndex, orderBy, sum } from "lodash";
 
 import season2 from "@/data/season-2";
@@ -133,7 +135,10 @@ import Icon from '@/components/Icon.vue'
 export default {
   name: "POC",
   created() {
-    this.drivers = season2.drivers.map(data => new Driver(data));
+    // move to router/app ?
+    if (!this.$store.state.Drivers.drivers.length) {
+      this.$store.dispatch('Drivers/init');
+    }
 
     this.sprints = [
       new Sprint(1, this.drivers),
@@ -149,8 +154,6 @@ export default {
   },
   data() {
     return {
-      drivers: [],
-
       // done via class
       sprints: [],
       features: []
@@ -165,55 +168,21 @@ export default {
     }
   },
   computed: {
-    players() {
-      const players = this.drivers.filter(driver => driver.isPlayer);
-      return orderBy(players, "raceNumber");
-    },
-    
+    ...mapState({
+      drivers: state => state.Drivers.drivers
+    }),
+
+    ...mapGetters({
+      players: 'Drivers/players',
+      constructorStandings: 'Standings/constructors',
+      featureStandings: 'Standings/feature',
+      sprintStandings: 'Standings/sprint',
+    }),
+
     standings() {
       return orderBy(this.players, "seriesTotal", "desc");
     },
 
-    featureStandings() {
-      const features = this.drivers.map(driver => {
-        return {
-          ...driver.meta,
-          
-          points: sum(driver.featureResults.map(feature => feature.totalPoints))
-        };
-      });
-
-      return orderBy(features, "points", "desc");
-    },
-
-    sprintStandings() {
-      const sprints = this.drivers
-        .filter(driver => driver.isPlayer)
-        .map(driver => {
-          return {
-            name: driver.name,
-            points: sum(driver.sprintResults.map(sprint => sprint.totalPoints))
-          };
-        });
-
-      return orderBy(sprints, "points", "desc");
-    },
-
-    constructorStandings() {
-      const constructors = season2.teams.map(team => {
-        return {
-          name: team.name,
-          id: team.id,
-          points: sum(
-            this.drivers
-              .filter(driver => driver.teamId === team.id)
-              .map(driver => driver.featureTotal)
-          )
-        };
-      });
-
-      return orderBy(constructors, "points", "desc");
-    }
   },
   components: {
     DriverStats,
