@@ -1,5 +1,3 @@
-import season2 from "@/data/season-2";
- 
 import actions from './actions'
 import getters from './getters'
 import mutations from './mutations'
@@ -7,8 +5,7 @@ import mutations from './mutations'
 export default {
   namespaced: true,
   state: {
-    runningFeature: [],
-    teams: season2.teams, // yes?
+    results: []
   },
   actions,
   getters,

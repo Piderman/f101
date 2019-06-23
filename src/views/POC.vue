@@ -1,7 +1,5 @@
 <template>
 <div class="p-4">
-  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-
   <h1 class="text-6xl">Series 1</h1>
   
   <div class="flex">
@@ -207,27 +205,6 @@ tr:nth-child(2n) td {
   background-color: #f9f9f9;
 }
 
-.border-team-1 { border-color: #00d2be }
-.border-team-2 { border-color: #1e41ff }
-.border-team-3 { border-color: #dc0000 }
-.border-team-4 { border-color: #FFA300 }
-.border-team-5 { border-color: #ff8700 }
-.border-team-6 { border-color: #f596c8 }
-.border-team-7 { border-color: #29ADFF }
-.border-team-8 { border-color: #aa8e51 }
-
-.bg-team-1 { background-color: #00d2be }
-.bg-team-2 { background-color: #1e41ff }
-.bg-team-3 { background-color: #dc0000 }
-.bg-team-4 { background-color: #FFA300 }
-.bg-team-5 { background-color: #ff8700 }
-.bg-team-6 { background-color: #f596c8 }
-.bg-team-7 { background-color: #29ADFF }
-.bg-team-8 { background-color: #aa8e51 }
-
-.fill-transparent {
-  fill: transparent;
-}
 
 .team-idicator--small {
   display: inline-block;

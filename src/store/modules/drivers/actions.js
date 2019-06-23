@@ -5,7 +5,6 @@ import Driver from "@/models/pocDriver";
 
 export default {
   init(context) {
-    console.log('init driver store');
     context.dispatch('parseDrivers', season2.drivers);
   },
 

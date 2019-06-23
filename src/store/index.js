@@ -3,6 +3,7 @@ import Vuex from "vuex";
 
 import Drivers from "./modules/drivers";
 import Standings from "./modules/standings";
+import FeatureEvents from "./modules/features";
 
 Vue.use(Vuex);
 
@@ -15,7 +16,7 @@ export default new Vuex.Store({
     Standings,
 
     // per race results
-    // FeatureResults,
+    FeatureEvents,
     // SprintsResults,
   }
 });

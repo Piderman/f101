@@ -13,15 +13,16 @@ class RaceEvent {
 
     this.standings = this.buildStandings();
 
-    this.podium = this.standings
-      .filter(round => {
-        return round.position < 4;
-      })
-      .map(round => round.driverName);
+    this.podium = this.standings.filter(entry => {
+      return entry.position < 4;
+    });
 
+    this.winner = this.standings.find(entry => entry.position === 1);
     // weather stats
     // safety cars?
   }
+
+
 
   buildStandings() {
     const eventKey =
@@ -40,6 +41,10 @@ class RaceEvent {
         isFastestLap: !!round.lapBonusPoints,
         isPole: !!round.poleBonusPoints,
         points: round.totalPoints,
+
+        get isCleanSweep() {
+          return this.position === 1 && this.isPole && this.isFastestLap;
+        }
       };
     });
 

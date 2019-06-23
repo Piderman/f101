@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
-import POC from './views/POC.vue'
+import POC from "./views/POC.vue";
 
 Vue.use(Router);
 
@@ -36,7 +36,7 @@ export default new Router({
       children: [
         {
           path: "",
-          name: "overview",
+          name: "overview-old",
           component: () =>
             import(/* webpackChunkName: "results" */ "./views/results/overview.vue")
         },
@@ -54,10 +54,37 @@ export default new Router({
         }
       ]
     },
+    // scratchpad
     {
       path: "/poc",
       name: "poc",
       component: POC
+    },
+
+    {
+      path: "/weekend/:raceId",
+      component: () =>
+        import(/* webpackChunkName: "weekend" */ "./views/weekend/index.vue"),
+      children: [
+        {
+          path: "",
+          name: "overview",
+          component: () =>
+            import(/* webpackChunkName: "weekend" */ "./views/weekend/summary.vue")
+        },
+        {
+          path: "feature",
+          name: "feature",
+          component: () =>
+            import(/* webpackChunkName: "weekend" */ "./views/weekend/featureResults.vue")
+        },
+        // {
+        //   path: "/sprint",
+        //   name: "sprint",
+        //   component: () =>
+        //     import(/* webpackChunkName: "weekend" */ "./views/weekend/sprint.vue")
+        // },
+      ]
     }
   ]
 });
