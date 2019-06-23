@@ -16,6 +16,14 @@
   fill: transparent;
 }
 
+.stroke-0 {
+  stroke-width: 0;
+} 
+
+.stroke-2 {
+  stroke-width: 2px;
+}
+
 .border-team-1 { border-color: #00d2be }
 .border-team-2 { border-color: #1e41ff }
 .border-team-3 { border-color: #dc0000 }

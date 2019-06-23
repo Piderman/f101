@@ -4,12 +4,12 @@
 
   <table>
     <tr class="text-left">
-      <th>Position</th>
-      <th colspan="2">Driver</th>
+      <th colspan="2">Position</th>
+      <th>Driver</th>
       <th>Team</th>
       <th>Points</th>
       <th>Bonus</th>
-      <th colspan="2" v-if="routeRaceId > 1">Standings</th>
+      <th colspan="2" v-if="routeRaceId > 1" class="border-l">Standings</th>
     </tr>
     <tr v-for="(entry, index) in currentRace.standings"
       :key="index"
@@ -17,7 +17,10 @@
       <td v-text="entry.positionText" />
       <td>
         <icon :name="getDriverIcon(entry)" v-if="entry.isPlayer"
-          :class="{'stroke-current fill-transparent': !entry.isMain}"
+          :class="{
+            'stroke-0' : entry.isMain,
+            'stroke-current fill-transparent': !entry.isMain
+          }"
         />
       </td>
       <td v-text="entry.name" />
@@ -31,11 +34,13 @@
           <icon name="watch" v-if="entry.isFastestLap" class="fill-transparent" />
         </div>
       </td>
-      <td v-if="routeRaceId > 1" v-text="getStandingsByDriverId(entry.id).featurePoints" />
-      <td v-if="routeRaceId > 1">
-        <icon :name="getDeltaIcon(entry.id)" class="inline-block  fill-transparent mr-2"/>
-        <span v-text="Math.abs(getDeltaByDriverId(entry.id))"/>
+      <template v-if="routeRaceId > 1">
+      <td v-text="getStandingsByDriverId(entry.id).featurePoints" class="border-l"/>
+      <td>
+        <icon v-bind="getDeltaStyles(entry.id).icon" class="stroke-2 inline-block  fill-transparent mr-2"/>
+        <span v-text="getDeltaStyles(entry.id).movement"/>
       </td>
+      </template>
     </tr>
   </table>
 
@@ -100,22 +105,37 @@ export default {
       }
     },
 
-    getDeltaIcon(id) {
+    getDeltaStyles(id) {
       if(this.routeRaceId > 1) {
         const delta = this.getDeltaByDriverId(id);
-        const magnitude = Math.abs(delta);
-
-        let icon = magnitude > 3 ? 'chevrons' : 'chevron';
+        const movement = Math.abs(delta);
+        const icon = 'chevron';
 
         if (delta == 0) {
-          return 'minus';
+          return {
+            icon: {
+              name: 'minus'
+            }
+          };
 
         // note: negative means you've gone up
         } else if (delta < 1) {
-          return `${icon}-up`;
+          return {
+            movement,
+            icon: {
+              class: 'text-green-600',
+              name: `${icon}-up`
+            }
+          };
           
         } else {
-          return `${icon}-down`;
+          return {
+            movement,
+            icon: {
+              class: 'text-red-600',
+              name: `${icon}-down`
+            }
+          };
         }
       }
     }
