@@ -2,7 +2,7 @@ export default [
   {
     id: 1,
     finishPosition: 1,
-    starPosition: null
+    starPosition: 4, // todo: confirm
   },
   {
     id: 2,
@@ -13,5 +13,10 @@ export default [
     id: 3,
     finishPosition: 3,
     starPosition: 4
+  },
+  {
+    id: 4,
+    finishPosition: 3,
+    starPosition: 2
   }
 ];

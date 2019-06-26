@@ -8,11 +8,16 @@ export default [
     id: 2,
     finishPosition: 2,
     starPosition: null,
-    isFastestLap: true
+    isFastestLap: true 
   },
   {
     id: 3,
     finishPosition: 2,
     starPosition: null
+  },
+  {
+    id: 4,
+    finishPosition: 1,
+    starPosition: 1
   }
 ];
