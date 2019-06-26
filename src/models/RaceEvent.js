@@ -6,12 +6,15 @@ const Drivers = Symbol("Drivers");
  *
  */
 class RaceEvent {
+  // todo: support grandPrix event
   constructor(id, type, drivers) {
     this[Drivers] = drivers;
     this.id = id;
     this.type = type;
 
     this.standings = this.buildStandings();
+
+    this.qualifying = this.buildGrid();
 
     this.podium = this.standings.filter(entry => {
       return entry.position < 4;
@@ -22,6 +25,32 @@ class RaceEvent {
     // safety cars?
   }
 
+  buildGrid() {
+    const eventKey =
+      this.type === "sprint" ? "sprintQualifying" : "featureQualifying";
+
+    const event = this[Drivers]
+      .filter(Driver => Driver[eventKey].length)
+      .map(Driver => {
+        const round = find(Driver[eventKey], { id: this.id });
+
+        if (!round) return null;
+
+        return {
+          ...Driver.meta,
+          
+          position: round.position,
+          timeText: round.timeText,
+          time: round.time,
+          isPole: round.position === 1,
+        };
+      })
+      .filter(val=>val);
+
+    console.log('matches?', event.length);
+    
+    return orderBy(event, "position");
+  }
 
 
   buildStandings() {
@@ -31,24 +60,29 @@ class RaceEvent {
     const event = this[Drivers]
       .filter(Driver => Driver[eventKey].length)
       .map(Driver => {
-      const round = find(Driver[eventKey], { raceId: this.id });
+        const round = find(Driver[eventKey], { raceId: this.id });
 
-      return {
-        ...Driver.meta,
-        
-        position: round.position,
-        positionText: round.positionText,
-        isFastestLap: !!round.lapBonusPoints,
-        isPole: !!round.poleBonusPoints,
-        points: round.totalPoints,
+        if (!round) return null;
 
-        get isCleanSweep() {
-          return this.position === 1 && this.isPole && this.isFastestLap;
-        }
-      };
-    });
+        return {
+          ...Driver.meta,
+          
+          position: round.position,
+          positionText: round.positionText,
+          isFastestLap: !!round.lapBonusPoints,
+          isPole: !!round.poleBonusPoints,
+          points: round.totalPoints,
 
-    return orderBy(event, "position");
+          get isCleanSweep() {
+            return this.position === 1 && this.isPole && this.isFastestLap;
+          }
+        };
+      })
+      .filter(val=>val);
+
+      console.log('matches?', event.length);
+
+      return orderBy(event, "position");
   }
 }
 
