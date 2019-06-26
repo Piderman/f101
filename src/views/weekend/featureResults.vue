@@ -1,6 +1,6 @@
 <template>
-<div>
-  <h2>Feature Race Results: {{$route.params.raceId}}</h2>
+<div class="p-4">
+  <h2 class="text-3xl">{{currentGrandPrix.country}} Feature Race Results</h2>
 
   <table>
     <tr class="text-left">
@@ -105,6 +105,7 @@ export default {
       }
     },
 
+    // share for start/finish delta
     getDeltaStyles(id) {
       if(this.routeRaceId > 1) {
         const delta = this.getDeltaByDriverId(id);
@@ -147,6 +148,12 @@ export default {
 
     currentRace() {
       return this.getRaceById(this.routeRaceId);
+    },
+
+    currentGrandPrix() {
+      return this.$store.state.Standings.grandPrix.find(grandPrix => {
+        return grandPrix.id === this.routeRaceId;
+      });
     },
 
     previousRace() {

@@ -7,7 +7,10 @@ import AiDrivers from './ai';
 
 import teams from "./teams";
 
+import grandPrix from './grand-prix';
+
 export default {
+  grandPrix,
   teams,
   drivers: AiDrivers.concat([Chris, Matty, Simon, Peter])
 };

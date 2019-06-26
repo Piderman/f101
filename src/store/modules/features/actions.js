@@ -8,10 +8,8 @@ export default {
 
   parseFeatures(context, drivers) {
     // todo: race/event data. name, weather etc
-    // support upcomming
-    const featureModels = Array.from({length: 3}, (val, index) => {
-      return new Feature(index + 1, drivers)
-    });
+    const featureModels = context.rootGetters['Standings/completedGrandPrix']
+      .map(grandPrix => new Feature(grandPrix.id, drivers));
 
     context.commit('setFeatures', featureModels);
 

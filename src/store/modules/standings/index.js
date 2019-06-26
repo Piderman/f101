@@ -7,6 +7,7 @@ import mutations from './mutations'
 export default {
   namespaced: true,
   state: {
+    grandPrix: season2.grandPrix,
     runningFeature: [],
     teams: season2.teams, // yes?
   },

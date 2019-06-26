@@ -1,6 +1,8 @@
 <template>
 <div class="p-4">
-  <h1 class="text-6xl">Series 1</h1>
+  <header>
+    <h1 class="text-6xl">Series 1 as of {{recentRace.country}}</h1>
+  </header>
   
   <div class="flex">
     <div class="w-1/2">
@@ -175,7 +177,12 @@ export default {
       constructorStandings: 'Standings/constructors',
       featureStandings: 'Standings/feature',
       sprintStandings: 'Standings/sprint',
+      completedWeekends: 'Standings/completedGrandPrix'
     }),
+
+    recentRace() {
+      return this.completedWeekends[this.completedWeekends.length - 1];
+    },
 
     standings() {
       return orderBy(this.players, "seriesTotal", "desc");

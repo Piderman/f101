@@ -39,5 +39,9 @@ export default {
     });
     
     return orderBy(tableData, 'points', 'desc')
+  },
+
+  completedGrandPrix(state, getters) {
+    return state.grandPrix.filter(grandPrix => grandPrix.status === 'complete');
   }
 };
