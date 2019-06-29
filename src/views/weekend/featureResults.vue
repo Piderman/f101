@@ -4,7 +4,7 @@
 
   <table>
     <tr class="text-left">
-      <th colspan="2">Position</th>
+      <th colspan="3">Position</th>
       <th>Driver</th>
       <th>Team</th>
       <th>Points</th>
@@ -14,9 +14,9 @@
       :key="index"
     >
       <td>
-        <icon v-bind="getPositionDelta(entry).icon" class="stroke-2 inline-block  fill-transparent mr-2"/>
-        <span v-text="entry.positionText" />
+        <icon v-bind="getPositionDelta(entry).icon" class="stroke-2 inline-block  fill-transparent"/>
       </td>
+      <td class="text-right" v-text="entry.positionText" />
       <td>
         <icon :name="getDriverIcon(entry)" v-if="entry.isPlayer"
           :class="{
@@ -42,7 +42,7 @@
   <h2 class="text-xl">Driver Standings</h2>
   <table>
     <tr class="text-left">
-      <th colspan="2">Position</th>
+      <th colspan="3">Position</th>
       <th>Driver</th>
       <th>Team</th>
       <th>Points</th>
@@ -51,10 +51,10 @@
     <tr v-for="(entry, index) in currentStandings"
       :key="index"
     >
-      <td>
-        <icon v-bind="getStandingsDelta(entry.id).icon" class="stroke-2 inline-block  fill-transparent mr-2"/>
-        <span v-text="index+1" />
+      <td class="px-0">
+        <icon v-bind="getStandingsDelta(entry.id).icon" class="stroke-2 inline-block  fill-transparent"/>
       </td>
+      <td class="text-right" v-text="index+1" />
       <td>
         <icon :name="getDriverIcon(entry)" v-if="entry.isPlayer"
           :class="{
@@ -67,10 +67,8 @@
       <td v-text="entry.teamName" class="border-l-8"
         :class="`border-team-${entry.teamId}`"
       />
-      <td>
-        <span v-text="getStandingsByDriverId(entry.id).points" class="border-l"/>
-      </td>
-      <td v-text="getGapToLeader(entry.points).delta"/>
+      <td class="text-right" v-text="getStandingsByDriverId(entry.id).points"/>
+      <td class="text-right" v-text="getGapToLeader(entry.points).delta"/>
     </tr>
   </table>
 
