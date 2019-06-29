@@ -78,7 +78,7 @@
 
   <hr>
 
-  <div v-for="Feature in features"
+  <div v-for="Feature in features" v-if="false"
     :key="`features_${Feature.id}`"
   >
     <p class="text-xl font-bold" v-text="`Feature ${Feature.id}`"/>
@@ -108,7 +108,7 @@
   </div>
 
 
-  <div class="flex flex-row  flex-wrap  justify-around">
+  <div class="flex flex-row  flex-wrap  justify-around" v-if="false">
     <driver-stats v-for="Driver in players"
       :key="Driver.id"
       :driver="getDriverById(Driver.id)"
@@ -144,6 +144,7 @@ export default {
       new Sprint(1, this.drivers),
       new Sprint(2, this.drivers),
       new Sprint(3, this.drivers),
+      // new Sprint(4, this.drivers),
     ];
 
     this.features = [

@@ -1,38 +1,58 @@
 <template>
 <div>
-  <h2>Weekend Overview: {{$route.params.raceId}}</h2>
+  <h1 class="font-bold  text-center	 text-4xl">
+    <em v-text="currentGrandPrix.country"/>
+    <em class="block font-light">Series 1</em>
+    [race date]
+  </h1>
 
-  <router-link :to="{name: 'feature', params: {raceId: $route.params.raceId}}">Race Results</router-link>
-  <!-- weather data for sprint & feature qual and race
-  -->
-  <!-- qual results -->
+  <div v-if="currentGrandPrix.status=='complete'">
+    <h2>Sprint</h2>
+    <icon :name="currentGrandPrix.weather.sprint.qualifying[0]" class="fill-transparent"/>
+    [table]
+    <hr>
 
-  <!-- race results -->
+    Race
+    [table]
+    <icon :name="currentGrandPrix.weather.sprint.race[0]" class="fill-transparent"/>
 
-  <!-- race standings w delta? -->
+    <hr>
 
-  <icon name="podium" class="fill-transparent  mirror"/>
-  <ol>
-    <li v-for="(entry, index) in currentRace.podium"
-      :key="index"
-      :class="{ ['text-team-' + entry.teamId] : entry.isCleanSweep}"
-    >
-      <div class="flex flex-row">
-        <span v-text="entry.name" />
-        <icon name="award" v-if="entry.isPole" class="fill-transparent" />
-        <icon name="watch" v-if="entry.isFastestLap" class="fill-transparent" />
-      </div>
-    </li>
-  </ol>
+    <h2>Feature Qual</h2>
+    <icon :name="currentGrandPrix.weather.feature.qualifying[0]" class="fill-transparent"/>
+    <p>Pole: [Driver Name] [lap time]</p>
 
-  <router-link :to="prevRaceRoute">Previous Race</router-link>
-  <router-link :to="nextRaceRoute">Next Race</router-link>
+    <hr>
+    <h2>Feature Race</h2>
+    <icon :name="currentGrandPrix.weather.feature.race[0]" class="fill-transparent"/>
+
+    <icon name="podium" class="fill-transparent  mirror"/>
+    <ol>
+      <li v-for="(entry, index) in currentRace.podium"
+        :key="index"
+        :class="{ ['text-team-' + entry.teamId] : entry.isCleanSweep}"
+      >
+        <div class="flex flex-row">
+          <span v-text="entry.name" />
+          <icon name="award" v-if="entry.isPole" class="fill-transparent" />
+          <icon name="watch" v-if="entry.isFastestLap" class="fill-transparent" />
+        </div>
+      </li>
+    </ol>
+
+    <router-link :to="{name: 'feature', params: {raceId: $route.params.raceId}}">Full Race Results</router-link>
+
+  </div>
+
+
+  <div>
+    <router-link :to="prevRaceRoute" class="underline">Previous Weekend</router-link>
+    <router-link :to="nextRaceRoute" class="underline">Next Weekend</router-link>
+  </div>
 </div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
-
 import Icon from '@/components/Icon'
 
 export default {
@@ -59,6 +79,11 @@ export default {
     },
   },
   computed: {
+    currentGrandPrix() {
+      return this.$store.state.Standings.grandPrix.find(weekend => {
+        return weekend.id == this.routeRaceId;
+      });
+    },
     currentRace() {
       return this.getRaceById(this.routeRaceId);
     },

@@ -62,6 +62,13 @@ export default new Router({
     },
 
     {
+      path: "/drivers/:id",
+      name: 'driver',
+      component: () =>
+        import(/* webpackChunkName: "drivers" */ "./views/DriverPage.vue")
+    },
+
+    {
       path: "/weekend/:raceId",
       component: () =>
         import(/* webpackChunkName: "weekend" */ "./views/weekend/index.vue"),
@@ -78,12 +85,12 @@ export default new Router({
           component: () =>
             import(/* webpackChunkName: "weekend" */ "./views/weekend/featureResults.vue")
         },
-        // {
-        //   path: "/sprint",
-        //   name: "sprint",
-        //   component: () =>
-        //     import(/* webpackChunkName: "weekend" */ "./views/weekend/sprint.vue")
-        // },
+        {
+          path: "sprint",
+          name: "sprint",
+          component: () =>
+            import(/* webpackChunkName: "weekend" */ "./views/weekend/sprintResults.vue")
+        },
       ]
     }
   ]
