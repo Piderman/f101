@@ -104,10 +104,10 @@ export default {
     }
   },
   computed: {
+    // mixin?
     lid() {
       return {
         src: require(`@/assets/${this.driver.meta.firstName.toLowerCase()}-helmet.png`),
-        // src: '@/assets/simon-helmet.png',
         alt: `${this.driver.name}'s racing hemlet`
       }
     }

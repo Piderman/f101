@@ -15,11 +15,15 @@ class pocDriver {
     this.teamName = find(teams, { id: data.teamId }).name;
     this.isMain = data.isMain;
 
+    this.sprintQualifying = [];
     this.sprintResults = this.parseSprintResults(data.sprintData);
     this.sprintTotal = sumBy(this.sprintResults, 'totalPoints');
     
+    this.featureQualifying = [];
     this.featureResults = this.parseFeatureResults(data.raceData);
     this.featureTotal = sumBy(this.featureResults, 'totalPoints');
+
+    this.setGridResults(data.qualifyingData);
 
     this.seriesTotal = this.isPlayer && this.sprintTotal + this.featureTotal;
     
@@ -59,6 +63,30 @@ class pocDriver {
     };
   }
 
+  setGridResults(data=[]) {
+    let sprints = [];
+    let features = [];
+
+    data.forEach(grandPrix => {
+      sprints.push(this.parseGridResults(grandPrix.id, grandPrix.sprint));
+      features.push(this.parseGridResults(grandPrix.id, grandPrix.feature));
+    });
+
+    this.sprintQualifying = sprints.filter(val => val);
+    this.featureQualifying = features.filter(val => val);
+  }
+
+  parseGridResults(id, event) {
+    if (event) {
+      return {
+        id,
+        position: event.retiredPosition || event.finishPosition,
+        time: event.time,
+        timeText: event.time || '-:--.---'
+      }
+    }
+  }
+
   parseSprintResults(data=[]) {
     return data.map(event => {
       return {
@@ -79,6 +107,9 @@ class pocDriver {
 
   parseFeatureResults(data=[]) {
     return data.map(event => {
+      // add best lap so results/feature summary can show
+      // table of best times and the gap
+      // eg simon s1,r4 was denied the gold grand slam by .2s :(
       const result = {
         raceId: event.id,
         grid: event.starPosition,

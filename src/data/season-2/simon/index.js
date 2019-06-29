@@ -1,5 +1,6 @@
-import sprintData from "./sprint";
+import qualifyingData from './qualifying';
 import raceData from "./race";
+import sprintData from "./sprint";
 
 export default {
   id: 2,
@@ -8,6 +9,7 @@ export default {
   isMain: true,
   teamId: 7,
   number: 0,
+  qualifyingData,
   raceData,
   sprintData
 };
