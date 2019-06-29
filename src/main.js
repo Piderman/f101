@@ -3,6 +3,10 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+import driverData from "@/data/season-1/drivers";
+
+store.dispatch("Drivers/init", driverData);
+
 Vue.config.productionTip = false;
 
 new Vue({
