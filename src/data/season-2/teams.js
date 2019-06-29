@@ -19,9 +19,8 @@ export default [
   },
   {
     id: 4,
-    name: "Angry Wombat Racing",
+    name: "Angry Wombat Motorsport",
     tier: 2,
-    // #ffffff clashes with charts, this is the light blue
     hex: "#FFA300"
   },
   {

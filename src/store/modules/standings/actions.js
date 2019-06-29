@@ -10,15 +10,15 @@ export default {
       
       const driverData = context.rootState.Drivers.drivers.map(Driver => {
         return {
-          id: Driver.id,
-          featurePoints: sum(
+          ...Driver.meta,
+          points: sum(
             Driver.featureResults.slice(0, index + 1)
               .map(feature => feature.totalPoints)
           )
         }
       });
 
-      standingsAtEvent.standings = orderBy(driverData, 'featurePoints', 'desc');
+      standingsAtEvent.standings = orderBy(driverData, 'points', 'desc');
 
       return standingsAtEvent;
     });
