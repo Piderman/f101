@@ -44,8 +44,10 @@
     </tr>
   </table>
 
-  <router-link :to="prevRaceRoute">Previous Race</router-link>
-  <router-link :to="nextRaceRoute">Next Race</router-link>
+  <div class="flex justify-center">
+    <router-link class="border  px-4 py-2 rounded " :to="prevRaceRoute">Previous Race</router-link>
+    <router-link class="border  ml-8 px-4 py-2 rounded " :to="nextRaceRoute">Next Race</router-link>
+  </div>
 
 </div>
 </template>
