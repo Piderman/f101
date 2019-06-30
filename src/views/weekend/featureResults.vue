@@ -1,6 +1,16 @@
 <template>
-<div class="p-4">
-  <h2 class="text-3xl">{{currentGrandPrix.country}} Feature Race Results</h2>
+<div class="p-4  pt-20">
+  <header class="h-16 px-4  fixed inset-x-0 top-0  flex justify-between  items-center  bg-white border-b">
+      <div>
+        <router-link class="border  px-4 py-2 rounded " :to="prevRaceRoute">Previous</router-link>
+      </div>
+
+      <h2 class="text-3xl  mx-8">{{currentGrandPrix.country}} Feature Race Results</h2>
+
+      <div>
+        <router-link class="border  px-4 py-2 rounded " :to="nextRaceRoute">Next</router-link>
+      </div>
+  </header>
 
   <table>
     <tr class="text-left">
@@ -71,11 +81,6 @@
       <td class="text-right" v-text="getGapToLeader(entry.points).delta"/>
     </tr>
   </table>
-
-  <div class="flex justify-center">
-    <router-link class="border  px-4 py-2 rounded " :to="prevRaceRoute">Previous Race</router-link>
-    <router-link class="border  ml-8 px-4 py-2 rounded " :to="nextRaceRoute">Next Race</router-link>
-  </div>
 
 </div>
 </template>
