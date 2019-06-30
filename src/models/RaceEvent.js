@@ -67,6 +67,7 @@ class RaceEvent {
         return {
           ...Driver.meta,
           
+          grid: round.grid,
           position: round.position,
           positionText: round.positionText,
           isFastestLap: !!round.lapBonusPoints,

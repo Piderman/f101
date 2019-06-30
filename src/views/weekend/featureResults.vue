@@ -4,17 +4,19 @@
 
   <table>
     <tr class="text-left">
-      <th colspan="2">Position</th>
+      <th colspan="3">Position</th>
       <th>Driver</th>
       <th>Team</th>
       <th>Points</th>
       <th>Bonus</th>
-      <th colspan="2" v-if="routeRaceId > 1" class="border-l">Standings</th>
     </tr>
     <tr v-for="(entry, index) in currentRace.standings"
       :key="index"
     >
-      <td v-text="entry.positionText" />
+      <td>
+        <icon v-bind="getPositionDelta(entry).icon" class="stroke-2 inline-block  fill-transparent"/>
+      </td>
+      <td class="text-right" v-text="entry.positionText" />
       <td>
         <icon :name="getDriverIcon(entry)" v-if="entry.isPlayer"
           :class="{
@@ -34,13 +36,39 @@
           <icon name="watch" v-if="entry.isFastestLap" class="fill-transparent" />
         </div>
       </td>
-      <template v-if="routeRaceId > 1">
-      <td v-text="getStandingsByDriverId(entry.id).featurePoints" class="border-l"/>
-      <td>
-        <icon v-bind="getDeltaStyles(entry.id).icon" class="stroke-2 inline-block  fill-transparent mr-2"/>
-        <span v-text="getDeltaStyles(entry.id).movement"/>
+    </tr>
+  </table>
+
+  <h2 class="text-xl">Driver Standings</h2>
+  <table>
+    <tr class="text-left">
+      <th colspan="3">Position</th>
+      <th>Driver</th>
+      <th>Team</th>
+      <th>Points</th>
+      <th>Gap</th>
+    </tr>
+    <tr v-for="(entry, index) in currentStandings"
+      :key="index"
+    >
+      <td class="px-0">
+        <icon v-bind="getStandingsDelta(entry.id).icon" class="stroke-2 inline-block  fill-transparent"/>
       </td>
-      </template>
+      <td class="text-right" v-text="index+1" />
+      <td>
+        <icon :name="getDriverIcon(entry)" v-if="entry.isPlayer"
+          :class="{
+            'stroke-0' : entry.isMain,
+            'stroke-current fill-transparent': !entry.isMain
+          }"
+        />
+      </td>
+      <td v-text="entry.name" />
+      <td v-text="entry.teamName" class="border-l-8"
+        :class="`border-team-${entry.teamId}`"
+      />
+      <td class="text-right" v-text="getStandingsByDriverId(entry.id).points"/>
+      <td class="text-right" v-text="getGapToLeader(entry.points).delta"/>
     </tr>
   </table>
 
@@ -54,9 +82,11 @@
 
 <script>
 import Icon from '@/components/Icon'
+import DeltaMixin from '@/mixins/Delta'
 
 export default {
   name: 'feature-results-page',
+  mixins: [DeltaMixin],
   created() {
     if (!this.$store.state.FeatureEvents.results.length) {
       this.$store.dispatch('FeatureEvents/init');
@@ -90,58 +120,33 @@ export default {
       return match.standings;
     },
 
-    // get points by id
-    // compare index to last race
+    getPositionDelta(standing) {
+      const startPosition = standing.grid;
+      const finishPosition = standing.position;
 
-    // id and points per round
+      return this.getDeltaStyles(startPosition, finishPosition);
+    }, 
+
+    getStandingsDelta(id) {
+      if(this.routeRaceId == 1) {
+      return this.getDeltaStyles(0, 0);
+      }
+
+      const currentPosition = this.currentStandings.findIndex(driver => driver.id === id);
+      const prevPosition = this.previousStandings.findIndex(driver => driver.id === id);
+      
+      return this.getDeltaStyles(prevPosition, currentPosition);
+    },
+
+    getGapToLeader(points) {
+      return this.getDeltaStyles(points, this.currentStandings[0].points);
+    },
+
+    
+    // lookup of driver's points w id for deltas
     getStandingsByDriverId(id) {
       return this.currentStandings.find(driver => driver.id === id);
     },
-
-    getDeltaByDriverId(id) {
-      const currentPosition = this.currentStandings.findIndex(driver => driver.id === id);
-      const prevPosition = this.previousStandings.findIndex(driver => driver.id === id);
-
-      if(this.routeRaceId > 1) {
-        return currentPosition - prevPosition;
-      }
-    },
-
-    // share for start/finish delta
-    getDeltaStyles(id) {
-      if(this.routeRaceId > 1) {
-        const delta = this.getDeltaByDriverId(id);
-        const movement = Math.abs(delta);
-        const icon = 'chevron';
-
-        if (delta == 0) {
-          return {
-            icon: {
-              name: 'minus'
-            }
-          };
-
-        // note: negative means you've gone up
-        } else if (delta < 1) {
-          return {
-            movement,
-            icon: {
-              class: 'text-green-600',
-              name: `${icon}-up`
-            }
-          };
-          
-        } else {
-          return {
-            movement,
-            icon: {
-              class: 'text-red-600',
-              name: `${icon}-down`
-            }
-          };
-        }
-      }
-    }
   },
   computed: {
     currentStandings() {
@@ -163,10 +168,11 @@ export default {
     },
 
     previousStandings() {
-      const prevId = this.routeRaceId - 1
-      if (!prevId) {
+      if (!this.routeRaceId > 1) {
         return []
       };
+
+      const prevId = this.routeRaceId - 1
       return this.getStandingsById(this.routeRaceId - 1);
     },
     
