@@ -56,7 +56,7 @@ export default new Router({
     },
     // scratchpad
     {
-      path: "/poc",
+      path: "/standings",
       name: "poc",
       component: POC
     },

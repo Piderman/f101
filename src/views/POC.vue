@@ -1,7 +1,10 @@
 <template>
 <div class="p-4">
-  <header>
+  <header class="mb-4">
     <h1 class="text-6xl">Series 1 as of {{recentRace.country}}</h1>
+    <router-link class="bg-gray-600 text-white  px-4 py-2 rounded " :to="{name: 'feature', params: {raceId: recentRace.id} }">
+      Latest Results
+    </router-link>
   </header>
   
   <div class="flex">
