@@ -47,7 +47,7 @@ export default [
   },
   {
     id: 4,
-    status: 'complete', //complete
+    status: 'complete',
     country: 'Russia',
     weather: {
       sprint: {
@@ -62,8 +62,19 @@ export default [
   },
   {
     id: 5,
-    status: 'upcoming',
-    country: 'Malaysia'
+    status: 'complete',
+    country: 'Malaysia',
+    isSafety: true,
+    weather: {
+      sprint: {
+        qualifying: ["cloud"],
+        race: ["rain"]
+      },
+      feature: {
+        qualifying: ["cloud"],
+        race: ["cloud", "drizzle", "rain"]
+      }
+    },
   },
   {
     id: 6,
