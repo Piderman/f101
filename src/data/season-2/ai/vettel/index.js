@@ -4,5 +4,5 @@ export default {
   name: "Sebastian Vettel",
   id: 8,
   teamId: 2,
-  raceData,
+  raceData
 };

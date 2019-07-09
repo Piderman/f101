@@ -7,7 +7,7 @@ export default [
   {
     id: 2,
     finishPosition: 4,
-    starPosition: 2, // todo: confirm
+    starPosition: 2 // todo: confirm
   },
   {
     id: 3,

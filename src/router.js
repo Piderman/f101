@@ -63,7 +63,7 @@ export default new Router({
 
     {
       path: "/drivers/:id",
-      name: 'driver',
+      name: "driver",
       component: () =>
         import(/* webpackChunkName: "drivers" */ "./views/DriverPage.vue")
     },
@@ -90,12 +90,12 @@ export default new Router({
           name: "sprint",
           component: () =>
             import(/* webpackChunkName: "weekend" */ "./views/weekend/sprintResults.vue")
-        },
+        }
       ]
     }
   ],
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     // @todo: to.meta.isSave to enable savedPosition
-    return { x: 0, y: 0 }
+    return { x: 0, y: 0 };
   }
 });

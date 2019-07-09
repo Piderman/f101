@@ -5,5 +5,5 @@ export default {
 
   players(state) {
     return state.drivers.filter(driver => driver.isPlayer);
-  },
-}
+  }
+};

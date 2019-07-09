@@ -2,8 +2,8 @@ export default [
   // series 1
   {
     id: 1,
-    status: 'complete',
-    country: 'China',
+    status: "complete",
+    country: "China",
     weather: {
       sprint: {
         qualifying: ["cloud"],
@@ -13,12 +13,12 @@ export default [
         qualifying: ["cloud"],
         race: ["drizzle"]
       }
-    },
+    }
   },
   {
     id: 2,
-    status: 'complete',
-    country: 'Austria',
+    status: "complete",
+    country: "Austria",
     weather: {
       sprint: {
         qualifying: ["rain"],
@@ -28,12 +28,12 @@ export default [
         qualifying: ["sun"], // missing data
         race: ["cloud"]
       }
-    },
+    }
   },
   {
     id: 3,
-    status: 'complete',
-    country: 'Abu Dhabi',
+    status: "complete",
+    country: "Abu Dhabi",
     weather: {
       sprint: {
         qualifying: ["sun"],
@@ -43,12 +43,12 @@ export default [
         qualifying: ["sun"], // missing data
         race: ["sun"]
       }
-    },
+    }
   },
   {
     id: 4,
-    status: 'complete',
-    country: 'Russia',
+    status: "complete",
+    country: "Russia",
     weather: {
       sprint: {
         qualifying: ["sun"],
@@ -58,12 +58,12 @@ export default [
         qualifying: ["rain"],
         race: ["sun"]
       }
-    },
+    }
   },
   {
     id: 5,
-    status: 'complete',
-    country: 'Malaysia',
+    status: "complete",
+    country: "Malaysia",
     isSafety: true,
     weather: {
       sprint: {
@@ -74,11 +74,11 @@ export default [
         qualifying: ["cloud"],
         race: ["cloud", "drizzle", "rain"]
       }
-    },
+    }
   },
   {
     id: 6,
-    status: 'upcoming',
-    country: 'Bahrain'
+    status: "upcoming",
+    country: "Bahrain"
   }
 ];

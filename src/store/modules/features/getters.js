@@ -5,8 +5,8 @@ export default {
   resultsForRoute(state, getter) {
     const raceId = router.currentRoute.params.raceId;
 
-    const currentRace =  state.results.find(race => {
-      return race.id == raceId
+    const currentRace = state.results.find(race => {
+      return race.id == raceId;
     });
 
     return currentRace;

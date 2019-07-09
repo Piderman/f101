@@ -1,11 +1,11 @@
 <template>
-<div>
+<div class="p-4  max-w-md">
   <driver-stats :driver="currentDriver" />
 </div>
 </template>
 
 <script>
-import DriverStats from '@/components/DriverStats.vue'
+import DriverStats from "@/components/DriverStats.vue";
 export default {
   name: "driver-page",
   computed: {
@@ -17,7 +17,6 @@ export default {
   },
   components: {
     DriverStats
-  },
-}
+  }
+};
 </script>
-

@@ -18,6 +18,6 @@ export default new Vuex.Store({
 
     // per race results
     FeatureEvents,
-    SprintEvents,
+    SprintEvents
   }
 });

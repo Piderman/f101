@@ -1,4 +1,4 @@
-import {orderBy, sum} from 'lodash';
+import { orderBy, sum } from "lodash";
 
 export default {
   constructors(state, getters, rootState) {
@@ -9,39 +9,37 @@ export default {
         points: sum(
           rootState.Drivers.drivers
             .filter(Driver => Driver.teamId === team.id)
-            .map(Driver=> Driver.featureTotal)
-        ),
-      }
+            .map(Driver => Driver.featureTotal)
+        )
+      };
     });
 
-    return orderBy(teamStandings, 'points', 'desc')
+    return orderBy(teamStandings, "points", "desc");
   },
-  
-  feature(state, getters, rootState) {
-    const tableData = rootState.Drivers.drivers
-      .map(Driver => {
-        return {
-          ...Driver.meta,
-          points: sum(Driver.featureResults.map(results => results.totalPoints))
-        }
-      });
 
-    return orderBy(tableData, 'points', 'desc')
+  feature(state, getters, rootState) {
+    const tableData = rootState.Drivers.drivers.map(Driver => {
+      return {
+        ...Driver.meta,
+        points: sum(Driver.featureResults.map(results => results.totalPoints))
+      };
+    });
+
+    return orderBy(tableData, "points", "desc");
   },
-  
+
   sprint(state, getters, rootState, rootGetters) {
-    const tableData = rootGetters['Drivers/players'].map(Driver => {
+    const tableData = rootGetters["Drivers/players"].map(Driver => {
       return {
         ...Driver.meta,
         points: sum(Driver.sprintResults.map(results => results.totalPoints))
-
-      }
+      };
     });
-    
-    return orderBy(tableData, 'points', 'desc')
+
+    return orderBy(tableData, "points", "desc");
   },
 
   completedGrandPrix(state, getters) {
-    return state.grandPrix.filter(grandPrix => grandPrix.status === 'complete');
+    return state.grandPrix.filter(grandPrix => grandPrix.status === "complete");
   }
 };

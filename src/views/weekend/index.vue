@@ -7,10 +7,9 @@
 
 <script>
 export default {
-  name: 'weekend-landing-page'
-}
+  name: "weekend-landing-page"
+};
 </script>
 
 <style>
-
 </style>

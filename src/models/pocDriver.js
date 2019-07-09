@@ -1,4 +1,4 @@
-import { find, max, min, sum, sumBy, } from "lodash";
+import { find, max, min, sum, sumBy } from "lodash";
 
 import points from "@/data/season-2/points.js";
 import teams from "@/data/season-2/teams.js";
@@ -17,16 +17,16 @@ class pocDriver {
 
     this.sprintQualifying = [];
     this.sprintResults = this.parseSprintResults(data.sprintData);
-    this.sprintTotal = sumBy(this.sprintResults, 'totalPoints');
-    
+    this.sprintTotal = sumBy(this.sprintResults, "totalPoints");
+
     this.featureQualifying = [];
     this.featureResults = this.parseFeatureResults(data.raceData);
-    this.featureTotal = sumBy(this.featureResults, 'totalPoints');
+    this.featureTotal = sumBy(this.featureResults, "totalPoints");
 
     this.setGridResults(data.qualifyingData);
 
     this.seriesTotal = this.isPlayer && this.sprintTotal + this.featureTotal;
-    
+
     // stats!!!
     // highest qual
     // win streak?
@@ -45,25 +45,29 @@ class pocDriver {
       isMain: this.isMain,
       raceNumber: this.raceNumber,
       teamId: this.teamId,
-      teamName: this.teamName,
-    }
+      teamName: this.teamName
+    };
   }
 
   get stats() {
     return {
       poles: this.featureResults.filter(race => race.grid === 1).length,
-      featureWins: this.featureResults.filter(race => race.position === 1).length,
-      featurePodiums: this.featureResults.filter(race => race.position < 4).length,
+      featureWins: this.featureResults.filter(race => race.position === 1)
+        .length,
+      featurePodiums: this.featureResults.filter(race => race.position < 4)
+        .length,
       fastestLaps: this.featureResults.filter(race => race.isFastestLap).length,
       sprintWins: this.sprintResults.filter(race => race.position === 1).length,
       highestPosition: min(this.featureResults.map(race => race.position)),
-      bestScore: max(this.featureResults.map((race, index) => {
-        return race.totalPoints + this.sprintResults[index].totalPoints;
-      })),
+      bestScore: max(
+        this.featureResults.map((race, index) => {
+          return race.totalPoints + this.sprintResults[index].totalPoints;
+        })
+      )
     };
   }
 
-  setGridResults(data=[]) {
+  setGridResults(data = []) {
     let sprints = [];
     let features = [];
 
@@ -82,12 +86,12 @@ class pocDriver {
         id,
         position: event.retiredPosition || event.finishPosition,
         time: event.time,
-        timeText: event.time || '-:--.---'
-      }
+        timeText: event.time || "-:--.---"
+      };
     }
   }
 
-  parseSprintResults(data=[]) {
+  parseSprintResults(data = []) {
     return data.map(event => {
       return {
         raceId: event.id,
@@ -96,7 +100,7 @@ class pocDriver {
           event.finishPosition
         ),
         get positionText() {
-          return event.retiredPosition ? 'DNF' : this.position;
+          return event.retiredPosition ? "DNF" : this.position;
         },
         get totalPoints() {
           return this.positionPoints || 0;
@@ -105,7 +109,7 @@ class pocDriver {
     });
   }
 
-  parseFeatureResults(data=[]) {
+  parseFeatureResults(data = []) {
     return data.map(event => {
       // add best lap so results/feature summary can show
       // table of best times and the gap
@@ -118,7 +122,7 @@ class pocDriver {
           event.finishPosition
         ),
         get positionText() {
-          return event.retiredPosition ? 'DNF' : this.position;
+          return event.retiredPosition ? "DNF" : this.position;
         },
         get totalPoints() {
           return sum([
