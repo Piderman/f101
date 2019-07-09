@@ -49,8 +49,11 @@
     </tr>
   </table>
 
-  <h2 class="text-xl">Driver Standings</h2>
-  <table>
+  <h2 class="text-xl mb-4">Driver Standings</h2>
+  <router-link class="bg-gray-600 text-white  px-4 py-2 rounded" :to="{name: 'poc' }">
+      Full standings
+  </router-link>
+  <table class="mt-4">
     <tr class="text-left">
       <th colspan="3">Position</th>
       <th>Driver</th>

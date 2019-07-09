@@ -26,5 +26,12 @@ export default [
       finishPosition: 4,
       time: '1:46.929'
     }
+  },
+  {
+    id: 5,
+    sprint: {
+      finishPosition: 2,
+      time: '1:47.221'
+    }
   }
 ];

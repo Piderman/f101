@@ -19,5 +19,17 @@ export default [
     id: 4,
     finishPosition: 1,
     starPosition: 1
+  },
+  {
+    id: 5,
+    finishPosition: 13,
+    starPosition: 2,
+    isFastestLap: true,
+    penalties: [
+      {
+        incident: "causing a collision", // ?
+        impact: "+10s"
+      }
+    ]
   }
 ];

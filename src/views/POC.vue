@@ -1,7 +1,10 @@
 <template>
 <div class="p-4">
-  <header>
+  <header class="mb-4">
     <h1 class="text-6xl">Series 1 as of {{recentRace.country}}</h1>
+    <router-link class="bg-gray-600 text-white  px-4 py-2 rounded " :to="{name: 'feature', params: {raceId: recentRace.id} }">
+      Latest Results
+    </router-link>
   </header>
   
   <div class="flex">
@@ -59,62 +62,7 @@
     </div>
   </div>
 
-  <hr>
-  <div v-for="Sprint in sprints"
-    :key="`sprints_${Sprint.id}`"
-  >
-    <p class="text-xl font-bold" v-text="`Sprint ${Sprint.id}`"/>
-    <table>
-      <tr v-for="(entry, index) in Sprint.standings"
-        :key="index"
-      >
-        <td v-text="entry.positionText" />
-        <td v-text="entry.name" />
-        <td v-text="entry.teamName" />
-        <td v-text="entry.points" class="text-right"/>
-      </tr>
-    </table>
-  </div>
 
-  <hr>
-
-  <div v-for="Feature in features" v-if="false"
-    :key="`features_${Feature.id}`"
-  >
-    <p class="text-xl font-bold" v-text="`Feature ${Feature.id}`"/>
-    <table>
-      <tr v-for="(entry, index) in Feature.standings"
-        :key="index"
-      >
-        <td v-text="entry.positionText" />
-        <td>
-          <icon :name="getDriverIcon(entry)" v-if="entry.isPlayer"
-            :class="{'stroke-current fill-transparent': !entry.isMain}"
-          />
-        </td>
-        <td v-text="entry.name" />
-        <td v-text="entry.teamName" class="border-l-8"
-          :class="`border-team-${entry.teamId}`"
-        />
-        <td class="text-right" v-text="entry.points"/>
-        <td>
-          <div class="flex flex-row">
-            <icon name="award" v-if="entry.isPole" class="fill-transparent" />
-            <icon name="watch" v-if="entry.isFastestLap" class="fill-transparent" />
-          </div>
-        </td>
-      </tr>
-    </table>
-  </div>
-
-
-  <div class="flex flex-row  flex-wrap  justify-around" v-if="false">
-    <driver-stats v-for="Driver in players"
-      :key="Driver.id"
-      :driver="getDriverById(Driver.id)"
-      class="w-1/2  lg:w-full  px-4"
-    />
-  </div>
   
 </div>
 </template>

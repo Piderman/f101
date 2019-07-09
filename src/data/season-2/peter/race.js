@@ -18,5 +18,10 @@ export default [
     id: 4,
     finishPosition: 10,
     starPosition: 16
+  },
+  {
+    id: 5,
+    retiredPosition: 16, // terminal damage after being punted
+    starPosition: 4
   }
 ];

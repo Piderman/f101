@@ -19,5 +19,12 @@ export default [
       finishPosition: 2,
       time: '1:49.104'
     }
+  },
+  {
+    id: 5,
+    sprint: {
+      finishPosition: 4,
+      time: '2:04.858' // wheel died
+    }
   }
 ];
