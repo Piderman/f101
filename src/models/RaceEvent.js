@@ -29,8 +29,7 @@ class RaceEvent {
     const eventKey =
       this.type === "sprint" ? "sprintQualifying" : "featureQualifying";
 
-    const event = this[Drivers]
-      .filter(Driver => Driver[eventKey].length)
+    const event = this[Drivers].filter(Driver => Driver[eventKey].length)
       .map(Driver => {
         const round = find(Driver[eventKey], { id: this.id });
 
@@ -38,27 +37,25 @@ class RaceEvent {
 
         return {
           ...Driver.meta,
-          
+
           position: round.position,
           timeText: round.timeText,
           time: round.time,
-          isPole: round.position === 1,
+          isPole: round.position === 1
         };
       })
-      .filter(val=>val);
+      .filter(val => val);
 
-    console.log('matches?', event.length);
-    
+    console.log("matches?", event.length);
+
     return orderBy(event, "position");
   }
-
 
   buildStandings() {
     const eventKey =
       this.type === "sprint" ? "sprintResults" : "featureResults";
 
-    const event = this[Drivers]
-      .filter(Driver => Driver[eventKey].length)
+    const event = this[Drivers].filter(Driver => Driver[eventKey].length)
       .map(Driver => {
         const round = find(Driver[eventKey], { raceId: this.id });
 
@@ -66,7 +63,7 @@ class RaceEvent {
 
         return {
           ...Driver.meta,
-          
+
           grid: round.grid,
           position: round.position,
           positionText: round.positionText,
@@ -79,11 +76,11 @@ class RaceEvent {
           }
         };
       })
-      .filter(val=>val);
+      .filter(val => val);
 
-      console.log('matches?', event.length);
+    console.log("matches?", event.length);
 
-      return orderBy(event, "position");
+    return orderBy(event, "position");
   }
 }
 

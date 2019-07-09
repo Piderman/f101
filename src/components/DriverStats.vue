@@ -24,83 +24,79 @@
 </template>
 
 <script>
-import Icon from '@/components/Icon.vue'
-
+import Icon from "@/components/Icon.vue";
 
 export default {
-  name: 'driver-stats',
+  name: "driver-stats",
   props: {
     driver: Object
   },
   data() {
     return {
       stats: this.parseStats(this.driver)
-    }
+    };
   },
   methods: {
     parseStats(driver) {
       const separator = {
         attrs: {
-          class:'mb-2  pb-2  border-b-2  border-gray-200'
+          class: "mb-2  pb-2  border-b-2  border-gray-200"
         }
-
       };
       return [
         {
-          title: 'Series Points',
+          title: "Series Points",
           value: driver.seriesTotal
         },
         {
-          title: 'Series Wins',
+          title: "Series Wins",
           value: 0
         },
         {
-          title: 'Highest Round Points',
+          title: "Highest Round Points",
           value: driver.stats.bestScore,
           ...separator
         },
 
-
         {
-          title: 'Sprint Points',
+          title: "Sprint Points",
           value: driver.sprintTotal
         },
         {
-          title: 'Sprint Wins',
+          title: "Sprint Wins",
           value: driver.stats.sprintWins,
           ...separator
         },
 
-
         {
-          title: 'Feature Points',
+          title: "Feature Points",
           value: driver.featureTotal
         },
         {
-          title: 'Feature Wins',
+          title: "Feature Wins",
           value: driver.stats.featureWins
         },
         {
           icon: {
-            name: 'podium',
-            class: 'fill-transparent  mirror'
+            name: "podium",
+            class: "fill-transparent  mirror"
           },
-          title: 'Podiums',
+          title: "Podiums",
           value: driver.stats.featurePodiums
         },
         {
-          title: 'Highest Finishing Position',
+          title: "Highest Finishing Position",
           value: driver.stats.highestPosition
         },
         {
-          title: 'Pole Positions',
+          title: "Pole Positions",
           value: driver.stats.poles
         },
         {
-          title: 'Fastest Laps',
+          title: "Fastest Laps",
           value: driver.stats.fastestLaps
-        },
-      ]
+        }
+      ];
     }
   },
   computed: {
@@ -109,13 +105,13 @@ export default {
       return {
         src: require(`@/assets/${this.driver.meta.firstName.toLowerCase()}-helmet.png`),
         alt: `${this.driver.name}'s racing hemlet`
-      }
+      };
     }
   },
   components: {
     Icon
   }
-}
+};
 </script>
 
 <style>

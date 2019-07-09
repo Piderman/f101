@@ -1,4 +1,4 @@
-import {find, orderBy} from 'lodash';
+import { find, orderBy } from "lodash";
 
 const pointSettings = {
   1: 30,
@@ -22,13 +22,11 @@ const pointSettings = {
 };
 
 class Points {
-  constructor() {
-    
-  }
+  constructor() {}
   /**
    * applies points to each driver for a raceweekend
    * order is important as awardPositionPointsToDriver should be last
-   * 
+   *
    * @param {DriverModel[]} drivers
    */
   static awardPointsForWeekend(drivers) {
@@ -38,8 +36,8 @@ class Points {
     drivers.forEach(Driver => {
       this.awardPositionPointsToDriver(Driver);
     });
-  };
-  
+  }
+
   /**
    * gives a driver points for their finishing postition
    * @param {DriverModel} driver
@@ -48,41 +46,40 @@ class Points {
     driver.incrementPointsForWeekend(this.getPoints(driver.position));
 
     driver.updateWeekendTotal();
-  };
-  
-  
+  }
+
   /**
    * gives the driver in pole position points
-   * @param {DriverModel[]} drivers 
+   * @param {DriverModel[]} drivers
    */
   static awardPolePositionPoints(drivers) {
-    const poleDriver = find(drivers, {grid: 1});
+    const poleDriver = find(drivers, { grid: 1 });
 
-    poleDriver.incrementPointsForWeekend(this.getPoints('pole'));
-  };
-  
+    poleDriver.incrementPointsForWeekend(this.getPoints("pole"));
+  }
+
   /**
    * gives the faster lap driver points
-   * @param {DriverModel[]} drivers 
+   * @param {DriverModel[]} drivers
    */
   static awardFastestLapPoints(drivers) {
-    const fastestDriver = orderBy(drivers, ['fastestLap', 'position'])[0];
+    const fastestDriver = orderBy(drivers, ["fastestLap", "position"])[0];
 
-    fastestDriver.incrementPointsForWeekend(this.getPoints('fastest'));
-  };
+    fastestDriver.incrementPointsForWeekend(this.getPoints("fastest"));
+  }
 
   /**
    * find matching points in settings
-   * 
+   *
    * @static
    * @param {string} type
    *   points key to lookup
-   * 
+   *
    * @returns Int
    */
   static getPoints(type) {
     return pointSettings[type] || 0;
-  };
-};
+  }
+}
 
 export default Points;

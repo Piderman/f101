@@ -89,34 +89,34 @@
 </template>
 
 <script>
-import Icon from '@/components/Icon'
-import DeltaMixin from '@/mixins/Delta'
+import Icon from "@/components/Icon";
+import DeltaMixin from "@/mixins/Delta";
 
 export default {
-  name: 'feature-results-page',
+  name: "feature-results-page",
   mixins: [DeltaMixin],
   created() {
     if (!this.$store.state.FeatureEvents.results.length) {
-      this.$store.dispatch('FeatureEvents/init');
+      this.$store.dispatch("FeatureEvents/init");
     }
   },
   methods: {
     getDriverIcon(entry) {
-      return entry.isMain ? 'user' : 'multi-user';
+      return entry.isMain ? "user" : "multi-user";
     },
 
     getFeatureRoute(raceId) {
       return {
-        name: 'feature',
+        name: "feature",
         params: {
           raceId
         }
-      }
+      };
     },
 
     getRaceById(raceId) {
       return this.$store.state.FeatureEvents.results.find(race => {
-        return race.id == raceId
+        return race.id == raceId;
       });
     },
 
@@ -133,16 +133,20 @@ export default {
       const finishPosition = standing.position;
 
       return this.getDeltaStyles(startPosition, finishPosition);
-    }, 
+    },
 
     getStandingsDelta(id) {
-      if(this.routeRaceId == 1) {
-      return this.getDeltaStyles(0, 0);
+      if (this.routeRaceId == 1) {
+        return this.getDeltaStyles(0, 0);
       }
 
-      const currentPosition = this.currentStandings.findIndex(driver => driver.id === id);
-      const prevPosition = this.previousStandings.findIndex(driver => driver.id === id);
-      
+      const currentPosition = this.currentStandings.findIndex(
+        driver => driver.id === id
+      );
+      const prevPosition = this.previousStandings.findIndex(
+        driver => driver.id === id
+      );
+
       return this.getDeltaStyles(prevPosition, currentPosition);
     },
 
@@ -150,11 +154,10 @@ export default {
       return this.getDeltaStyles(points, this.currentStandings[0].points);
     },
 
-    
     // lookup of driver's points w id for deltas
     getStandingsByDriverId(id) {
       return this.currentStandings.find(driver => driver.id === id);
-    },
+    }
   },
   computed: {
     currentStandings() {
@@ -177,13 +180,13 @@ export default {
 
     previousStandings() {
       if (!this.routeRaceId > 1) {
-        return []
-      };
+        return [];
+      }
 
-      const prevId = this.routeRaceId - 1
+      const prevId = this.routeRaceId - 1;
       return this.getStandingsById(this.routeRaceId - 1);
     },
-    
+
     routeRaceId() {
       return parseInt(this.$route.params.raceId, 10);
     },
@@ -194,14 +197,13 @@ export default {
 
     nextRaceRoute() {
       return this.getFeatureRoute(this.routeRaceId + 1);
-    },
+    }
   },
   components: {
     Icon
   }
-}
+};
 </script>
 
 <style>
-
 </style>

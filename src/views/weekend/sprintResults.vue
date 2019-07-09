@@ -22,10 +22,10 @@
 
 <script>
 export default {
-  name: 'sprint-results-page',
+  name: "sprint-results-page",
   created() {
     if (!this.$store.state.SprintEvents.results.length) {
-      this.$store.dispatch('SprintEvents/init');
+      this.$store.dispatch("SprintEvents/init");
     }
   },
   methods: {
@@ -33,22 +33,17 @@ export default {
       return {
         src: require(`@/assets/${entry.firstName.toLowerCase()}-helmet.png`),
         alt: `${entry.name}'s racing hemlet`
-      }
+      };
     },
     getSprintById(raceId) {
       return this.$store.state.SprintEvents.results.find(race => {
-        return race.id == raceId
+        return race.id == raceId;
       });
-    },
+    }
   },
   computed: {
     mockGrid() {
-      return [
-        'Matty',
-        'Simon',
-        'Chris',
-        'Peter',
-      ]
+      return ["Matty", "Simon", "Chris", "Peter"];
     },
 
     routeRaceId() {
@@ -57,7 +52,7 @@ export default {
 
     currentSprint() {
       return this.getSprintById(this.routeRaceId);
-    },
+    }
   }
-}
+};
 </script>

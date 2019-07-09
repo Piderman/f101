@@ -53,30 +53,30 @@
 </template>
 
 <script>
-import Icon from '@/components/Icon'
+import Icon from "@/components/Icon";
 
 export default {
-  name: 'weekend-summary-page',
+  name: "weekend-summary-page",
   created() {
     if (!this.$store.state.FeatureEvents.results.length) {
-      this.$store.dispatch('FeatureEvents/init');
+      this.$store.dispatch("FeatureEvents/init");
     }
   },
   methods: {
     getRaceById(raceId) {
       return this.$store.state.FeatureEvents.results.find(race => {
-        return race.id == raceId
+        return race.id == raceId;
       });
     },
 
     getSummaryRoute(raceId) {
       return {
-        name: 'overview',
+        name: "overview",
         params: {
           raceId
         }
-      }
-    },
+      };
+    }
   },
   computed: {
     currentGrandPrix() {
@@ -98,14 +98,13 @@ export default {
 
     nextRaceRoute() {
       return this.getSummaryRoute(this.routeRaceId + 1);
-    },
+    }
   },
   components: {
     Icon
   }
-}
+};
 </script>
 
 <style>
-
 </style>

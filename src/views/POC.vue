@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex';
+import { mapGetters, mapState } from "vuex";
 
 import { findIndex, orderBy, sum } from "lodash";
 
@@ -77,28 +77,28 @@ import Driver from "@/models/pocDriver";
 import Sprint from "@/models/SprintRace";
 import Feature from "@/models/FeatureRace";
 
-import DriverStats from '@/components/DriverStats.vue'
-import Icon from '@/components/Icon.vue'
+import DriverStats from "@/components/DriverStats.vue";
+import Icon from "@/components/Icon.vue";
 
 export default {
   name: "POC",
   created() {
     // move to router/app ?
     if (!this.$store.state.Drivers.drivers.length) {
-      this.$store.dispatch('Drivers/init');
+      this.$store.dispatch("Drivers/init");
     }
 
     this.sprints = [
       new Sprint(1, this.drivers),
       new Sprint(2, this.drivers),
-      new Sprint(3, this.drivers),
+      new Sprint(3, this.drivers)
       // new Sprint(4, this.drivers),
     ];
 
     this.features = [
       new Feature(1, this.drivers),
       new Feature(2, this.drivers),
-      new Feature(3, this.drivers),
+      new Feature(3, this.drivers)
     ];
   },
   data() {
@@ -110,7 +110,7 @@ export default {
   },
   methods: {
     getDriverIcon(entry) {
-      return entry.isMain ? 'user' : 'multi-user';
+      return entry.isMain ? "user" : "multi-user";
     },
     getDriverById(id) {
       return this.drivers.find(driver => driver.id === id);
@@ -122,11 +122,11 @@ export default {
     }),
 
     ...mapGetters({
-      players: 'Drivers/players',
-      constructorStandings: 'Standings/constructors',
-      featureStandings: 'Standings/feature',
-      sprintStandings: 'Standings/sprint',
-      completedWeekends: 'Standings/completedGrandPrix'
+      players: "Drivers/players",
+      constructorStandings: "Standings/constructors",
+      featureStandings: "Standings/feature",
+      sprintStandings: "Standings/sprint",
+      completedWeekends: "Standings/completedGrandPrix"
     }),
 
     recentRace() {
@@ -135,12 +135,11 @@ export default {
 
     standings() {
       return orderBy(this.players, "seriesTotal", "desc");
-    },
-
+    }
   },
   components: {
     DriverStats,
-    Icon,
+    Icon
   }
 };
 </script>
@@ -161,12 +160,10 @@ tr:nth-child(2n) td {
   background-color: #f9f9f9;
 }
 
-
 .team-idicator--small {
   display: inline-block;
   width: 4px;
   height: 0.75em;
   margin-right: 0.5em;
 }
-
 </style>

@@ -1,4 +1,4 @@
-import qualifyingData from './qualifying';
+import qualifyingData from "./qualifying";
 import raceData from "./race";
 import sprintData from "./sprint";
 

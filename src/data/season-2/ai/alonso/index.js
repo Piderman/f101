@@ -4,5 +4,5 @@ export default {
   name: "Fernando Alonso",
   id: 6,
   teamId: 3,
-  raceData,
+  raceData
 };
