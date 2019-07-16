@@ -1,4 +1,4 @@
-import { find, max, min, sum, sumBy } from "lodash";
+import { countBy, find, max, min, sum, sumBy } from "lodash";
 
 import points from "@/data/season-2/points.js";
 import teams from "@/data/season-2/teams.js";
@@ -49,6 +49,23 @@ class pocDriver {
     };
   }
 
+  get countbackData() {
+    return {
+      points: this.seriesTotal,
+      sprintPoints: this.sprintTotal,
+      featurePoints: this.featureTotal,
+      podiums: this.stats.featurePodiums,
+      poleCount: this.stats.poles,
+      fastLapCount: this.stats.fastestLaps,
+      featurePositions: Object.assign(
+        countBy(this.featureResults, 'position'), {
+          dnf: this.featureResults.filter(result => result.isRetired).length
+        }
+      )
+    }
+  }
+
+  // todo: move to summary'ish of general things likes wins/podiums/laps
   get stats() {
     return {
       poles: this.featureResults.filter(race => race.grid === 1).length,
@@ -66,6 +83,7 @@ class pocDriver {
       )
     };
   }
+
 
   setGridResults(data = []) {
     let sprints = [];
@@ -99,8 +117,9 @@ class pocDriver {
         positionPoints: pocDriver.getPointsForSprintPosition(
           event.finishPosition
         ),
+        isRetired: !!event.retiredPosition,
         get positionText() {
-          return event.retiredPosition ? "DNF" : this.position;
+          return this.isRetired ? "DNF" : this.position;
         },
         get totalPoints() {
           return this.positionPoints || 0;
@@ -121,8 +140,9 @@ class pocDriver {
         positionPoints: pocDriver.getPointsForFeaturePosition(
           event.finishPosition
         ),
+        isRetired: !!event.retiredPosition,
         get positionText() {
-          return event.retiredPosition ? "DNF" : this.position;
+          return this.isRetired ? "DNF" : this.position;
         },
         get totalPoints() {
           return sum([

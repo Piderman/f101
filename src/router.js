@@ -62,6 +62,13 @@ export default new Router({
     },
 
     {
+      path: "/countback",
+      name: "countback",
+      component: () =>
+        import(/* webpackChunkName: "drivers" */ "./views/CountbackPage.vue")
+    },
+
+    {
       path: "/drivers/:id",
       name: "driver",
       component: () =>
