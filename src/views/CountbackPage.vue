@@ -44,10 +44,10 @@
 
   <h2 class="text-2xl">Definitions</h2>
   <h3 class="text-lg font-bold">Combined Points</h3>
-  <p>The sum of <em>feature points</em> and <em>sprints points</em></p>
+  <p>The sum of <strong>feature points</strong> and <strong>sprints points</strong></p>
 
   <h3 class="text-lg font-bold mt-4">Feature Points</h3>
-  <p>Awarded for feature race positions including <em>bonuses</em> from pole and fastest lap</p>
+  <p>Awarded for feature race positions including bonuses from pole and fastest lap</p>
 
   <h3 class="text-lg font-bold mt-4">Spint Points</h3>
   <p>Awarded for sprint race positions</p>
