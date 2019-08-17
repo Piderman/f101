@@ -78,7 +78,17 @@ export default [
   },
   {
     id: 6,
-    status: "upcoming",
-    country: "Bahrain"
+    status: "complete",
+    country: "Bahrain",
+    weather: {
+      sprint: {
+        qualifying: ["sun"],
+        race: ["sun"]
+      },
+      feature: {
+        qualifying: ["sun"],
+        race: ["sun"]
+      }
+    }
   }
 ];

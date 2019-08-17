@@ -23,5 +23,11 @@ export default [
     id: 5,
     retiredPosition: 16, // terminal damage after being punted
     starPosition: 4
+  },
+  {
+    id: 6,
+    finishPosition: 2,
+    starPosition: 4,
+    isFastestLap: true
   }
 ];
