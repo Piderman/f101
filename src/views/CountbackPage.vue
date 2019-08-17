@@ -44,10 +44,10 @@
 
   <h2 class="text-2xl">Definitions</h2>
   <h3 class="text-lg font-bold">Combined Points</h3>
-  <p>The sum of <em>feature points</em> and <em>sprints points</em></p>
+  <p>The sum of <strong>feature points</strong> and <strong>sprints points</strong></p>
 
   <h3 class="text-lg font-bold mt-4">Feature Points</h3>
-  <p>Awarded for feature race positions including <em>bonuses</em> from pole and fastest lap</p>
+  <p>Awarded for feature race positions including bonuses from pole and fastest lap</p>
 
   <h3 class="text-lg font-bold mt-4">Spint Points</h3>
   <p>Awarded for sprint race positions</p>
@@ -61,18 +61,18 @@ export default {
   name: "driver-page",
   computed: {
     ...mapGetters({
-      players: "Drivers/players",
+      players: "Drivers/players"
     }),
     positionHeader() {
-      const positionKeys = Array.from({length: 16}, (val, index) => {
+      const positionKeys = Array.from({ length: 16 }, (val, index) => {
         return {
           lookup: index + 1,
           label: index + 1
-        }
+        };
       });
 
       positionKeys.push({
-        lookup: 'dnf',
+        lookup: "dnf",
         label: "DNF's"
       });
 
@@ -80,58 +80,62 @@ export default {
     },
     positionData() {
       if (!this.players.length) {
-        console.log('data not loaded');
+        console.log("data not loaded");
         return [];
       }
 
       return this.players.map(player => {
-        return [player.name].concat(this.positionHeader.map(position => {
-          return player.countbackData.featurePositions[position.lookup] || 0
-        }));
+        return [player.name].concat(
+          this.positionHeader.map(position => {
+            return player.countbackData.featurePositions[position.lookup] || 0;
+          })
+        );
       });
     },
 
     miscHeader() {
       return [
         {
-          lookup: 'points',
-          label: 'Combined Points'
+          lookup: "points",
+          label: "Combined Points"
         },
         {
-          lookup: 'featurePoints',
-          label: 'Feature Points'
+          lookup: "featurePoints",
+          label: "Feature Points"
         },
         {
-          lookup: 'sprintPoints',
-          label: 'Sprint Points'
+          lookup: "sprintPoints",
+          label: "Sprint Points"
         },
         {
-          lookup: 'poleCount',
-          label: 'Pole Positions'
+          lookup: "poleCount",
+          label: "Pole Positions"
         },
         {
-          lookup: 'fastLapCount',
-          label: 'Fastest Laps'
+          lookup: "fastLapCount",
+          label: "Fastest Laps"
         },
         {
-          lookup: 'podiums',
-          label: 'Podiums'
+          lookup: "podiums",
+          label: "Podiums"
         }
-      ]
+      ];
     },
 
     miscData() {
       if (!this.players.length) {
-        console.log('data not loaded');
+        console.log("data not loaded");
         return [];
       }
 
       return this.players.map(player => {
-        return [player.name].concat(this.miscHeader.map(misc => {
-          return player.countbackData[misc.lookup] || 0;
-        }));
-      })
-    },
+        return [player.name].concat(
+          this.miscHeader.map(misc => {
+            return player.countbackData[misc.lookup] || 0;
+          })
+        );
+      });
+    }
   }
 };
 </script>
@@ -139,5 +143,4 @@ export default {
 </script>
 
 <style>
-
 </style>
