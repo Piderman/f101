@@ -61,18 +61,18 @@ export default {
   name: "driver-page",
   computed: {
     ...mapGetters({
-      players: "Drivers/players",
+      players: "Drivers/players"
     }),
     positionHeader() {
-      const positionKeys = Array.from({length: 16}, (val, index) => {
+      const positionKeys = Array.from({ length: 16 }, (val, index) => {
         return {
           lookup: index + 1,
           label: index + 1
-        }
+        };
       });
 
       positionKeys.push({
-        lookup: 'dnf',
+        lookup: "dnf",
         label: "DNF's"
       });
 
@@ -80,58 +80,62 @@ export default {
     },
     positionData() {
       if (!this.players.length) {
-        console.log('data not loaded');
+        console.log("data not loaded");
         return [];
       }
 
       return this.players.map(player => {
-        return [player.name].concat(this.positionHeader.map(position => {
-          return player.countbackData.featurePositions[position.lookup] || 0
-        }));
+        return [player.name].concat(
+          this.positionHeader.map(position => {
+            return player.countbackData.featurePositions[position.lookup] || 0;
+          })
+        );
       });
     },
 
     miscHeader() {
       return [
         {
-          lookup: 'points',
-          label: 'Combined Points'
+          lookup: "points",
+          label: "Combined Points"
         },
         {
-          lookup: 'featurePoints',
-          label: 'Feature Points'
+          lookup: "featurePoints",
+          label: "Feature Points"
         },
         {
-          lookup: 'sprintPoints',
-          label: 'Sprint Points'
+          lookup: "sprintPoints",
+          label: "Sprint Points"
         },
         {
-          lookup: 'poleCount',
-          label: 'Pole Positions'
+          lookup: "poleCount",
+          label: "Pole Positions"
         },
         {
-          lookup: 'fastLapCount',
-          label: 'Fastest Laps'
+          lookup: "fastLapCount",
+          label: "Fastest Laps"
         },
         {
-          lookup: 'podiums',
-          label: 'Podiums'
+          lookup: "podiums",
+          label: "Podiums"
         }
-      ]
+      ];
     },
 
     miscData() {
       if (!this.players.length) {
-        console.log('data not loaded');
+        console.log("data not loaded");
         return [];
       }
 
       return this.players.map(player => {
-        return [player.name].concat(this.miscHeader.map(misc => {
-          return player.countbackData[misc.lookup] || 0;
-        }));
-      })
-    },
+        return [player.name].concat(
+          this.miscHeader.map(misc => {
+            return player.countbackData[misc.lookup] || 0;
+          })
+        );
+      });
+    }
   }
 };
 </script>
@@ -139,5 +143,4 @@ export default {
 </script>
 
 <style>
-
 </style>

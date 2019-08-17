@@ -58,11 +58,12 @@ class pocDriver {
       poleCount: this.stats.poles,
       fastLapCount: this.stats.fastestLaps,
       featurePositions: Object.assign(
-        countBy(this.featureResults, 'position'), {
+        countBy(this.featureResults, "position"),
+        {
           dnf: this.featureResults.filter(result => result.isRetired).length
         }
       )
-    }
+    };
   }
 
   // todo: move to summary'ish of general things likes wins/podiums/laps
@@ -83,7 +84,6 @@ class pocDriver {
       )
     };
   }
-
 
   setGridResults(data = []) {
     let sprints = [];
