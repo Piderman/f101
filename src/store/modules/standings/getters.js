@@ -39,7 +39,7 @@ export default {
     return orderBy(tableData, "points", "desc");
   },
 
-  completedGrandPrix(state, getters) {
+  completedGrandPrix(state) {
     return state.grandPrix.filter(grandPrix => grandPrix.status === "complete");
   }
 };

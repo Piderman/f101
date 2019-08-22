@@ -1,7 +1,7 @@
 import Sprint from "@/models/SprintRace";
 
 export default {
-  init(context, payload) {
+  init(context) {
     const drivers = context.rootState.Drivers.drivers;
     context.dispatch("parseSprints", drivers);
   },

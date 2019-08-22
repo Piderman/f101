@@ -1,7 +1,7 @@
 import Feature from "@/models/FeatureRace";
 
 export default {
-  init(context, payload) {
+  init(context) {
     const drivers = context.rootState.Drivers.drivers;
     context.dispatch("parseFeatures", drivers);
   },

@@ -183,7 +183,6 @@ export default {
         return [];
       }
 
-      const prevId = this.routeRaceId - 1;
       return this.getStandingsById(this.routeRaceId - 1);
     },
 
