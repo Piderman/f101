@@ -1,6 +1,6 @@
 <template>
-<div class="p-4  pt-20">
-  <header class="h-16 px-4  fixed inset-x-0 top-0  flex justify-between  items-center  bg-white border-b">
+<div class="p-4">
+  <header class="h-16 px-4  sticky inset-x-0 top-0  flex justify-between  items-center  bg-white border-b">
       <div>
         <router-link class="border  px-4 py-2 rounded " :to="prevRaceRoute">Previous</router-link>
       </div>
@@ -50,9 +50,11 @@
   </table>
 
   <h2 class="text-xl mb-4">Driver Standings</h2>
-  <router-link class="bg-gray-600 text-white  px-4 py-2 rounded" :to="{name: 'poc' }">
+  
+  <router-link class="bg-gray-600 text-white  px-4 py-2 rounded" :to="{name: 'series', params: {series: $route.params.series} }">
       Full standings
   </router-link>
+  
   <table class="mt-4">
     <tr class="text-left">
       <th colspan="3">Position</th>
@@ -111,7 +113,7 @@ export default {
       return {
         name: "feature-results",
         params: {
-          series: 1,
+          series: this.$route.params.series,
           weekend: raceId
         }
       };
@@ -129,6 +131,10 @@ export default {
         return race.id == raceId;
       });
 
+      if(!match) {
+        return {};
+      }
+
       return match.standings;
     },
 
@@ -140,7 +146,7 @@ export default {
     },
 
     getStandingsDelta(id) {
-      if (this.routeRaceId == 1) {
+      if (!this.previousStandings.id) {
         return this.getDeltaStyles(0, 0);
       }
 

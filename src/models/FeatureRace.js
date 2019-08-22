@@ -1,8 +1,8 @@
 import RaceEvent from "./RaceEvent";
 
 class FeatureRace extends RaceEvent {
-  constructor(id, drivers) {
-    super(id, "feature", drivers);
+  constructor(id, seriesId, drivers) {
+    super(id, seriesId, "feature", drivers);
   }
 }
 

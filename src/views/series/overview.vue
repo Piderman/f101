@@ -5,7 +5,7 @@
     <p>Next Race: {{nextGrandPrixLabel}}</p>
     <p>Upcoming Race: {{upcomingGrandPrixLabel}}</p>
 
-    <router-link v-if="false" class="inline-block my-4	bg-gray-600 text-white  px-4 py-2 rounded " :to="{name: 'feature-results', params: {
+    <router-link class="inline-block my-4	bg-gray-600 text-white  px-4 py-2 rounded " :to="{name: 'feature-results', params: {
         series: $route.params.series,
         weekend: previousGrandPrix.id}
     }">

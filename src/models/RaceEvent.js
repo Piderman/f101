@@ -7,18 +7,17 @@ const Drivers = Symbol("Drivers");
  */
 class RaceEvent {
   // todo: support grandPrix event
-  constructor(id, type, drivers) {
+  constructor(id, seriesId, type, drivers) {
     this[Drivers] = drivers;
     this.id = id;
+    this.seriesId = seriesId;
     this.type = type;
 
     this.standings = this.buildStandings();
 
     this.qualifying = this.buildGrid();
 
-    this.podium = this.standings.filter(entry => {
-      return entry.position < 4;
-    });
+    this.podium = this.standings.slice(0,3);
 
     this.winner = this.standings.find(entry => entry.position === 1);
     // weather stats
@@ -57,7 +56,9 @@ class RaceEvent {
 
     const event = this[Drivers].filter(Driver => Driver[eventKey].length)
       .map(Driver => {
-        const round = find(Driver[eventKey], { raceId: this.id });
+        const series = find(Driver.series, {seriesId: this.seriesId});
+
+        const round = find(series[eventKey], { raceId: this.id });
 
         if (!round) return null;
 

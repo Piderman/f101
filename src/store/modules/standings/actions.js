@@ -1,4 +1,4 @@
-import { orderBy, sum } from "lodash";
+import { find, orderBy, sum } from "lodash";
 
 export default {
   init(context) {
@@ -10,10 +10,13 @@ export default {
         };
 
         const driverData = context.rootState.Drivers.drivers.map(Driver => {
+          const series = find(Driver.series, {
+            seriesId: context.state.routeSeries
+          });
           return {
             ...Driver.meta,
             points: sum(
-              Driver.featureResults
+              series.featureResults
                 .slice(0, index + 1)
                 .map(feature => feature.totalPoints)
             )
