@@ -131,7 +131,7 @@ export default {
         return race.id == raceId;
       });
 
-      if(!match) {
+      if (!match) {
         return {};
       }
 

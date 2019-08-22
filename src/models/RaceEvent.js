@@ -17,7 +17,7 @@ class RaceEvent {
 
     this.qualifying = this.buildGrid();
 
-    this.podium = this.standings.slice(0,3);
+    this.podium = this.standings.slice(0, 3);
 
     this.winner = this.standings.find(entry => entry.position === 1);
     // weather stats
@@ -56,7 +56,7 @@ class RaceEvent {
 
     const event = this[Drivers].filter(Driver => Driver[eventKey].length)
       .map(Driver => {
-        const series = find(Driver.series, {seriesId: this.seriesId});
+        const series = find(Driver.series, { seriesId: this.seriesId });
 
         const round = find(series[eventKey], { raceId: this.id });
 
