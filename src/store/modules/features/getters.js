@@ -2,7 +2,7 @@ import router from "@/router";
 
 export default {
   // warn: doesn't update on router change :(
-  resultsForRoute(state, getter) {
+  resultsForRoute(state) {
     const raceId = router.currentRoute.params.raceId;
 
     const currentRace = state.results.find(race => {

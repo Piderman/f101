@@ -70,10 +70,8 @@
 <script>
 import { mapGetters, mapState } from "vuex";
 
-import { findIndex, orderBy, sum } from "lodash";
+import { orderBy } from "lodash";
 
-import season2 from "@/data/season-2";
-import Driver from "@/models/pocDriver";
 import Sprint from "@/models/SprintRace";
 import Feature from "@/models/FeatureRace";
 
