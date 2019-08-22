@@ -1,94 +1,143 @@
 export default [
-  // series 1
   {
-    id: 1,
-    status: "complete",
-    country: "China",
-    weather: {
-      sprint: {
-        qualifying: ["cloud"],
-        race: ["drizzle"]
+    seriesId: 1,
+    events: [
+      {
+        id: 1,
+        status: "complete",
+        country: "China",
+        weather: {
+          sprint: {
+            qualifying: ["cloud"],
+            race: ["drizzle"]
+          },
+          feature: {
+            qualifying: ["cloud"],
+            race: ["drizzle"]
+          }
+        }
       },
-      feature: {
-        qualifying: ["cloud"],
-        race: ["drizzle"]
+      {
+        id: 2,
+        status: "complete",
+        country: "Austria",
+        weather: {
+          sprint: {
+            qualifying: ["rain"],
+            race: ["sun"]
+          },
+          feature: {
+            qualifying: ["sun"], // missing data
+            race: ["cloud"]
+          }
+        }
+      },
+      {
+        id: 3,
+        status: "complete",
+        country: "Abu Dhabi",
+        weather: {
+          sprint: {
+            qualifying: ["sun"],
+            race: ["sun"]
+          },
+          feature: {
+            qualifying: ["sun"], // missing data
+            race: ["sun"]
+          }
+        }
+      },
+      {
+        id: 4,
+        status: "complete",
+        country: "Russia",
+        weather: {
+          sprint: {
+            qualifying: ["sun"],
+            race: ["sun"]
+          },
+          feature: {
+            qualifying: ["rain"],
+            race: ["sun"]
+          }
+        }
+      },
+      {
+        id: 5,
+        status: "complete",
+        country: "Malaysia",
+        isSafety: true,
+        weather: {
+          sprint: {
+            qualifying: ["cloud"],
+            race: ["rain"]
+          },
+          feature: {
+            qualifying: ["cloud"],
+            race: ["cloud", "drizzle", "rain"]
+          }
+        }
+      },
+      {
+        id: 6,
+        status: "complete",
+        country: "Bahrain",
+        weather: {
+          sprint: {
+            qualifying: ["sun"],
+            race: ["sun"]
+          },
+          feature: {
+            qualifying: ["sun"],
+            race: ["sun"]
+          }
+        }
       }
-    }
+    ]
   },
   {
-    id: 2,
-    status: "complete",
-    country: "Austria",
-    weather: {
-      sprint: {
-        qualifying: ["rain"],
-        race: ["sun"]
+    seriesId: 2,
+    events: [
+      {
+        id: 7,
+        status: "complete",
+        country: "USA",
+        weather: {
+          sprint: {
+            qualifying: ["sun"],
+            race: ["sun"]
+          },
+          feature: {
+            qualifying: ["rain"],
+            race: ["sun"]
+          }
+        }
       },
-      feature: {
-        qualifying: ["sun"], // missing data
-        race: ["cloud"]
-      }
-    }
-  },
-  {
-    id: 3,
-    status: "complete",
-    country: "Abu Dhabi",
-    weather: {
-      sprint: {
-        qualifying: ["sun"],
-        race: ["sun"]
+      {
+        id: 8,
+        status: "upcoming",
+        country: "Germany"
       },
-      feature: {
-        qualifying: ["sun"], // missing data
-        race: ["sun"]
-      }
-    }
-  },
-  {
-    id: 4,
-    status: "complete",
-    country: "Russia",
-    weather: {
-      sprint: {
-        qualifying: ["sun"],
-        race: ["sun"]
+      {
+        id: 9,
+        status: "upcoming",
+        country: "Spain"
       },
-      feature: {
-        qualifying: ["rain"],
-        race: ["sun"]
-      }
-    }
-  },
-  {
-    id: 5,
-    status: "complete",
-    country: "Malaysia",
-    isSafety: true,
-    weather: {
-      sprint: {
-        qualifying: ["cloud"],
-        race: ["rain"]
+      {
+        id: 10,
+        status: "upcoming",
+        country: "Australia"
       },
-      feature: {
-        qualifying: ["cloud"],
-        race: ["cloud", "drizzle", "rain"]
-      }
-    }
-  },
-  {
-    id: 6,
-    status: "complete",
-    country: "Bahrain",
-    weather: {
-      sprint: {
-        qualifying: ["sun"],
-        race: ["sun"]
+      {
+        id: 11,
+        status: "upcoming",
+        country: "Hungary"
       },
-      feature: {
-        qualifying: ["sun"],
-        race: ["sun"]
+      {
+        id: 12,
+        status: "upcoming",
+        country: "Singapore"
       }
-    }
+    ]
   }
 ];

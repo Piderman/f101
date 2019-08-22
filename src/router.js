@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import POC from "./views/POC.vue";
+import store from "./store";
 
 Vue.use(Router);
 
@@ -30,27 +31,44 @@ export default new Router({
         import(/* webpackChunkName: "leaderboard" */ "./views/Leaderboard.vue")
     },
     {
-      path: "/results/:weekend",
+      path: "/series/:series",
       component: () =>
-        import(/* webpackChunkName: "results" */ "./views/results/index.vue"),
+        import(/* webpackChunkName: "results" */ "./views/series/index.vue"),
+      beforeEnter(to, from, next) {
+        store.commit("Standings/setRouteSeries", to.params.series);
+        next();
+      },
       children: [
         {
           path: "",
-          name: "overview-old",
+          name: "series",
           component: () =>
-            import(/* webpackChunkName: "results" */ "./views/results/overview.vue")
+            import(/* webpackChunkName: "results" */ "./views/series/overview.vue")
         },
         {
-          path: "race",
-          name: "race-results",
+          path: "results/:weekend",
           component: () =>
-            import(/* webpackChunkName: "results" */ "./views/results/race.vue")
-        },
-        {
-          path: "qualifying",
-          name: "qualifying-results",
-          component: () =>
-            import(/* webpackChunkName: "results" */ "./views/results/qualifying.vue")
+            import(/* webpackChunkName: "results" */ "./views/results/index.vue"),
+          children: [
+            {
+              path: "",
+              name: "overview-old",
+              component: () =>
+                import(/* webpackChunkName: "results" */ "./views/results/overview.vue")
+            },
+            {
+              path: "feature",
+              name: "feature-results",
+              component: () =>
+                import(/* webpackChunkName: "weekend" */ "./views/weekend/featureResults.vue")
+            },
+            {
+              path: "qualifying",
+              name: "qualifying-results",
+              component: () =>
+                import(/* webpackChunkName: "results" */ "./views/results/qualifying.vue")
+            }
+          ]
         }
       ]
     },

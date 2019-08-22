@@ -89,6 +89,8 @@
 </template>
 
 <script>
+import { mapGetters, mapState } from "vuex";
+
 import Icon from "@/components/Icon";
 import DeltaMixin from "@/mixins/Delta";
 
@@ -107,14 +109,16 @@ export default {
 
     getFeatureRoute(raceId) {
       return {
-        name: "feature",
+        name: "feature-results",
         params: {
-          raceId
+          series: 1,
+          weekend: raceId
         }
       };
     },
 
     getRaceById(raceId) {
+      // todo: with series id too?
       return this.$store.state.FeatureEvents.results.find(race => {
         return race.id == raceId;
       });
@@ -160,6 +164,17 @@ export default {
     }
   },
   computed: {
+    ...mapGetters({
+      seriesGrandPrix: "Standings/currentSeries"
+      // players: "Drivers/players",
+      // constructorStandings: "Standings/constructors",
+      // featureStandings: "Standings/feature",
+      // sprintStandings: "Standings/sprint",
+      // previousGrandPrix: "Standings/previousGrandPrix",
+      // nextGrandPrix: "Standings/nextGrandPrix",
+      // upcomingGrandPrix: "Standings/upcomingGrandPrix",
+    }),
+
     currentStandings() {
       return this.getStandingsById(this.routeRaceId);
     },
@@ -169,7 +184,7 @@ export default {
     },
 
     currentGrandPrix() {
-      return this.$store.state.Standings.grandPrix.find(grandPrix => {
+      return this.seriesGrandPrix.find(grandPrix => {
         return grandPrix.id === this.routeRaceId;
       });
     },
@@ -188,7 +203,7 @@ export default {
     },
 
     routeRaceId() {
-      return parseInt(this.$route.params.raceId, 10);
+      return parseInt(this.$route.params.weekend, 10);
     },
 
     prevRaceRoute() {

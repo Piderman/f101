@@ -9,7 +9,8 @@ export default {
   state: {
     grandPrix: season2.grandPrix,
     runningFeature: [],
-    teams: season2.teams // yes?
+    teams: season2.teams,
+    routeSeries: 1
   },
   actions,
   getters,

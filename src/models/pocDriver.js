@@ -15,6 +15,10 @@ class pocDriver {
     this.teamName = find(teams, { id: data.teamId }).name;
     this.isMain = data.isMain;
 
+    this.series = this.parseSeries(data.sprintData, data.raceData);
+    this.careerPoints = sumBy(this.series, "seriesTotal");
+
+    // @depricated
     this.sprintQualifying = [];
     this.sprintResults = this.parseSprintResults(data.sprintData);
     this.sprintTotal = sumBy(this.sprintResults, "totalPoints");
@@ -26,6 +30,7 @@ class pocDriver {
     this.setGridResults(data.qualifyingData);
 
     this.seriesTotal = this.isPlayer && this.sprintTotal + this.featureTotal;
+    // end depricated
 
     // stats!!!
     // highest qual
@@ -85,6 +90,44 @@ class pocDriver {
     };
   }
 
+  /**
+   * builds sprint/feature values of each series' events
+   *
+   * @todo: try/catch for failed/not found parts
+   * @param {*} sprintPayload
+   * @param {*} featurePayload
+   */
+  parseSeries(sprintPayload = [], featurePayload = []) {
+    const self = this;
+    const seriesIds = featurePayload.map(race => race.seriesId);
+
+    return seriesIds.map(id => {
+      const matchingSprint = find(sprintPayload, { seriesId: id }) || {};
+      const matchingFeature = find(featurePayload, { seriesId: id }) || {};
+
+      const result = {
+        seriesId: id,
+        sprintResults: self.parseSprintResults(matchingSprint.events),
+        featureResults: self.parseFeatureResults(matchingFeature.events),
+        get sprintTotal() {
+          return sumBy(this.sprintResults, "totalPoints");
+        },
+        get featureTotal() {
+          return sumBy(this.featureResults, "totalPoints");
+        },
+        get seriesTotal() {
+          return self.isPlayer && this.sprintTotal + this.featureTotal;
+        }
+      };
+
+      return result;
+    });
+  }
+
+  /**
+   * what does this do?
+   * @param {Array} data
+   */
   setGridResults(data = []) {
     let sprints = [];
     let features = [];

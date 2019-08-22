@@ -2,6 +2,8 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+    <router-link :to="{name: 'series', params: {series: 1}}">standings overview</router-link>
   </div>
 </template>
 
