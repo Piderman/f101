@@ -85,7 +85,7 @@
 <script>
 import { mapGetters, mapState } from "vuex";
 
-import { findIndex, get, orderBy, sum } from "lodash";
+import { get, orderBy } from "lodash";
 
 import DriverStats from "@/components/DriverStats.vue";
 import Icon from "@/components/Icon.vue";
@@ -100,11 +100,11 @@ export default {
   },
   data() {
     return {
-      isShowAllStandings: false,
+      isShowAllStandings: false
     };
   },
   methods: {
-    showAllStandings(){
+    showAllStandings() {
       this.isShowAllStandings = true;
     },
 
@@ -136,8 +136,8 @@ export default {
     },
 
     summaryTable() {
-      const limmit = this.isShowAllStandings ? undefined : 5; 
-      
+      const limmit = this.isShowAllStandings ? undefined : 5;
+
       return this.seriesFeatureStandings.slice(0, limmit);
     },
 

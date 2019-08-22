@@ -13,10 +13,10 @@ export default {
               const series = find(Driver.series, {
                 seriesId: state.routeSeries
               });
-              
-                return series.featureTotal;
+
+              return series.featureTotal;
             })
-          )
+        )
       };
     });
 
@@ -77,14 +77,12 @@ export default {
     return orderBy(tableData, "points", "desc");
   },
 
-  currentSeries(state, getters) {
+  currentSeries(state) {
     const index = state.routeSeries || 1;
 
     if (!index) {
       return [];
     }
-
-    // console.log('series:', index);
 
     return state.grandPrix[index - 1].events;
   },

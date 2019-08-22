@@ -119,7 +119,7 @@ export default new Router({
       ]
     }
   ],
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior() {
     // @todo: to.meta.isSave to enable savedPosition
     return { x: 0, y: 0 };
   }
