@@ -115,8 +115,18 @@ export default [
       },
       {
         id: 8,
-        status: "upcoming",
-        country: "Germany"
+        status: "complete",
+        country: "Germany",
+        weather: {
+          sprint: {
+            qualifying: ["cloud"],
+            race: ["sun"]
+          },
+          feature: {
+            qualifying: ["sun"],
+            race: ["sun", "rain"]
+          }
+        }
       },
       {
         id: 9,
