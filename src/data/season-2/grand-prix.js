@@ -130,8 +130,18 @@ export default [
       },
       {
         id: 9,
-        status: "upcoming",
-        country: "Spain"
+        status: "complete",
+        country: "Spain",
+        weather: {
+          sprint: {
+            qualifying: ["sun"],
+            race: ["sun"]
+          },
+          feature: {
+            qualifying: ["rain"],
+            race: ["cloud", "drizzle"]
+          }
+        }
       },
       {
         id: 10,

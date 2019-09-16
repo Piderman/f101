@@ -46,6 +46,11 @@ export default [
         id: 8,
         finishPosition: 10,
         starPosition: 15
+      },
+      {
+        id: 9,
+        finishPosition: 5,
+        starPosition: 5,
       }
     ]
   }

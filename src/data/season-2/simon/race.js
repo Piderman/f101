@@ -55,6 +55,11 @@ export default [
         finishPosition: 2,
         starPosition: 3,
         isFastestLap: true
+      },
+      {
+        id: 9,
+        finishPosition: 1,
+        starPosition: 2,
       }
     ]
   }

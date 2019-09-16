@@ -47,6 +47,17 @@ export default [
         id: 8,
         finishPosition: 7,
         starPosition: 4
+      },
+      {
+        id: 9,
+        retiredPosition: 16, // too many corner cuts
+        starPosition: 16,
+        penalties: [
+          {
+            incident: "ignoring track limits",
+            impact: "DSQ"
+          }
+        ]
       }
     ]
   }
