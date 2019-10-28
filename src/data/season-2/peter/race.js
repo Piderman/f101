@@ -58,6 +58,17 @@ export default [
             impact: "DSQ"
           }
         ]
+      },
+      {
+        id: 10,
+        finishPosition: 14,
+        starPosition: 16,
+        penalties: [
+          {
+            incident: "collision", // assumed?
+            impact: "+10s"
+          }
+        ]
       }
     ]
   }

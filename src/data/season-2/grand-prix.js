@@ -145,8 +145,18 @@ export default [
       },
       {
         id: 10,
-        status: "upcoming",
-        country: "Australia"
+        status: "complete",
+        country: "Australia",
+        weather: {
+          sprint: {
+            qualifying: ["sun"],
+            race: ["sun"]
+          },
+          feature: {
+            qualifying: ["cloud"],
+            race: ["sun"]
+          }
+        }
       },
       {
         id: 11,
