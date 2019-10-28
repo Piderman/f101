@@ -67,7 +67,7 @@
       :key="index"
     >
       <td class="px-0">
-        <icon v-bind="getStandingsDelta(entry.id).icon" class="stroke-2 inline-block  fill-transparent"/>
+        <icon v-bind="getStandingsDelta(entry).icon" class="stroke-2 inline-block  fill-transparent"/>
       </td>
       <td class="text-right" v-text="index+1" />
       <td>
@@ -145,14 +145,15 @@ export default {
       return this.getDeltaStyles(startPosition, finishPosition);
     },
 
-    getStandingsDelta(id) {
-      if (!this.previousStandings.id) {
+    getStandingsDelta({ id }) {
+      if (!this.previousStandings.length) {
         return this.getDeltaStyles(0, 0);
       }
 
       const currentPosition = this.currentStandings.findIndex(
         driver => driver.id === id
       );
+
       const prevPosition = this.previousStandings.findIndex(
         driver => driver.id === id
       );
