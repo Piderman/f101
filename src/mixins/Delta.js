@@ -5,16 +5,16 @@ export default {
       const movement = Math.abs(delta);
       const icon = "chevron";
 
-      if (delta == 0) {
+      if (!delta) {
         return {
           delta,
           icon: {
-            name: "minus"
+            name: "minus" // really a dash
           }
         };
       }
 
-      if (delta > 1) {
+      if (delta > 0) {
         return {
           delta,
           movement,
