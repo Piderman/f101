@@ -69,6 +69,11 @@ export default [
             impact: "+10s"
           }
         ]
+      },
+      {
+        id: 11,
+        finishPosition: 3,
+        starPosition: 4
       }
     ]
   }

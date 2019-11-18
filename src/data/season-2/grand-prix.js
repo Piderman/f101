@@ -160,8 +160,18 @@ export default [
       },
       {
         id: 11,
-        status: "upcoming",
-        country: "Hungary"
+        status: "complete",
+        country: "Hungary",
+        weather: {
+          sprint: {
+            qualifying: ["cloud"],
+            race: ["sun"]
+          },
+          feature: {
+            qualifying: ["sun"],
+            race: ["cloud"]
+          }
+        }
       },
       {
         id: 12,
