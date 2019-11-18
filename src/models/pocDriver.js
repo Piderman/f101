@@ -18,18 +18,15 @@ class pocDriver {
     this.series = this.parseSeries(data.sprintData, data.raceData);
     this.careerPoints = sumBy(this.series, "seriesTotal");
 
-    // @depricated
+    // start depricated
     this.sprintQualifying = [];
     this.sprintResults = this.parseSprintResults(data.sprintData);
-    this.sprintTotal = sumBy(this.sprintResults, "totalPoints");
 
     this.featureQualifying = [];
     this.featureResults = this.parseFeatureResults(data.raceData);
-    this.featureTotal = sumBy(this.featureResults, "totalPoints");
 
     this.setGridResults(data.qualifyingData);
 
-    this.seriesTotal = this.isPlayer && this.sprintTotal + this.featureTotal;
     // end depricated
 
     // stats!!!
@@ -74,17 +71,36 @@ class pocDriver {
   // todo: move to summary'ish of general things likes wins/podiums/laps
   get stats() {
     return {
-      poles: this.featureResults.filter(race => race.grid === 1).length,
-      featureWins: this.featureResults.filter(race => race.position === 1)
-        .length,
-      featurePodiums: this.featureResults.filter(race => race.position < 4)
-        .length,
-      fastestLaps: this.featureResults.filter(race => race.isFastestLap).length,
-      sprintWins: this.sprintResults.filter(race => race.position === 1).length,
-      highestPosition: min(this.featureResults.map(race => race.position)),
+      poles: sum(this.series.map(series => {
+          return series.featureResults.filter(race => race.grid === 1).length
+        })),
+      featureWins: sum(this.series.map(series => {
+          return series.featureResults.filter(race => race.position === 1).length
+        })),
+      featurePodiums: sum(this.series.map(series => {
+          return series.featureResults.filter(race => race.position < 4).length
+        })),
+      featureTotal: sum(this.series.map(series => series.featureTotal)),
+      fastestLaps: sum(this.series.map(series => {
+          return series.featureResults.filter(race => race.isFastestLap).length
+        })),
+      sprintWins: sum(this.series.map(series => {
+          return series.sprintResults.filter(race => race.position === 1).length
+        })),
+      sprintTotal: sum(this.series.map(series => series.sprintTotal)),
+      highestPosition: min(this.series.map(series => {
+          return min(series.featureResults.map(race => race.position))
+        })),
       bestScore: max(
-        this.featureResults.map((race, index) => {
-          return race.totalPoints + this.sprintResults[index].totalPoints;
+        this.series.map(series => {
+          const features = series.featureResults.map(event => event.totalPoints)
+          const sprints = series.sprintResults.map(event => event.totalPoints)
+
+          const combined = features.map((feature, index) => {
+            return feature + sprints[index]
+          })
+
+          return max(combined)
         })
       )
     };

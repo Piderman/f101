@@ -43,14 +43,16 @@ export default {
           class: "mb-2  pb-2  border-b-2  border-gray-200"
         }
       };
+      // does this need to be per series?
       return [
         {
           title: "Series Points",
-          value: driver.seriesTotal
+          value: driver.careerPoints
         },
         {
           title: "Series Wins",
-          value: 0
+          // todo: how???
+          value: '-'
         },
         {
           title: "Highest Round Points",
@@ -60,7 +62,7 @@ export default {
 
         {
           title: "Sprint Points",
-          value: driver.sprintTotal
+          value: driver.stats.sprintTotal
         },
         {
           title: "Sprint Wins",
@@ -70,7 +72,7 @@ export default {
 
         {
           title: "Feature Points",
-          value: driver.featureTotal
+          value: driver.stats.featureTotal
         },
         {
           title: "Feature Wins",
