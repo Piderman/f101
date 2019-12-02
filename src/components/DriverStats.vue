@@ -52,7 +52,7 @@ export default {
         {
           title: "Series Wins",
           // todo: how???
-          value: '-'
+          value: "-"
         },
         {
           title: "Highest Round Points",
