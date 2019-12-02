@@ -175,8 +175,18 @@ export default [
       },
       {
         id: 12,
-        status: "upcoming",
-        country: "Singapore"
+        status: "complete",
+        country: "Singapore",
+        weather: {
+          sprint: {
+            qualifying: ["sun"],
+            race: ["sun"]
+          },
+          feature: {
+            qualifying: ["sun"],
+            race: ["sun"]
+          }
+        }
       }
     ]
   }

@@ -61,6 +61,11 @@ export default [
         id: 11,
         finishPosition: 13,
         starPosition: 16
+      },
+      {
+        id: 12,
+        retiredPosition: 16, // crashed out last turn
+        starPosition: 9
       }
     ]
   }
