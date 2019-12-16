@@ -1,6 +1,6 @@
 <template>
 <div class="p-4">
-  <header class="h-16 px-4  sticky inset-x-0 top-0  flex justify-between  items-center  bg-white border-b">
+  <header class="md:h-16 px-4  md:sticky inset-x-0 top-0  md:flex justify-between  items-center  bg-white border-b">
       <div>
         <router-link class="border  px-4 py-2 rounded " :to="prevRaceRoute">Previous</router-link>
       </div>
@@ -12,42 +12,44 @@
       </div>
   </header>
 
-  <table>
-    <tr class="text-left">
-      <th colspan="3">Position</th>
-      <th>Driver</th>
-      <th>Team</th>
-      <th>Points</th>
-      <th>Bonus</th>
-    </tr>
-    <tr v-for="(entry, index) in currentRace.standings"
-      :key="index"
-    >
-      <td>
-        <icon v-bind="getPositionDelta(entry).icon" class="stroke-2 inline-block  fill-transparent"/>
-      </td>
-      <td class="text-right" v-text="entry.positionText" />
-      <td>
-        <icon :name="getDriverIcon(entry)" v-if="entry.isPlayer"
-          :class="{
-            'stroke-0' : entry.isMain,
-            'stroke-current fill-transparent': !entry.isMain
-          }"
+  <div class="table-crop-x">
+    <table>
+      <tr class="text-left">
+        <th colspan="3">Position</th>
+        <th class="cell-name">Driver</th>
+        <th class="cell-name">Team</th>
+        <th>Points</th>
+        <th>Bonus</th>
+      </tr>
+      <tr v-for="(entry, index) in currentRace.standings"
+        :key="index"
+      >
+        <td>
+          <icon v-bind="getPositionDelta(entry).icon" class="stroke-2 inline-block  fill-transparent"/>
+        </td>
+        <td class="text-right" v-text="entry.positionText" />
+        <td>
+          <icon :name="getDriverIcon(entry)" v-if="entry.isPlayer"
+            :class="{
+              'stroke-0' : entry.isMain,
+              'stroke-current fill-transparent': !entry.isMain
+            }"
+          />
+        </td>
+        <td v-text="entry.name" />
+        <td v-text="entry.teamName" class="border-l-8"
+          :class="`border-team-${entry.teamId}`"
         />
-      </td>
-      <td v-text="entry.name" />
-      <td v-text="entry.teamName" class="border-l-8"
-        :class="`border-team-${entry.teamId}`"
-      />
-      <td class="text-right" v-text="entry.points"/>
-      <td>
-        <div class="flex flex-row">
-          <icon name="award" v-if="entry.isPole" class="fill-transparent" />
-          <icon name="watch" v-if="entry.isFastestLap" class="fill-transparent" />
-        </div>
-      </td>
-    </tr>
-  </table>
+        <td class="text-right" v-text="entry.points"/>
+        <td>
+          <div class="flex flex-row">
+            <icon name="award" v-if="entry.isPole" class="fill-transparent" />
+            <icon name="watch" v-if="entry.isFastestLap" class="fill-transparent" />
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
 
   <h2 class="text-xl mb-4">Driver Standings</h2>
   
@@ -55,37 +57,39 @@
       Full standings
   </router-link>
   
-  <table class="mt-4">
-    <tr class="text-left">
-      <th colspan="3">Position</th>
-      <th>Driver</th>
-      <th>Team</th>
-      <th>Points</th>
-      <th>Gap</th>
-    </tr>
-    <tr v-for="(entry, index) in currentStandings"
-      :key="index"
-    >
-      <td class="px-0">
-        <icon v-bind="getStandingsDelta(entry).icon" class="stroke-2 inline-block  fill-transparent"/>
-      </td>
-      <td class="text-right" v-text="index+1" />
-      <td>
-        <icon :name="getDriverIcon(entry)" v-if="entry.isPlayer"
-          :class="{
-            'stroke-0' : entry.isMain,
-            'stroke-current fill-transparent': !entry.isMain
-          }"
+  <div class="table-crop-x">
+    <table class="mt-4">
+      <tr class="text-left">
+        <th colspan="3">Position</th>
+        <th class="cell-name">Driver</th>
+        <th class="cell-name">Team</th>
+        <th>Points</th>
+        <th>Gap</th>
+      </tr>
+      <tr v-for="(entry, index) in currentStandings"
+        :key="index"
+      >
+        <td class="px-0">
+          <icon v-bind="getStandingsDelta(entry).icon" class="stroke-2 inline-block  fill-transparent"/>
+        </td>
+        <td class="text-right" v-text="index+1" />
+        <td>
+          <icon :name="getDriverIcon(entry)" v-if="entry.isPlayer"
+            :class="{
+              'stroke-0' : entry.isMain,
+              'stroke-current fill-transparent': !entry.isMain
+            }"
+          />
+        </td>
+        <td v-text="entry.name" />
+        <td v-text="entry.teamName" class="border-l-8"
+          :class="`border-team-${entry.teamId}`"
         />
-      </td>
-      <td v-text="entry.name" />
-      <td v-text="entry.teamName" class="border-l-8"
-        :class="`border-team-${entry.teamId}`"
-      />
-      <td class="text-right" v-text="getStandingsByDriverId(entry.id).points"/>
-      <td class="text-right" v-text="getGapToLeader(entry.points).delta"/>
-    </tr>
-  </table>
+        <td class="text-right" v-text="getStandingsByDriverId(entry.id).points"/>
+        <td class="text-right" v-text="getGapToLeader(entry.points).delta"/>
+      </tr>
+    </table>
+  </div>
 
 </div>
 </template>
@@ -227,4 +231,13 @@ export default {
 </script>
 
 <style>
+@media (max-width: 640px) {
+  .cell-name {
+    min-width: 15em;
+  }
+}
+.table-crop-x {
+  width: 100%;
+  overflow-x: scroll
+}
 </style>

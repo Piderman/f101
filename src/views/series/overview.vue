@@ -13,8 +13,8 @@
     </router-link>
   </header>
   
-  <div class="flex">
-    <div class="w-1/2">
+  <div class="md:flex">
+    <div class="md:w-1/2">
       <h2 class="text-3xl">Feature Standings</h2>
       <table>
         <tr v-for="(driver, index) in summaryTable"
@@ -62,7 +62,7 @@
       </table>
     </div>
 
-    <div class="w-1/2">
+    <div class="md:w-1/2">
       <h2 class="text-3xl">Constructor Standings</h2>
       <table>
         <tr v-for="team in constructorStandings"
