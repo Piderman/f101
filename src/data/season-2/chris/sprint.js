@@ -68,5 +68,15 @@ export default [
         starPosition: 1
       }
     ]
+  },
+  {
+    seriesId: 3,
+    events: [
+      {
+        id: 13,
+        finishPosition: 2,
+        starPosition: 3
+      }
+    ]
   }
 ];

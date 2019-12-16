@@ -189,5 +189,100 @@ export default [
         }
       }
     ]
+  },
+  {
+    seriesId: 3,
+    events: [
+      {
+        id: 13,
+        status: "complete",
+        country: "Italy",
+        weather: {
+          sprint: {
+            qualifying: ["sun"],
+            race: ["sun"]
+          },
+          feature: {
+            qualifying: ["cloud"],
+            race: ["rain"]
+          }
+        }
+      },
+      {
+        id: 14,
+        status: "upcoming",
+        country: "Canada",
+        weather: {
+          sprint: {
+            qualifying: [],
+            race: []
+          },
+          feature: {
+            qualifying: [],
+            race: []
+          }
+        }
+      },
+      {
+        id: 14,
+        status: "upcoming",
+        country: "Belgium",
+        weather: {
+          sprint: {
+            qualifying: [],
+            race: []
+          },
+          feature: {
+            qualifying: [],
+            race: []
+          }
+        }
+      },
+      {
+        id: 14,
+        status: "upcoming",
+        country: "Japan",
+        weather: {
+          sprint: {
+            qualifying: [],
+            race: []
+          },
+          feature: {
+            qualifying: [],
+            race: []
+          }
+        }
+      },
+      {
+        id: 14,
+        status: "upcoming",
+        country: "Great Britan",
+        weather: {
+          sprint: {
+            qualifying: [],
+            race: []
+          },
+          feature: {
+            qualifying: [],
+            race: []
+          }
+        }
+      },
+      {
+        id: 14,
+        status: "upcoming",
+        country: "Brazil",
+        weather: {
+          sprint: {
+            qualifying: [],
+            race: []
+          },
+          feature: {
+            qualifying: [],
+            race: []
+          }
+        }
+      }
+    ]
   }
 ];

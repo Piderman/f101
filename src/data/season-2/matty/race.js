@@ -75,5 +75,15 @@ export default [
         isFastestLap: true
       }
     ]
+  },
+  {
+    seriesId: 3,
+    events: [
+      {
+        id: 13,
+        finishPosition: 1,
+        starPosition: 2
+      }
+    ]
   }
 ];
