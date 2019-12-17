@@ -11,4 +11,5 @@
 ## Race weekend
 [ ] overview landing podium and standings as of that round
 [ ] banner w weather info
-[ ] 
+[ ] overview fastest lap
+[ ] overview pole position

@@ -1,9 +1,6 @@
 <template>
-<div class="p-4">
-  <header class="mb-4">
-    <h1 class="text-6xl">Series {{$route.params.series}}</h1>
-  </header>
-  <router-view/>  
+<div>
+  <router-view/>
 </div>
 </template>
 

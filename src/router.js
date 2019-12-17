@@ -52,7 +52,7 @@ export default new Router({
           children: [
             {
               path: "",
-              name: "overview-old",
+              name: "overview-results",
               component: () =>
                 import(/* webpackChunkName: "results" */ "./views/results/overview.vue")
             },

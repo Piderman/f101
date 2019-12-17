@@ -24,6 +24,10 @@
   stroke-width: 2px;
 }
 
+.stroke-4 {
+  stroke-width: 4px;
+}
+
 .border-team-1 {
   border-color: #00d2be;
 }

@@ -1,87 +1,50 @@
 <template>
-<div>
-  <h1>{{weekend.name}}</h1>
-  <p v-if="polePosition">Pole position: {{polePosition.time}} - {{polePosition.driver}}</p>
-  
-  <p v-if="fastestLap">Fastest Lap: {{fastestLap.time}} - {{fastestLap.driver}}</p>
+  <div  class="text-center">
+    <div class="mx-auto  my-16  md:w-1/2 hidden">
+      <h2 class="text-3xl">Sprint winner</h2>
+      <!-- driver helmet -->
+    </div>
+    <div class="py-16  bg-grey-200">
+      <div class="mx-auto  md:w-1/2">
+        <h2 class="text-3xl  mb-8">Feature podium</h2>
 
-  <h3>Podium</h3>
-  <ol>
-    <li v-for="driver in podium"
-      :key="driver.id"
-    >
-      {{driver.position}}: {{driver.name}}
-    </li>
-  </ol>
+        <table class="w-full">
+          <tr v-for="(entry, index) in featureResults.podium" :key="index">
+            <td class="pl-0 text-right" v-text="entry.positionText" />
+            <td v-text="entry.name"></td>
+            <td>
+              <div class="flex flex-row">
+                <icon name="award" v-if="entry.isPole" class="fill-transparent" />
+                <icon name="watch" v-if="entry.isFastestLap" class="fill-transparent" />
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
 
-</div>
+    <div class="hidden">
+      drivers standings at round
+    </div>
+
+    <div class="hidden">
+      contsructor standings at round
+    </div>
+  </div>
 </template>
 
 <script>
-import { compact, find, pick, sortBy } from "lodash";
+import Icon from "@/components/Icon";
+import WeekendInformation from "@/mixins/WeekendInformation";
 
 export default {
-  methods: {
-    getAllDriverStatsFor(session, fields) {
-      const driverStatsForWeekend = this.$store.state.Drivers.allDrivers.map(
-        driver => {
-          const results = find(driver[session], { raceId: this.weekend.id });
-
-          if (results) {
-            const valuesToDisplay = pick(results, fields, ["position"]);
-
-            return Object.assign(valuesToDisplay, {
-              name: driver.name
-            });
-          }
-        }
-      );
-
-      return compact(driverStatsForWeekend);
-    }
+  mixins: [WeekendInformation],
+  name: "results-landing-view",
+  created() {
+    console.log("overview: created");
   },
-  computed: {
-    weekend() {
-      return this.$parent.weekend;
-    },
-    raceResults() {
-      return this.getAllDriverStatsFor("raceResults", "fastestLap");
-    },
-    podium() {
-      const raceStandings = sortBy(this.raceResults, "position");
-
-      // todo: finishing time???
-      return raceStandings.slice(0, 3);
-    },
-    fastestLap() {
-      const result = sortBy(this.raceResults, "fastestLap")[0];
-
-      return (
-        result && {
-          time: result.fastestLap,
-          driver: result.name
-        }
-      );
-    },
-    polePosition() {
-      const qualifying = this.getAllDriverStatsFor("qualifyingResults", "time");
-      const result = find(qualifying, { position: 1 });
-
-      return (
-        result && {
-          time: result.time,
-          driver: result.name
-        }
-      );
-    }
+  components: {
+    Icon
   }
 };
 </script>
-
-<style>
-ol li {
-  display: block;
-  list-style-type: decimal;
-  list-style-position: inside;
-}
-</style>
