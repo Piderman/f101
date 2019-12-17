@@ -5,6 +5,7 @@ import sprintData from "./sprint";
 export default {
   id: 1,
   name: "Chris Plumridge",
+  abbr: "PLU",
   isPlayer: true,
   isMain: true,
   teamId: 4,

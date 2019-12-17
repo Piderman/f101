@@ -1,7 +1,7 @@
 # Desing Todo
 
-[ ] fix mobile first
-[ ] 
+[x] fix mobile first
+[x] responsify tables
 
 ## Standings Page
 [ ] overview w each race and winner

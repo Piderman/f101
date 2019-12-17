@@ -9,6 +9,7 @@ class pocDriver {
   constructor(data) {
     this.id = data.id;
     this.name = data.name;
+    this.abbr = data.abbr || "";
     this.isPlayer = data.isPlayer;
     this.raceNumber = data.number;
     this.teamId = data.teamId;
@@ -40,6 +41,7 @@ class pocDriver {
   get meta() {
     return {
       name: this.name,
+      abbr: this.abbr,
       firstName: this.name.match(/^\w+/)[0],
       secondName: this.name.match(/\w+$/)[0],
       id: this.id,

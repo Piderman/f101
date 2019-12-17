@@ -5,6 +5,7 @@ import sprintData from "./sprint";
 export default {
   id: 3,
   name: "Matty Collins",
+  abbr: "COL",
   isPlayer: true,
   teamId: 4,
   number: 64,

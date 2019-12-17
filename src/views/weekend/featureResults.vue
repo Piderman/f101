@@ -1,5 +1,5 @@
 <template>
-<div class="p-4">
+<div class="md:p-4">
   <header class="md:h-16 px-4  md:sticky inset-x-0 top-0  md:flex justify-between  items-center  bg-white border-b">
       <div>
         <router-link class="border  px-4 py-2 rounded " :to="prevRaceRoute">Previous</router-link>
@@ -15,29 +15,23 @@
   <div class="table-crop-x">
     <table>
       <tr class="text-left">
-        <th colspan="3">Position</th>
-        <th class="cell-name">Driver</th>
-        <th class="cell-name">Team</th>
+        <th colspan="2">Position</th>
+        <th>Driver</th>
+        <th>Team</th>
         <th>Points</th>
         <th>Bonus</th>
       </tr>
       <tr v-for="(entry, index) in currentRace.standings"
         :key="index"
       >
-        <td>
+        <td class="pr-0">
           <icon v-bind="getPositionDelta(entry).icon" class="stroke-2 inline-block  fill-transparent"/>
         </td>
-        <td class="text-right" v-text="entry.positionText" />
+        <td class="pl-0 text-right" v-text="entry.positionText" />
         <td>
-          <icon :name="getDriverIcon(entry)" v-if="entry.isPlayer"
-            :class="{
-              'stroke-0' : entry.isMain,
-              'stroke-current fill-transparent': !entry.isMain
-            }"
-          />
+          <driver-title :driver="entry" />
         </td>
-        <td v-text="entry.name" />
-        <td v-text="entry.teamName" class="border-l-8"
+        <td v-text="entry.teamName" class="whitespace-no-wrap border-l-8"
           :class="`border-team-${entry.teamId}`"
         />
         <td class="text-right" v-text="entry.points"/>
@@ -60,7 +54,7 @@
   <div class="table-crop-x">
     <table class="mt-4">
       <tr class="text-left">
-        <th colspan="3">Position</th>
+        <th colspan="2">Position</th>
         <th class="cell-name">Driver</th>
         <th class="cell-name">Team</th>
         <th>Points</th>
@@ -74,15 +68,9 @@
         </td>
         <td class="text-right" v-text="index+1" />
         <td>
-          <icon :name="getDriverIcon(entry)" v-if="entry.isPlayer"
-            :class="{
-              'stroke-0' : entry.isMain,
-              'stroke-current fill-transparent': !entry.isMain
-            }"
-          />
+          <driver-title :driver="entry" />
         </td>
-        <td v-text="entry.name" />
-        <td v-text="entry.teamName" class="border-l-8"
+        <td v-text="entry.teamName" class="border-l-8  whitespace-no-wrap"
           :class="`border-team-${entry.teamId}`"
         />
         <td class="text-right" v-text="getStandingsByDriverId(entry.id).points"/>
@@ -100,6 +88,8 @@ import { mapGetters } from "vuex";
 import Icon from "@/components/Icon";
 import DeltaMixin from "@/mixins/Delta";
 
+import DriverTitle from "@/components/DriverTitle";
+
 export default {
   name: "feature-results-page",
   mixins: [DeltaMixin],
@@ -109,10 +99,6 @@ export default {
     }
   },
   methods: {
-    getDriverIcon(entry) {
-      return entry.isMain ? "user" : "multi-user";
-    },
-
     getFeatureRoute(raceId) {
       return {
         name: "feature-results",
@@ -225,19 +211,15 @@ export default {
     }
   },
   components: {
-    Icon
+    Icon,
+    DriverTitle
   }
 };
 </script>
 
 <style>
-@media (max-width: 640px) {
-  .cell-name {
-    min-width: 15em;
-  }
-}
 .table-crop-x {
   width: 100%;
-  overflow-x: scroll
+  overflow-x: scroll;
 }
 </style>

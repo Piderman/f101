@@ -21,7 +21,7 @@ table {
 
 th,
 td {
-  padding: 0.5em 1em;
+  padding: 0.5em 0.75em;
   font-variant-numeric: tabular-nums;
 }
 
@@ -34,5 +34,12 @@ tr:nth-child(2n) td {
   width: 4px;
   height: 0.75em;
   margin-right: 0.5em;
+}
+
+@media (min-width: 640px) {
+  th,
+  td {
+    padding: 0.5em 1em;
+  }
 }
 </style>
