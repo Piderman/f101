@@ -210,21 +210,21 @@ export default [
       },
       {
         id: 14,
-        status: "upcoming",
+        status: "complete",
         country: "Canada",
         weather: {
           sprint: {
-            qualifying: [],
-            race: []
+            qualifying: ["cloud"],
+            race: ["sun"]
           },
           feature: {
-            qualifying: [],
-            race: []
+            qualifying: ["drizzle"],
+            race: ["cloud"]
           }
         }
       },
       {
-        id: 14,
+        id: 15,
         status: "upcoming",
         country: "Belgium",
         weather: {
@@ -239,7 +239,7 @@ export default [
         }
       },
       {
-        id: 14,
+        id: 16,
         status: "upcoming",
         country: "Japan",
         weather: {
@@ -254,7 +254,7 @@ export default [
         }
       },
       {
-        id: 14,
+        id: 17,
         status: "upcoming",
         country: "Great Britan",
         weather: {
@@ -269,7 +269,7 @@ export default [
         }
       },
       {
-        id: 14,
+        id: 18,
         status: "upcoming",
         country: "Brazil",
         weather: {
