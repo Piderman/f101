@@ -225,16 +225,16 @@ export default [
       },
       {
         id: 15,
-        status: "upcoming",
+        status: "complete",
         country: "Belgium",
         weather: {
           sprint: {
-            qualifying: [],
-            race: []
+            qualifying: ["sun"],
+            race: ["sun"]
           },
           feature: {
-            qualifying: [],
-            race: []
+            qualifying: ["cloud"],
+            race: ["cloud", "drizzle"]
           }
         }
       },
