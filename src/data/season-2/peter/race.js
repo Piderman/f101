@@ -94,6 +94,12 @@ export default [
         id: 14,
         finishPosition: 10,
         starPosition: 16
+      },
+      {
+        id: 15,
+        finishPosition: 15, // says DNF but was on last lap, CBF completing
+        starPosition: 4,
+        isFastestLap: true
       }
     ]
   }

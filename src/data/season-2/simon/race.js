@@ -98,7 +98,12 @@ export default [
         finishPosition: 2,
         starPosition: 3,
         isFastestLap: true
-        // shoud have a penaly after ramming matty on the finish line
+        // shoud have a penalty after ramming matty on the finish line
+      },
+      {
+        id: 15,
+        finishPosition: 1,
+        starPosition: 3
       }
     ]
   }
