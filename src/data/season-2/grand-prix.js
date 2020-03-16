@@ -240,16 +240,16 @@ export default [
       },
       {
         id: 16,
-        status: "upcoming",
+        status: "complete",
         country: "Japan",
         weather: {
           sprint: {
-            qualifying: [],
-            race: []
+            qualifying: ["sun"],
+            race: ["rain"]
           },
           feature: {
-            qualifying: [],
-            race: []
+            qualifying: ["sun"],
+            race: ["drizzle", "cloud"]
           }
         }
       },

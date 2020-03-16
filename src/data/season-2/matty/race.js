@@ -93,6 +93,18 @@ export default [
         id: 15,
         finishPosition: 2,
         starPosition: 1
+      },
+      {
+        id: 16,
+        finishPosition: 14,
+        starPosition: 2,
+        isFastestLap: true,
+        penalties: [
+          {
+            incident: "illegal overtake", // BS safety car glitch. FU Perez
+            impact: "+10s"
+          }
+        ]
       }
     ]
   }
