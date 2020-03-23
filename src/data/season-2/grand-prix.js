@@ -242,6 +242,7 @@ export default [
         id: 16,
         status: "complete",
         country: "Japan",
+        isSafety: true,
         weather: {
           sprint: {
             qualifying: ["sun"],
