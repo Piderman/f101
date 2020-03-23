@@ -242,6 +242,7 @@ export default [
         id: 16,
         status: "complete",
         country: "Japan",
+        isSafety: true,
         weather: {
           sprint: {
             qualifying: ["sun"],
@@ -255,16 +256,16 @@ export default [
       },
       {
         id: 17,
-        status: "upcoming",
+        status: "complete",
         country: "Great Britan",
         weather: {
           sprint: {
-            qualifying: [],
-            race: []
+            qualifying: ["sun"],
+            race: ["cloudy"]
           },
           feature: {
-            qualifying: [],
-            race: []
+            qualifying: ["sun"],
+            race: ["sun"]
           }
         }
       },

@@ -105,6 +105,12 @@ export default [
             impact: "+10s"
           }
         ]
+      },
+      {
+        id: 17,
+        finishPosition: 4,
+        starPosition: 1,
+        isFastestLap: true
       }
     ]
   }
