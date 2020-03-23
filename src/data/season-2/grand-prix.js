@@ -256,16 +256,16 @@ export default [
       },
       {
         id: 17,
-        status: "upcoming",
+        status: "complete",
         country: "Great Britan",
         weather: {
           sprint: {
-            qualifying: [],
-            race: []
+            qualifying: ["sun"],
+            race: ["cloudy"]
           },
           feature: {
-            qualifying: [],
-            race: []
+            qualifying: ["sun"],
+            race: ["sun"]
           }
         }
       },
