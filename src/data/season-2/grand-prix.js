@@ -271,16 +271,16 @@ export default [
       },
       {
         id: 18,
-        status: "upcoming",
+        status: "complete",
         country: "Brazil",
         weather: {
           sprint: {
-            qualifying: [],
-            race: []
+            qualifying: ["cloud"],
+            race: ["cloud"]
           },
           feature: {
-            qualifying: [],
-            race: []
+            qualifying: ["cloud"],
+            race: ["cloud"]
           }
         }
       }
