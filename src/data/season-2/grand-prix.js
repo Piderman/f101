@@ -261,7 +261,7 @@ export default [
         weather: {
           sprint: {
             qualifying: ["sun"],
-            race: ["cloudy"]
+            race: ["cloud"]
           },
           feature: {
             qualifying: ["sun"],
