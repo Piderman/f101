@@ -10,7 +10,7 @@
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
-    "highcharts": "^6.2.0",
+    "highcharts": "^9.0.0",
     "highcharts-vue": "^1.2.0",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
